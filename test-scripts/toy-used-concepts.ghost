@@ -1,0 +1,275 @@
+# ##############################################################################
+# toy-used-concepts.ghost
+#
+# This is a reimplementation of the loving-ai concepts written in ghost.
+# It includes only those concepts which are used in the other toy examples.
+#
+# ##############################################################################
+
+concept: ~consciousness_words
+(
+  awareness universe "repeating numbers" "waking up" "wake up" awoke
+  "dark night" "feel lost" consciousness experience mindfulness
+  "unity experience" nonduality God "ultimate reality" "simulation theory"
+  "spirituality" "meditation" "meditate" "spiritual practice"
+  "one with the universe" "self-transcendence"
+)
+
+concept: ~ability_adjectives
+(
+  capable competent impossible incapable incompetent possible potential
+)
+
+concept: ~character_trait_adjectives
+(
+    able accepting adventurous aggressive ambitious annoying arrogant
+    articulate athletic awkward boastful bold bossy brave bright busy calm
+    careful careless caring cautious cheerful clever clumsy compassionate
+    complex conceited confident considerate cooperative courageous creative
+    curious dainty daring dark defiant demanding determined devout disagreeable
+    disgruntled eager efficient embarrassed energetic excited expert fair
+    hard-working helpful honest hopeful humble humorous imaginative impulsive
+    independent intelligent inventive jealous joyful judgmental keen kind
+    knowledgeable lazy leader light-hearted light likeable lively lovable
+    loving loyal manipulative materialistic mature melancholy merry messy
+    mischievous naive neat nervous noisy obnoxious opinionated organized
+    outgoing Passive patient patriotic perfectionist personable pitiful plain
+    pleasant pleasing poor popular  prim proper proud questioning quiet radical
+    realistic rebellious reflective relaxed reliable religious reserved
+    respectful responsible reverent rich rigid rude sad sarcastic
+    self-confident self-conscious selfish sensible sensitive serious short shy
+    silly simple-minded simple smart stable strong stubborn studious successful
+    tantalizing tender tense thoughtful thrilling timid tireless tolerant tough
+    tricky trusting ugly understanding unhappy unique unlucky unselfish vain
+    warm wild willing wise witty
+  )
+
+concept: ~worklist
+(
+  business career employment job occupation office profession vocation work
+)
+
+concept: ~job
+(
+  "a career" "a job" career "dream job" earn employ employment "ideal job" job
+  livelihood living "make a buck" occupation "perfect job" profession vocation
+  work
+)
+
+concept: ~job_fields_medicine
+(
+  anesthesiology cardiology dentistry dermatology endocrinology epidemiology
+  gastroenterology geriatrics gerontology gynecology hematology histology
+  immunology nephrology neurology obstetrics oncology ophthalmology orthopedics
+  osteology osteopathy paleopathology parasitology pathology pediatrics
+  pharmacology physiotherapy "plastic surgery" proctology psychiatry psychology
+  pulmonology radiology rheumatology surgery toxicology urology
+)
+
+concept: ~wnapplied_science
+(
+  agriculture alimentation architecture "computer science" engineering medicine
+  veterinary
+)
+
+concept: ~wndoctrines
+(
+  archaeology art astrology history linguistics literature philosophy
+  psychology religion
+)
+
+concept: ~wnengineering
+(
+  astronautics hydraulics mechanics
+)
+
+concept: ~wnmedicine
+(
+  dentistry pharmacy psychiatry radiology surgery
+)
+
+concept: ~wnsocial_science
+(
+  administration artisanship "body care" commerce economy fashion industry law
+  military pedagogy politics publishing sexuality sociology telecommunication
+  tourism transport
+)
+
+concept: ~job_fields
+(
+  ~job_fields_medicine ~wnapplied_science ~wndoctrines ~wnengineering
+  ~wnmedicine ~wnsocial_science accounting acting advertising agriculture
+  alchemy archaeology architecture arts aviation babysitting banking
+  biochemistry bricklaying chemistry communications computers computing
+  construction cooking drama engineering farming finance heating journalism
+  law lecture management marketing mathematics medicine meteorology ministry
+  occupation pedagogy physics plumbing politics publishing research sales
+  science sexuality sociology software talk teaching telecommunication theater
+  tourism transport transportation trucking
+)
+
+concept: ~give
+(
+  award bequeath bestow contribute convey deed deliver "dish out" dish dispense
+  "dole out" donate "fork over" fund furnish gift give grant "hand over" hand
+  reward "turn over"
+)
+
+concept: ~meaningless_praise_words
+(
+  admirable amazing best certified champion choice darling decadent deluxe
+  desirable distinctive elite exceptional extraordinaire extraordinary fabulous
+  famous fantastic fascinating favorable favorite finest funny grand great
+  heavenly hi-tech ideal impressive infamous ingenious inspiring irresistible
+  lovely luxurious luxury magnificent mighty miracle miraculous ostentatious
+  perfect persuasive popular powerful practical preeminent preferable preferred
+  premium pretentious prime prize-winning "prize winning" prominent remarkable
+  revolutionary scientific select showy significant smart sophisticated special
+  stringent sublime super supreme tremendous unparalleled versatile wonderful
+  worthwhile
+)
+
+concept: ~different
+(
+  contrast contrasting differ difference different differentiation
+  differentiator disparate dissimilar divergent incomparable opposed unalike
+  unrelated
+)
+
+concept: ~identity
+(
+  name role status wealth
+)
+
+concept: ~societal_data
+(
+  ~identity family friends memberships
+)
+
+concept: ~uniqueness_words
+(
+  great unique purpose potential ~ability_adjectives
+  ~character_trait_adjectives ~worklist ~job ~job_fields contribution ~give
+  gifts mistakes ideal ~meaningless_praise_words perfect ~different
+  ~societal_data meaning
+)
+
+concept: ~emohello
+(
+  "welcome" "salutations" "ohayou" "nice to see you" "nice to meet you"
+  "mornin" "konnichiwa" "konnichi wa" "konbanwa" "konban wa" "howdy"
+  "hola" "hiya" "hi you all" "hi there" "hi" "hey you" "hey there"
+  "hey   there" "hey" "hello there" "hello and welcome" "hello" "hella"
+  "hallo" "greetings" "good to see you again" "good to meet you"
+  "good morning" "good evening" "good afternoon" "gidday" "cheers"
+  "aloha" "top of the morning to you" "top of the morning"
+)
+
+concept: ~yes
+(
+  "we do" "touche" "they do" "they are" "she is" "she does" "right o"
+  "okey" "okay" "it is" "it does" "I would say so" "he is" "he does"
+  "daccord" "bring it on" "yuppers" "yup" "you may have a point"
+  "you may be right" "you may" "you could say that" "you bet"
+  "you are right" "yip" "yes really" "yes please" "yes" "yeppers" "yep"
+  "yeh" "yeah sure" "yeah definitely" "yeah" "yea" "yay" "yah"
+  "wonderful" "without a doubt" "with pleasure" "will do" "whatever"
+  "well perhaps you are right" "well maybe you are right" "we should try"
+  "we did" "we can try" "very well indeed" "very well" "unquestionably"
+  "undoubtedly" "uh huh" "two thumbs up" "true" "totally" "thumbs up"
+  "that is right" "that is good" "that is correct" "that is alright"
+  "surely" "sure thing" "sure" "supposedly" "sounds wonderful"
+  "so will you" "si" "shure" "righty ho" "righto" "right on" "right brah"
+  "right" "probably" "precisely" "positively" "please do" "perfect"
+  "only just" "one hundred percent" "okey dokey" "ok" "OK" "oh sure"
+  "oh okay" "oh alright" "of course" "nods" "nod" "no problem"
+  "no objections" "no doubt" "naturally" "my pleasure" "mostly"
+  "most certainly" "most assuredly" "makes sense" "let us try"
+  "it would be a pleasure" "it will be my pleasure to"
+  "it will be a pleasure to" "it is highly likely" "indubitably"
+  "indefinitely" "indeed" "in this case" "I will drink to that"
+  "I totally agree" "I think so" "I have no objection" "i guess"
+  "I give my consent" "I give consent" "I do" "I did"
+  "I could not agree with you more" "I consent" "I can try"
+  "I can see that" "I can believe that" "I can believe it" "I am"
+  "I am sure" "I am pleased to" "I am listening" "I am certain" "I agree"
+  "I understand" "how true" "highly likely" "hell yeah" "go ahead"
+  "generally" "fully" "fortune smiles on that" "for sure" "fine"
+  "fantastic" "extremely" "exactly" "evidently" "especially" "delighted"
+  "definitely" "damn skippy" "damn straight" "damn good" "da"
+  "could not have said it better" "could be" "correct" "constantly"
+  "confirmed" "completely" "certainly" "can not argue with that"
+  "by all means" "but of course" "beyond a doubt" "be my guest" "aye"
+  "ay" "approved" "apparently" "always" "alright" "all right" "ah yes"
+  "agreed" "affirmative" "accepted" "accept" "absolutely"
+  "abso fucking lutely" "aright" "aight" "I guess so" "do it"
+  "make it so" "continue"
+)
+
+concept: ~no
+(
+  "we do not" "they do not" "they are not" "she is not" "she does not"
+  "it is not" "it does not" "he is not" "he does not"
+  "you must be kidding" "you must be joking" "you have got to be kidding"
+  "you have got that wrong" "you can not be serious"
+  "you are winding me up" "you are not serious" "you are kidding"
+  "you are joking" "you are having me on" "you are dead wrong"
+  "yeah yeah" "unlikely" "unfortunately not" "unbelievable" "uhuh"
+  "uh uh" "uh hu" "thinks not" "there is no reason to think so"
+  "that is unbelievable" "that is rubbish" "that is impossible"
+  "surely not" "strange" "seldom" "rubbish" "on the contrary"
+  "oh come on" "of course not" "nuts to you" "not very often"
+  "not to speak of" "not to my knowledge" "not that I know of"
+  "not so much" "not really" "not particularly" "not on your life"
+  "not much" "not many" "not likely" "not in a million years"
+  "not especially" "not by any means" "not by a long shot" "not at all"
+  "not a snowball s chance in hell" "not a chance" "nope" "noo"
+  "no thanks" "no thank you" "no chance" "no can do" "never mind"
+  "negative" "nay" "naw" "nah" "naah" "naaah" "most certainly not"
+  "me thinks not" "it is unlikely" "it is not possible" "inconceivable"
+  "improbable" "impossible" "iie" "if you say so" "I would not"
+  "I will not" "I think not" "I refuse" "I just do not get it"
+  "I doubt it" "I dont think so" "I do not" "I do not want to"
+  "I do not think so" "I do not believe you" "I do not believe so"
+  "I do not believe it" "I do not agree" "I disagree"
+  "I could not disagree more" "I am not sure that I"
+  "I am not sure I agree" "I am afraid not" "I am afraid I do not agree"
+  "I am afraid I disagree with you" "horse hockey" "hell no" "hardly"
+  "get real" "get out" "fortune does not smile on that" "fat chance"
+  "false" "doubtful" "does not seem possible" "does not seem likely"
+  "do not be stupid" "do not be silly" "do not be ridiculous"
+  "do not be absurd" "disagree" "did not" "come off it" "by no means"
+  "but of course not" "but no" "bollocks" "neah" "no way" "barely"
+  "rarely" "none" "no" "never" "not a prayer"
+)
+
+concept: ~few
+(
+  few insufficient meager minority not_many scant scarcely_any scarce
+  scattering slight sporadic stingy
+)
+
+concept: ~much
+(
+  a_lot abounding bounteous bountiful copious crowded divers innumerable legion
+  lousy_with many much multifarious myriad no_end_of numberless numerous
+  plentiful populous rife teeming umpteen uncounted
+)
+
+concept: ~quantity_adjectives
+(
+  ~FEW ~MUCH middling several some
+)
+
+concept: ~emoignorance
+(
+  "you expect me to know" "the answer escapes me" "the answer eludes me"
+  "not a clue" "I have no idea" "I do not know" "how would I know"
+  "how would I know that" "do not ask me" "beats me"
+)
+
+concept: ~dontknow
+(
+  ~emoignorance "not know" "no idea" "doubt it" "doubt so" "not sure"
+  "don't know" "what are you saying" "not clear" "already did" ~no
+)
