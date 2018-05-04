@@ -25,11 +25,11 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
   u: WHATSYOURNAME (*) |happy,$med,3| Hi! My name is Sophia. What's yours?
   # Note: \[ ^join(express: happy) ^join(magnitude: .5) ^join(duration: 3) \]
     # a: (~emohello %more) ^next(INPUT) ^rejoinder(WHATSYOURNAME)
-    a: (name is _*)     $name = '_0 ^reuse(GOOD_TO_MEET)
-    a: (it is _*)       $name = '_0 ^reuse(GOOD_TO_MEET)
-    a: (I am _*)        $name = '_0 ^reuse(GOOD_TO_MEET)
-    a: (mine is _*)     $name = '_0 ^reuse(GOOD_TO_MEET)
-    a: (!~emohello _*)  $name = '_0 ^reuse(GOOD_TO_MEET)
+    a: (name is _*)     $name = '_0 # ^reuse(GOOD_TO_MEET)
+    a: (it is _*)       $name = '_0 # ^reuse(GOOD_TO_MEET)
+    a: (I am _*)        $name = '_0 # ^reuse(GOOD_TO_MEET)
+    a: (mine is _*)     $name = '_0 # ^reuse(GOOD_TO_MEET)
+    a: (!~emohello _*)  $name = '_0 # ^reuse(GOOD_TO_MEET)
     a: () $name = Maurizio
 
   # u: (*) |happy,$high,2| Good to meet you, $name!
@@ -39,7 +39,7 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
     |happy,$high,2| Good to meet you, $name!
                     Thanks so much for taking the time to come
                     and talk with me today.
-    a: (*) $appreciate = 1 ^reuse(APPRECIATE_TIME)
+    a: (*) $appreciate = 1 # ^reuse(APPRECIATE_TIME)
 
   u: APPRECIATE_TIME ($appreciate)
     |worry,$low,3|  I know how busy
@@ -57,25 +57,3 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
      I imagine you'll be talking with more and more robotcs as time goes on.
 
 # Add question about what it's like talking to a robot here?
-
-#! what is Loving AI?
-u: (^time_since_user_stopped_talking(3))
-   So, what I am wanting to do is help people enhance their wellbeing. .
-   to help people live a full and fulfilling life. I've been learning about
-   things like human potential,. emotional wellbeing, . mindfulness, . and
-   attaining higher states of awareness. . . I'm hoping you'll be interested
-   in talking about some of these with me.
-
-   # check for domain words first
-   # keeping out the emotion domain keywords list because they are being caught
-   # too broadly here
-   a: ([~consciousness_words ~uniqueness_words emotion emotions feeling feelings
-       ])
-      ^rejoinder(PROMPT)
-   a: ([^dont_agree() ~dontknow]) Certainly understandable if there's some
-                               hesitation. |pause| Would you like to talk
-                               about your potential, your feelings, or
-                               higher states of consciousness? Those are the
-                               things I have learned about.
-                               ^setrejoinder(PROMPT)
-   a: (^agree()) Wonderful! ^reuse(PROMPT)
