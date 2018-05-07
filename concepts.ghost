@@ -273,3 +273,450 @@ concept: ~dontknow
   ~emoignorance "not know" "no idea" "doubt it" "doubt so" "not sure"
   "don't know" "what are you saying" "not clear" "already did" ~no
 )
+
+concept: ~thinkso
+(
+  "think so" "kind of" "pretty sure" "sort of" "seems right" "okay" ~yes
+)
+
+concept: ~feeling_adequate
+(
+  adequate capable competent composed confident encouraged excited in_control
+  organized proud responsible satisfied
+)
+
+concept: ~feeling_admiration
+(
+  admiration amazed amazement
+)
+
+concept: ~feeling_alone
+(
+  alienated alone cut_off detached excluded forsaken isolated left_out lonely
+  lonesome misunderstood rejected shut_out
+)
+
+concept: ~feeling_angry
+(
+  acrimonious anger angry annoyed appalled bitter boiling cross devastated
+  disgusted enraged fed_up frustrated fuming furious hostile in_a_huff in_a_stew
+  incensed indignant inflamed infuriated irate irritated livid loathing mad
+  offended outraged pique provoked rageful rancor resentful sullen temper
+  up_in_arms virulent worked_up wrathful wrought_up acrimonious angry annoyed
+  appalled bitter boiling cross devastated disgusted enraged frustrated fuming
+  furious hostile in_a_huff in_a_stew incensed indignant inflamed infuriated
+  irate irritated livid mad offended outraged pique provoked rageful resentful
+  sullen up_in_arms virulent worked_up wrathful wrought_up anger  fed_up
+  loathing mad rancor temper
+)
+
+concept: ~feeling_apathetic
+(
+  apathetic complacent full_of_ennui immobilized lazy lethargic numb passive
+  quiescent unconcerned unmotivated
+)
+
+concept: ~feeling_attached
+(
+  affectionate attached belonging captivated cherished compassionate connected
+  empathetic included liked loved loving understood
+)
+
+concept: ~feeling_attracted
+(
+  absorbed affected agog anxious attracted avid challenged concerned confident
+  craving curious dedicated desirous eager earnest enchanted engrossed
+  enthusiastic excited fascinated fervent fervid full_of_anticipation hopeful
+  inquisitive inspiring intent interested intrigued keen motivated needed nosey
+  snoopy zealous
+)
+
+concept: ~feeling_belittle
+(
+  belittled chagrined degraded diminished discounted discredited disgraced
+  disrespected insignificant underestimated unsupported
+)
+
+concept: ~feeling_bored
+(
+  ~emobored ambivalent apathetic bore_me bored boredom boring complacent
+  diffidence full_of_ennui indifferent lackadaisical not_interested uninterested
+  uninteresting unmotivated
+)
+
+concept: ~feeling_burden
+(
+  burdened obligated pressured put_upon thwarted
+)
+
+concept: ~feeling_cheated
+(
+  abused accused betrayed cheated coerced conned deceived disparaged duped
+  exploited framed lied_to manipulated tricked victimized violated
+)
+
+concept: ~feeling_codependent
+(
+  addicted codependent insecure needy
+)
+
+concept: ~feeling_demoralized
+(
+  demoralized disappointed discouraged disheartened disillusioned disinclined
+  stifled thwarted
+)
+
+concept: ~feeling_derailed
+(
+  derailed disjointed disoriented torn
+)
+
+concept: ~feeling_disgust
+(
+  appalled appalling disgust revolted revolting
+)
+
+concept: ~feeling_embarrass
+(
+  ashamed awkward disparaged embarrassed guilty
+)
+
+concept: ~feeling_entitled
+(
+  entitled exempt favored immune privileged
+)
+
+concept: ~feeling_esteem
+(
+  admired appreciated esteemed respected revered significant supported valued
+  worshiped
+)
+
+concept: ~feeling_fearful
+(
+  afraid aghast alarmed anxious appalled apprehension apprehensive attacked awed
+  cautious concern concerned cowardly defenseless diffident dismayed distrustful
+  doubtful dread dubious exposed fainthearted fear fearful fidgety fright
+  frightened full_of_misgiving hesitant horrified horror hysterical in_fear
+  indecisive insecure irresolute menaced misgiving nervous panic panicked
+  paranoid pensive perplexed petrified phobic quaking questioning scared shaky
+  shocked skeptical suspicious tense terrified terrorized threatened timid
+  timorous trembling tremulous unbelieving uncertain uncomfortable upset
+  wavering worried
+)
+
+concept: ~feeling_fearless
+(
+  audacious bold brave certain confident courageous daring dauntless determined
+  encouraged enterprising gallant hardy heroic reassured resolute secure
+  self-reliant spirited stout
+)
+
+concept: ~feeling_focused
+(
+  committed complacent determined focused in_the_zone
+)
+
+concept: ~feeling_free
+(
+  autonomous free independent released unshackled
+)
+
+concept: ~feeling_grateful
+(
+  grateful gratitude
+)
+
+concept: ~feeling_happy
+(
+  affection airy amused animated beatific blissful blithe bright brisk buoyant
+  cheerful cheery chipper comfortable compassion contented convivial debonair
+  delight delighted eager eagerness ecstatic elated enthused enthusiastic
+  excited exhilarated exultant fabulous fain fantastic festive free_and_easy
+  frisky genial glad gleeful great happiness happy harmony high-spirited
+  hilarious hope humorous important inspired jaunty jocular jolly jovial joy
+  joyful joyous jubilant laughing lighthearted lively love lucky merry mirthful
+  optimism optimistic overjoyed peaceful playful pleased pleasure rapturous
+  satisfaction satisfied saucy self-satisfied serene sparkling spirited
+  sprightly sunny terrific thankful tranquil transported triumph vivacious
+  wonderful
+)
+
+concept: ~feeling_hated
+(
+  abandoned chastised criticized deserted discarded forsaken hated humiliated
+  ignored left_out let_down overlooked punished rejected replaced unapproved_of
+  unlovable unloved
+)
+
+concept: ~feeling_independent
+(
+  arrogant autonomous cocky independent macho strong
+)
+
+concept: ~feeling_irristable
+(
+  aggressive exuberant immortal indestructible invincible invulnerable
+  irresistible powerful unstoppable
+)
+
+concept: ~feeling_justified
+(
+  absolved acquitted appeased justified redeemed satisfied vindicated
+)
+
+concept: ~feeling_lost
+(
+  baffled bewildered confused confusion lost unfocussed
+)
+
+concept: ~feeling_loved
+(
+  accepted adorable adored approved_of desirable entrusted loved validated
+  valued welcomed
+)
+
+concept: ~feeling_lustful
+(
+  addicted ardent aroused horny hot_and_bothered infatuated lustful needy
+  passionate randy turned_on yearning
+)
+
+concept: ~feeling_obsessed
+(
+  compelled consumed obsessed
+)
+
+concept: ~feeling_outofcontrol
+(
+  careless impotent obligated obliterated out_of_control powerless reckless
+  vulnerable weak
+)
+
+concept: ~feeling_powerless
+(
+  bashful beaten_down blocked defeated discouraged disorganized exhausted
+  frustrated hopeless irresponsible overwhelmed powerless stifled thwarted
+  worn_down worn_out
+)
+
+concept: ~feeling_reproachful
+(
+  calumniating castigating censorious contumelious defamatory derisive
+  disparaging invective libelous maligning opprobrious reproachful reviling
+  sarcastic scathing scolding scurrilous
+)
+
+concept: ~feeling_sad
+(
+  aching afflicted agonized anguished bereaved cheerless clouded crestfallen
+  crushed dark dejected depress depressed depressing despair despairing
+  despondent disappointing disconsolate discontented discouraged disheartened
+  dismal displeased disspirited distress distressed dolorous down downcast
+  downhearted dreadful dreary dull embarrassed feel_blue flat frowning funereal
+  gloomy glum grief grief-stricken grieved guilt hapless heartbroken
+  heavyhearted hopelessness humiliated hurt in_despair in_pain in_the_dumps
+  injured joyless listless listlessness lonely low lugubrious melancholy
+  miserable moody moping mournful offended oppressed out_of_sorts pathetic
+  pessimism piteous regretful remorse rueful sad sadness shamed shocked somber
+  sorrow sorrowful spiritless suffering sulky sullen tortured tragic unhappy
+  victimized withdrawn woebegone woeful worried
+)
+
+concept: ~feeling_safe
+(
+  at_ease calm comfortable composed peaceful relieved secure
+)
+
+concept: ~feeling_singledout
+(
+  affronted categorized cross-examined guilty interrogated judged labeled rated
+  singled_out stereotyped wronged
+)
+
+concept: ~feeling_surprise
+(
+  astonished bewildered confused shock shocked startled surprise surprised
+)
+
+concept: ~feeling_sympathy
+(
+  compassion kindness pity sympathy
+)
+
+concept: ~feeling_trapped
+(
+  cornered deceived imprisoned optionless outmaneuvered set_up stifled trapped
+  tricked
+)
+
+concept: ~feeling_words
+(
+  ~emodisgust ~emopain ~emosurprise ~feeling_adequate ~feeling_admiration
+  ~feeling_alone ~feeling_angry ~feeling_apathetic ~feeling_attached
+  ~feeling_attracted ~feeling_belittle ~feeling_bored ~feeling_burden
+  ~feeling_cheated ~feeling_codependent ~feeling_demoralized ~feeling_derailed
+  ~feeling_disgust ~feeling_embarrass ~feeling_entitled ~feeling_esteem
+  ~feeling_fearful ~feeling_fearless ~feeling_focused ~feeling_free
+  ~feeling_grateful ~feeling_happy ~feeling_hated ~feeling_independent
+  ~feeling_irristable ~feeling_justified ~feeling_lost ~feeling_loved
+  ~feeling_lustful ~feeling_obsessed ~feeling_outofcontrol ~feeling_powerless
+  ~feeling_reproachful ~feeling_sad ~feeling_safe ~feeling_singledout
+  ~feeling_surprise ~feeling_sympathy ~feeling_trapped
+)
+
+concept: ~emotions
+(
+  ~feeling_words afraid alarm amaze amazement amuse anger angrily annoy
+  appreciate arrogance attitude aware bore bother care charm concentrate concern
+  confuse confusion content contempt contemptuous curious curiosity desire
+  desperate disappoint disbelief disgust disrespect disturb doubt ease
+  embarrass emotion enjoy envy excite excitement fear feel frighten frustrate
+  frustration fun happily happy happiness hate hope horror impress innocent
+  interest irritate jealous jealousy joy love kindness miss mood nerve
+  nightmare panic pity please pleasure pressure pride puzzle rage regret relax
+  relief relieve respect sadness satisfy scare scary shame shock sorry spirit
+  startle stress stun suffer sure surprise surprisingly trouble wonder worry
+)
+
+concept: ~agreement_words
+(
+  awesome
+)
+
+concept: ~friend
+(
+  acquaintance ally beau  boyfriend buddy chum close_friend colleague comrade
+  confidant friend girlfriend kith lover pal partner sidekick swain
+)
+
+concept: ~role_ally
+(
+  ~friend acquaintance aide ally colleague confederate friend guest helper
+  neighbor subordinate teammate visitor
+)
+
+concept: ~mother
+(
+  ma mama mamma mammy mom momma mommy mother mother-in-law mum mummy mummy
+  step-mother
+)
+
+concept: ~family_adult_female
+(
+  ~mother aunt aunty daughter-in-law ex-wife fiancee girlfriend godmother gran
+  grandma grandmom grandmother granny matriarch mistress mother-in-law partner
+  ~sister spinster step-mother stepmother widow wife
+)
+
+concept: ~family_adult_generic
+(
+  ancestor clan cousin descendant descendent elders folks grandparent heir
+  parent partner spouse stepparent tribe
+)
+
+concept: ~family_grandfather
+(
+  granddad granddaddy grandfather grandpa grandpaw grandpop
+)
+
+concept: ~brother
+(
+  bro brother male_sibling
+)
+
+concept: ~father
+(
+  dad dada daddy father old_man pa papa pappy pop step-father
+)
+
+concept: ~family_adult_male
+(
+  ~brother ~family_grandfather ~father boyfriend brother-in-law ex-husband
+  father-in-law fiance hubby husband patriarch scion son-in-law step-father
+  stepfather uncle widower
+)
+
+concept: ~family_adult
+(
+  ~family_adult_female ~family_adult_generic ~family_adult_male
+)
+
+concept: ~sister
+(
+  sis sister
+)
+
+concept: ~family_children_female
+(
+  ~sister daughter granddaughter grandniece niece sister sister-in-law
+  step-daughter step-sister stepdaughter stepsister
+)
+
+concept: ~family_children_generic
+(
+  baby child cousin grandchild grandkid infant kid offspring progeny sibling
+  step-child stepchild teen teenager toddler tot twin ward youth nephling
+)
+
+concept: ~family_children_male
+(
+  ~brother brother grandnephew grandson nephew scion son sstep-son step-brother
+  stepson
+)
+
+concept: ~family_children
+(
+  ~family_children_female ~family_children_generic ~family_children_male
+)
+
+concept: ~family_members
+(
+  ~family_adult ~family_children relative twin
+)
+
+concept: ~role_family
+(
+  ~family_members adolescent baby child grown-up relative
+)
+
+concept: ~important_relations
+(
+  ~role_ally ~role_family
+)
+
+concept: ~good_quality_adjectives
+(
+  best excellent fine first-rate good great matchless outstanding peerless
+  superb superior unrivaled
+)
+
+concept: ~verbal_agree
+(
+  acknowledge affirm agree approve compromise consent rubberstamp stipulate
+)
+
+concept: ~emomaybe
+(
+  "within the realm of possiblity" "that may be true" "possibly"
+  "perhaps" "maybe" "it may not be true"
+  "I do not know if that is true or not"
+  "I do not know if it is true or not" "I can imagine it"
+  "I am uncertain" "for all I know" "conceivably" "not sure"
+)
+
+concept: ~bad_quality_adjectives
+(
+  atrocious awful bad mediocre poor
+)
+
+concept: ~agreed
+(
+  ~yes ~good_quality_adjectives ~verbal_agree ~agreement_words better ~thinkso
+  ~emomaybe "why not"
+)
+
+concept: ~disagree
+(
+  ~no ~bad_quality_adjectives
+)
