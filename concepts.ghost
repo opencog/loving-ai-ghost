@@ -1,5 +1,5 @@
 # ##############################################################################
-# toy-used-concepts.ghost
+# concepts.ghost
 #
 # This is a reimplementation of the loving-ai concepts written in ghost.
 # It includes only those concepts which are used in the other toy examples.

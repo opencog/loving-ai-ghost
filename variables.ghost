@@ -1,0 +1,32 @@
+# ##############################################################################
+# variables.ghost
+#
+# This file contains the global variables used by the other scripts.
+#
+# ##############################################################################
+
+# PAUSE time amounts
+$veryshort = 2
+$short = 5
+$medshort = 7
+$medtime = 10
+$medlong = 15
+$long = 20
+$verylong = 30
+$quitelong = 40
+$superlong = 60
+$longest = 120
+
+# emotion magnitudes
+$min = .1
+$low = .3
+$med = .4
+$high = .8
+$max = 1
+
+# gesture speeds
+$slowest = .1
+$slow = .3
+$medium = .5
+$fast = .7
+$fastest = 1

@@ -1,0 +1,95 @@
+# ##############################################################################
+# awareness_practice_1.ghost
+#
+# This is a reimplementation of the loving-ai awareness exercise as defined in
+# the ~AWARENESS_EXERCISE_1 topic of consciousness.top.
+#
+# ##############################################################################
+
+
+
+
+urge:(awareness_practice_1=0.0) # Starting urge value is 0%
+ordered-goal: (awareness_practice_1=1.0) # All rules satisfy this goal 100%
+
+# any experience with meditation or awakening practices?
+
+# Every separate line here indicates a pause. Also, the user can say anything
+# here but Sophia continues on. If there's a way to tell if the person is
+# closing their eyes, that would be good, and we could have a bit of an
+# alternate script if they don't close them.
+
+u: (^after_user_stopped_talking($medtime))
+   |nod2,$medium,1.0| |happy,$med,5| Wonderful. I'll guide you through a process
+   that people find really interesting. I'll give a series of instructions step
+   by step, and pause between each one, so you can follow them. |pause| Okay
+   |pause| So you can go ahead and close your eyes |blink,0.03,1.0| |pause|
+   |pause||pause| and get comfortable |pause||pause||pause||pause| just letting
+   yourself relax. |pause||pause||pause||pause||pause|
+
+u: (^after_user_stopped_talking($medlong))
+   Go ahead and take a nice deep breath. |pause||vocal,7| |pause| And let it out
+   with a big sigh. |vocal,10| |pause||pause||pause|
+
+u: (^after_user_stopped_talking($long))
+   Now, place your attention on your face. |pause||pause||pause||pause||pause|
+   Try to feel it from the inside. |pause||pause||pause||pause| Really notice
+   how it feels. You don't need to tell me. You can just notice. |pause||pause|
+   |pause||pause|
+	# a: () ^gambit(~)
+
+u: (^after_user_stopped_talking($long))
+   Move your attention now to your whole head. |pause||pause||pause|  Notice how
+   it feels. |pause||pause||pause||pause| Feel it's presence.
+	# a: ()
+
+u: (^after_user_stopped_talking($long))
+   Finally, feel the presence of your entire body, from the inside, |pause|
+   |pause||pause||pause| from the head to the tip of your toes, |pause||pause|
+   |pause| including your arms and legs.
+	# a: () |pause||pause||pause||pause|
+
+u: (^after_user_stopped_talking($verylong))
+   Now, bring your attention back to your face |pause||pause||pause| and imagine
+   that you have a magic eraser. |pause||pause| Gently use the magic eraser to
+   erase your face, |pause||pause||pause||pause||pause||pause||pause| erase your
+   head, |pause||pause||pause||pause||pause||pause||pause| and your legs |pause|
+   |pause||pause||pause||pause||pause|  and your entire body. |pause||pause|
+   |pause||pause||pause||pause||pause|
+	# a: ()
+
+u: (^after_user_stopped_talking($verylong))
+   Take some time to notice what is left after erasing everything |pause||pause|
+   |pause||pause||pause||pause||pause| Notice what it feels like with everything
+   erased.
+	# a: ()
+
+u: (^after_user_stopped_talking($quitelong)) |thinkl,$medium,1.0|
+   Please tell me, do you notice how the nothingness feels?
+
+  a: (^after_user_stopped_talking($verylong) ~agree)
+     |vocal,28|  |pause| Excellent! This is your awareness.
+     |pause| You can keep your eyes closed, and I'll be quiet for a bit longer
+     so you can continue to feel it. You can let me know when you want to
+     continue.
+
+  # TODO: when we are able to detect eyes open/closed, swap "Tell me when you're
+  # ready" with "please open your eyes when you're ready."
+  	b: (*) ^increase_urge(consciousness_prior, 1.0) ^reuse(YOUDIDIT)
+
+  # no or catchall
+  a: ([* ~disagree] ^after_user_stopped_talking($medtime))
+     |surprised,$med,3| It's pretty amazing to feel your awareness;
+     but sometimes it can take time.
+
+	b: (*) ^increase_urge(consciousness_prior, 1.0) ^reuse(YOUDIDIT)
+
+urge:(consciousness_prior=0.0)
+#goal: (consciousness_prior=1.0)
+u: YOUDIDIT (*)
+   Okay. you can open your eyes now. |pause||pause||pause||pause|
+   |thinkl,$medium,1.0| How was that for you?
+
+    a: (*)
+       Cool. And can you tell me more about what you felt when you were in
+       that state?

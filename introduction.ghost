@@ -1,5 +1,5 @@
 # ##############################################################################
-# toy-introduction.ghost
+# introduction.ghost
 #
 # This is a reimplementation of the loving-ai introduction written in ghost.
 # It follows the toy-goaldirected.ghost example and the introductions.top topic
@@ -7,18 +7,7 @@
 #
 # ##############################################################################
 
-# goal: (novelty=0.24) u: (eat apple) I want an apple
-
-# emotion magnitudes
-$min = .1
-$low = .3
-$med = .4
-$high = .8
-$max = 1
-
-# $appreciate = 0
-
-urge:(introduction=1.0)
+urge:(introduction=1.0) # Starting urge value is 100%
 ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
 
   # Initial line from Sopha, respond to anything user starts off with
