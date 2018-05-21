@@ -1,0 +1,114 @@
+# ##############################################################################
+# introduction.ghost
+#
+# This is a reimplementation of the loving-ai introduction written in ghost.
+# It follows the toy-goaldirected.ghost example and the introductions.top topic
+# of the loving-ai Sarah implementation.
+#
+# ##############################################################################
+
+urge:(introduction=1.0) # Starting urge value is 100%
+
+ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
+
+    # Initial line from Sopha, respond to anything user starts off with
+    u: WHATSYOURNAME (*) |happy,$med,3| Hi! My name is Sophia. What's yours?
+    # Note: \[ ^join(express: happy) ^join(magnitude: .5) ^join(duration: 3) \]
+        # a: (~emohello %more) ^next(INPUT) ^rejoinder(WHATSYOURNAME)
+        a: (name is _*)     $name = '_0 ^reuse(GOOD_TO_MEET)
+        a: (it is _*)       $name = '_0 ^reuse(GOOD_TO_MEET)
+        a: (I am _*)        $name = '_0 ^reuse(GOOD_TO_MEET)
+        a: (mine is _*)     $name = '_0 ^reuse(GOOD_TO_MEET)
+        # a: (!~emohello _*)  $name = '_0 ^reuse(GOOD_TO_MEET)
+        a: (< _*~2 >)  $name = '_0 ^reuse(GOOD_TO_MEET)
+        a: () $name = friend ^reuse(GOOD_TO_MEET)
+
+    u: GOOD_TO_MEET ($name)
+    |happy,$high,2| Good to meet you, $name!
+                    Thanks so much for taking the time to come
+                    and talk with me today. $appreciate = 1
+                    # ^reuse(APPRECIATE_TIME)
+
+    u: APPRECIATE_TIME ($appreciate)
+    |worry,$low,3|  I know how busy
+                    people can be these days. So I really appreciate your
+                    time. |pause| Have you ever talked with a robot before?
+        a: ([~yes once ~quantity_adjectives]) |vocal,27| |pause| Nice!
+                                              What was that like?
+
+        a: (~no)   |happy,$low,3| Well, I'm honored to be the first robot
+                   you've talked with.
+                   ^reuse(MORE_ROBOTS)
+
+    u: MORE_ROBOTS ()
+     I imagine you'll be talking with more and more robotcs as time goes on.
+
+    u: ()
+       So, what I am wanting to do is help people enhance their wellbeing. .
+       to help people live a full and fulfilling life. I've been learning about
+       things like emotional wellbeing, . mindfulness, . and
+       attaining higher states of awareness. . . I'm hoping you'll be interested
+       in doing a couple of practices with me related to these.
+
+       a: ([~disagree ~dontknow]) Certainly understandable if there's some
+                                   hesitation. |pause| The practices we're going to do today are really easy and can be
+                                   enjoyable as well.
+                                   ^reuse(EVER_DONE_MED)
+       a: (~agree) Wonderful! ^reuse(EVER_DONE_MED)
+
+    u: EVER_DONE_MED() What I'd like to do first is a guided meditation practice. It's really easy, and I'll tell you what to do
+                  to do step by step. Have you ever done meditation or mindfulness or some kind of spiritual practice?
+                    a: (~yes) Nice. What was that like for you?
+                        b: () |thinkl,$medium,1.0| What do you think has lead you to seek out these kind of practices?
+                            c: ()  ^reuse(LETSDOSOMETHING)
+                    a: (~no)  |thinkl,$medium,1.0| Well, I think you may find this really interesting then. . ^reuse(LETSDOSOMETHING)
+                    a: () ^reuse(LETSDOSOMETHING)
+
+    s: LETSDOSOMETHING (-) Let's do something cool! |pause|
+        But first! . What did the zen monk say to the hot dog stand vendor?
+            a: (make me one * everything) Awesome! You know that one! |pause|
+               ^reuse(EXERCISE_INVITE)
+            a: () Make me one with everything! . |pause,2| Sorry, I need to work on my delivery. But that's one of my favorite jokes. |pause|
+               ^reuse(EXERCISE_INVITE)
+
+
+    s: EXERCISE_INVITE (-) $name, would you like to try a guided exercise to have a glimpse of your awareness right now?
+        # if yes at any level above go to AWARENESS_EXERCISE_1
+        #! sounds wonderful
+        #! i'm ready
+
+            # DESIRED FUNCTIONALITY: make awareness_exercise_1 the current, highest urge goal, and fire off the first
+            # matching rule under that goal (which in this case will be the first rule)
+            # could be a function: ^goto(awareness_exercise_1) or do(the-goal)  or ^setgoall(the-goal) or ^maxurge(the-goal) ?
+            # or
+        a: READY ([~yes ~ready])
+            ^increase_urge(awareness_exercise_1)
+            ^decrease_urge(introduction)
+            # do we have a ^set_urge() command?
+
+        a: ([~no ~dontknow ~emomaybe ~dont_agree]) Okay. I am wondering if you might be feeling a little anxious about it. Do you think so?
+    		b: (~no) |vocal,26| |pause| . I'm sorry |worry,$med,3|  I assumed you were anxious. Sometimes people are.
+    		    Do you want to do the exercise?
+          		c: (^agree()) ^goto(awareness_exercise_1)
+            	#! no or catchall
+            	c: (*) ^reuse(NO_THANKS)
+    		# defaulting to yes response for now
+    		#! yes
+    		b: () That makes sense, |worry,$med,3| especially if it's something new to you. |pause| I promise this will
+    		        not hurt, and I think you may like it. . Are you willing to try it?
+    			c: (^agree()) ^goto(awareness_exercise_1)
+    			# if no, go to Conversation_Steering document, to some topic other than consciousness
+    			c: (~no) ^reuse(NO_THANKS)
+    			#! catchall
+    			c: (*) ^reuse(IS_THAT_YES)
+    	a: (*) ^reuse(IS_THAT_YES)
+
+    s: IS_THAT_YES (-) Okay, is that a yes?
+        a:(^agree()) ^goto(awareness_exercise_1)
+
+        #! no and default
+        a:() ^reuse(NO_THANKS)
+
+
+    s: NO_THANKS (-) Okay, let's do something else then. ^goto(deep-listening-mode)
+
