@@ -1,0 +1,5 @@
+
+urge:(introduction=1.0) # Starting urge value is 100%
+ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
+
+  u: LABEL (hello) OpenCog is here ^keep()

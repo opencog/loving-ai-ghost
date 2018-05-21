@@ -1,0 +1,8 @@
+
+urge:(goalC=1.0) # Starting urge value is 100%
+ordered-goal: (goalC=1.0) # All following rules satisfy this goal 100%
+
+
+    u: GOAL_C_ONE (hello) goal c rule one 
+    u: GOAL_C_TWO (*) goal c rule two
+

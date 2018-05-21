@@ -1,0 +1,4 @@
+
+u: GOAL_SENSE (^person_appears()) uh person ^keep() 
+u: GOAL_SENSE (*) goal c rule two ^keep()
+

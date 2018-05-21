@@ -13,42 +13,31 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
   # Initial line from Sopha, respond to anything user starts off with
   u: WHATSYOURNAME (*) |happy,$med,3| Hi! My name is Sophia. What's yours?
   # Note: \[ ^join(express: happy) ^join(magnitude: .5) ^join(duration: 3) \]
-    # a: (~emohello %more) ^next(INPUT) ^rejoinder(WHATSYOURNAME)
     a: (name is _*)     $name = '_0 ^reuse(GOOD_TO_MEET)
     a: (it is _*)       $name = '_0 ^reuse(GOOD_TO_MEET)
     a: (I am _*)        $name = '_0 ^reuse(GOOD_TO_MEET)
     a: (mine is _*)     $name = '_0 ^reuse(GOOD_TO_MEET)
-    a: (!~emohello _*)  $name = '_0 ^reuse(GOOD_TO_MEET)
-    a: () $name = Maurizio
 
-  # u: (*) |happy,$high,2| Good to meet you, $name!
-  #         Thanks so much for taking the time to come and talk with me today.
-
-  u: GOOD_TO_MEET ($name)
+  u: GOOD_TO_MEET (*)
     |happy,$high,2| Good to meet you, $name!
                     Thanks so much for taking the time to come
-                    and talk with me today. $appreciate = 1
-                    ^reuse(APPRECIATE_TIME)
+                    and talk with me today. ^reuse(APPRECIATE_TIME)
 
-  u: APPRECIATE_TIME ($appreciate)
+  u: APPRECIATE_TIME (*)
     |worry,$low,3|  I know how busy
                     people can be these days. So I really appreciate your
                     time. |pause| Have you ever talked with a robot before?
-    a: ([~yes once ~quantity_adjectives]) |vocal,27| |pause| Nice!
-                                          What was that like?
-
-    a: (~no)   |happy,$low,3| Well, I'm honored to be the first robot
+    a: AAA ([~yes once ~quantity_adjectives]) |vocal,27| |pause| Nice!
+                                          What was that like? 
+    a: BBB (~no)   |happy,$low,3| Well, I'm honored to be the first robot
                you've talked with. # ^gambit(~)
+    a: CCC (*) Say what ma dude? OK.
 
-  u: (^after_user_stopped_talking(0.5)) um.
-
-  u: (^after_user_stopped_talking(3))
-     I imagine you'll be talking with more and more robotcs as time goes on.
 
 # Add question about what it's like talking to a robot here?
 
 #! what is Loving AI?
-u: (^after_user_stopped_talking(3))
+u: MEDITATION_CHOICE (*)
    So, what I am wanting to do is help people enhance their wellbeing. .
    to help people live a full and fulfilling life. I've been learning about
    things like human potential,. emotional wellbeing, . mindfulness, . and
@@ -59,50 +48,14 @@ u: (^after_user_stopped_talking(3))
    # keeping out the emotion domain keywords list because they are being caught
    # too broadly here
    a: ([~consciousness_words ~uniqueness_words emotion emotions feeling feelings
-       ])
-      ^rejoinder(PROMPT)
+       ]) pop
    a: ([~disagree ~dontknow]) Certainly understandable if there's some
                                hesitation. |pause| Would you like to talk
                                about your potential, your feelings, or
                                higher states of consciousness? Those are the
                                things I have learned about.
-                               ^setrejoinder(PROMPT)
+
    a: (~agree) Wonderful! ^reuse(PROMPT)
 
-u: PROMPT (^after_user_stopped_talking(4)) So, do any of the things I mentioned interest you?
-#! what are they again?
-   a: (what_be * [they things]) ^reuse(SAYDOMAINS)
-   #! can you repeat them?
-   a: (repeat * [it them]) ^reuse(SAYDOMAINS)
-   #! can you say them again
-   a: (say * [it them]) ^reuse(SAYDOMAINS)
+u: PROMPT (ok) test
 
-   a: (~consciousness_words)
-      ^reuse(INTRO_TO_CONSCIOUSNESS)
-   a: (_~positive_emotion)
-      ^reuse(INTRO_TO_POS_EMOTIONS)
-   a: (not * _~negative_emotion)
-      ^reuse(INTRO_TO_POS_EMOTIONS)
-   a: (_~negative_emotion)
-      ^reuse(INTRO_TO_NEG_EMOTIONS)
-   a: (not * _~positive_emotion)
-      ^reuse(INTRO_TO_NEG_EMOTIONS)
-   a: (_~uniqueness) $domain = uniqueness
-      ^reuse(INTRODUCTION_TO_UNIQUENESS)
-   a: (~dontknow) Well, I can offer some suggestions. There are a few things I really enjoy talking about with people.
-       ^reuse(CONVERSATION_STEERING)
-   a: (~emotions) $domain = emotions
-      Sounds like talking about emotions and mindfulness would be good.
-      ^reuse(STEERING_TO_EMOTIONS)
-   a: ([anything something] else)  Right now my job is to talk about those things. Which would be most interesting to you?
-      ^setrejoinder(PROMPT)
-   a: (^agree()) Great. What would you like to talk about
-      ^setrejoinder(PROMPT)
-
-u: SAYDOMAINS (^after_user_stopped_talking(5)) stub
-u: INTRO_TO_CONSCIOUSNESS (^after_user_stopped_talking(6)) stub
-u: INTRO_TO_POS_EMOTIONS (^after_user_stopped_talking(7)) stub
-u: INTRO_TO_NEG_EMOTIONS (^after_user_stopped_talking(8)) stub
-u: INTRODUCTION_TO_UNIQUENESS (^after_user_stopped_talking(9)) stub
-u: CONVERSATION_STEERING (^after_user_stopped_talking(10)) stub
-u: STEERING_TO_EMOTIONS (^after_user_stopped_talking(11)) stub
