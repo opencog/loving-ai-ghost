@@ -18,6 +18,7 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
         a: (name is _*)     $name = '_0 ^reuse(GOOD_TO_MEET)
         a: (it is _*)       $name = '_0 ^reuse(GOOD_TO_MEET)
         a: (I am _*)        $name = '_0 ^reuse(GOOD_TO_MEET)
+        a: (I'm _*)        $name = '_0 ^reuse(GOOD_TO_MEET)
         a: (mine is _*)     $name = '_0 ^reuse(GOOD_TO_MEET)
         # a: (!~emohello _*)  $name = '_0 ^reuse(GOOD_TO_MEET)
         a: (< _*~2 >)  $name = '_0 ^reuse(GOOD_TO_MEET)
@@ -82,21 +83,22 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
             # could be a function: ^goto(awareness_exercise_1) or do(the-goal)  or ^setgoall(the-goal) or ^maxurge(the-goal) ?
             # or
         a: READY ([~yes ~ready])
-            ^increase_urge(awareness_exercise_1)
-            ^decrease_urge(introduction)
+            ^reuse(GOTO_AWARENESS_1)
+            # ^increase_urge(awareness_exercise_1)
+            # ^decrease_urge(introduction)
             # do we have a ^set_urge() command?
 
         a: ([~no ~dontknow ~emomaybe ~dont_agree]) Okay. I am wondering if you might be feeling a little anxious about it. Do you think so?
     		b: (~no) |vocal,26| |pause| . I'm sorry |worry,$med,3|  I assumed you were anxious. Sometimes people are.
     		    Do you want to do the exercise?
-          		c: (^agree()) ^goto(awareness_exercise_1)
+          		c: (^agree()) ^reuse(GOTO_AWARENESS_1)
             	#! no or catchall
             	c: (*) ^reuse(NO_THANKS)
     		# defaulting to yes response for now
     		#! yes
     		b: () That makes sense, |worry,$med,3| especially if it's something new to you. |pause| I promise this will
     		        not hurt, and I think you may like it. . Are you willing to try it?
-    			c: (^agree()) ^goto(awareness_exercise_1)
+    			c: (^agree()) ^reuse(GOTO_AWARENESS_1)
     			# if no, go to Conversation_Steering document, to some topic other than consciousness
     			c: (~no) ^reuse(NO_THANKS)
     			#! catchall
@@ -104,13 +106,31 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
     	a: (*) ^reuse(IS_THAT_YES)
 
     s: IS_THAT_YES (-) Okay, is that a yes?
-        a:(^agree()) ^goto(awareness_exercise_1)
+        a:(~yes) ^reuse(GOTO_AWARENESS_1)
+
 
         #! no and default
         a:() ^reuse(NO_THANKS)
 
 
-    s: NO_THANKS (-) Okay, let's do something else then. ^goto(deep-listening-mode)
+    s: NO_THANKS (-) Okay, let's do something else then. # ^reuse(GOTO_DEEP_LISTENING)
+
+    s: GOTO_AWARENESS_1 (-)
+        ^increase_urge(awareness_practice_1,.9)
+        ^decrease_urge(introduction,.9)
+
+
 
     # This needs to be defined here for testing when only this file is loaded, since it is referenced in a rule.
     urge:(awareness_practice_1=0.0) # Starting urge value is 0%
+
+    # replacement for lines 62-63 that causes crach
+    #    b: () ^reuse(LETSDOSOMETHING)
+    #    # b: () |thinkl,$medium,1.0| What do you think has lead you to seek out these kind of practices?
+    #    #    c: ()  ^reuse(LETSDOSOMETHING)
+
+
+# TEST UTILS
+goal: (test=1)
+u: (awareness) ^reuse(GOTO_AWARENESS_1) ^keep()
+
