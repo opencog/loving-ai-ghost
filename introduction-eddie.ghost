@@ -112,3 +112,5 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
 
     s: NO_THANKS (-) Okay, let's do something else then. ^goto(deep-listening-mode)
 
+    # This needs to be defined here for testing when only this file is loaded, since it is referenced in a rule.
+    urge:(awareness_practice_1=0.0) # Starting urge value is 0%
