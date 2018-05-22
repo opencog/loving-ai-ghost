@@ -7,44 +7,43 @@
 #
 # ##############################################################################
 
+# goal: (temp=1)
+# u: START_MED_1 (-) Here we are START_MED_1
+
 urge:(introduction=1.0) # Starting urge value is max
 
 ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
 
     # Initial line from Sopha, respond to anything user starts off with
     u: WHATSYOURNAME (*) |happy,$med,3| Hi! My name is Sophia. What's yours?
-    # Note: \[ ^join(express: happy) ^join(magnitude: .5) ^join(duration: 3) \]
-        # a: (~emohello %more) ^next(INPUT) ^rejoinder(WHATSYOURNAME)
         a: (name is _*)     $name = '_0 ^reuse(GOOD_TO_MEET)
         a: (it is _*)       $name = '_0 ^reuse(GOOD_TO_MEET)
+        a: (it's _*)       $name = '_0 ^reuse(GOOD_TO_MEET)
         a: (I am _*)        $name = '_0 ^reuse(GOOD_TO_MEET)
         a: (I'm _*)        $name = '_0 ^reuse(GOOD_TO_MEET)
         a: (mine is _*)     $name = '_0 ^reuse(GOOD_TO_MEET)
-        # a: (!~emohello _*)  $name = '_0 ^reuse(GOOD_TO_MEET)
-        a: (< _*~2 >)  $name = '_0 ^reuse(GOOD_TO_MEET)
-        a: () $name = friend ^reuse(GOOD_TO_MEET)
+        a: (< _*1 >)  $name = '_0 ^reuse(GOOD_TO_MEET)
+        a: (*) $name = friend ^reuse(GOOD_TO_MEET)
 
     u: GOOD_TO_MEET ($name)
     |happy,$high,2| Good to meet you, $name!
                     Thanks so much for taking the time to come
-                    and talk with me today. $appreciate = 1
-                    # ^reuse(APPRECIATE_TIME)
+                    and talk with me today.
 
-    u: APPRECIATE_TIME ($appreciate)
+    u: APPRECIATE_TIME (*)
     |worry,$low,3|  I know how busy
                     people can be these days. So I really appreciate your
                     time. |pause| Have you ever talked with a robot before?
-        a: ([~yes once ~quantity_adjectives]) |vocal,27| |pause| Nice!
-                                              What was that like?
+        a: ([~yes once ~quantity_adjectives]) |vocal,27| |pause| Nice! What was that like?
 
         a: (~no)   |happy,$low,3| Well, I'm honored to be the first robot
                    you've talked with.
                    ^reuse(MORE_ROBOTS)
 
-    u: MORE_ROBOTS ()
+    u: MORE_ROBOTS (*)
      I imagine you'll be talking with more and more robotcs as time goes on.
 
-    u: ()
+    u: (*)
        So, what I am wanting to do is help people enhance their wellbeing. .
        to help people live a full and fulfilling life. I've been learning about
        things like emotional wellbeing, . mindfulness, . and
@@ -57,19 +56,19 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
                                    ^reuse(EVER_DONE_MED)
        a: (~agree) Wonderful! ^reuse(EVER_DONE_MED)
 
-    u: EVER_DONE_MED() What I'd like to do first is a guided meditation practice. It's really easy, and I'll tell you what to do
+    u: EVER_DONE_MED(*) What I'd like to do first is a guided meditation practice. It's really easy, and I'll tell you what to do
                   to do step by step. Have you ever done meditation or mindfulness or some kind of spiritual practice?
                     a: (~yes) Nice. What was that like for you?
-                        b: () |thinkl,$medium,1.0| What do you think has lead you to seek out these kind of practices?
-                            c: ()  ^reuse(LETSDOSOMETHING)
+                        b: (*) |thinkl,$medium,1.0| What do you think has lead you to seek out these kind of practices?
+                            c: (*)  ^reuse(LETSDOSOMETHING)
                     a: (~no)  |thinkl,$medium,1.0| Well, I think you may find this really interesting then. . ^reuse(LETSDOSOMETHING)
-                    a: () ^reuse(LETSDOSOMETHING)
+                    a: (*) ^reuse(LETSDOSOMETHING)
 
     s: LETSDOSOMETHING (-) Let's do something cool! |pause|
         But first! . What did the zen monk say to the hot dog stand vendor?
             a: (make me one * everything) Awesome! You know that one! |pause|
                ^reuse(EXERCISE_INVITE)
-            a: () Make me one with everything! . |pause,2| Sorry, I need to work on my delivery. But that's one of my favorite jokes. |pause|
+            a: (*) Make me one with everything! . |pause,2| Sorry, I need to work on my delivery. But that's one of my favorite jokes. |pause|
                ^reuse(EXERCISE_INVITE)
 
 
@@ -86,19 +85,19 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
             ^reuse(GOTO_AWARENESS_1)
             # ^increase_urge(awareness_exercise_1)
             # ^decrease_urge(introduction)
-            # do we have a ^set_urge() command?
+            # do we have a ^set_urge(*) command?
 
         a: ([~no ~dontknow ~emomaybe ~dont_agree]) Okay. I am wondering if you might be feeling a little anxious about it. Do you think so?
     		b: (~no) |vocal,26| |pause| . I'm sorry |worry,$med,3|  I assumed you were anxious. Sometimes people are.
     		    Do you want to do the exercise?
-          		c: (^agree()) ^reuse(GOTO_AWARENESS_1)
+          		c: (~agree) ^reuse(GOTO_AWARENESS_1)
             	#! no or catchall
             	c: (*) ^reuse(NO_THANKS)
     		# defaulting to yes response for now
     		#! yes
-    		b: () That makes sense, |worry,$med,3| especially if it's something new to you. |pause| I promise this will
+    		b: (*) That makes sense, |worry,$med,3| especially if it's something new to you. |pause| I promise this will
     		        not hurt, and I think you may like it. . Are you willing to try it?
-    			c: (^agree()) ^reuse(GOTO_AWARENESS_1)
+    			c: (~agree) ^reuse(GOTO_AWARENESS_1)
     			# if no, go to Conversation_Steering document, to some topic other than consciousness
     			c: (~no) ^reuse(NO_THANKS)
     			#! catchall
@@ -108,30 +107,29 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
     s: IS_THAT_YES (-) Okay, is that a yes?
         a:(~yes) ^reuse(GOTO_AWARENESS_1)
 
-
         #! no and default
-        a:() ^reuse(NO_THANKS)
+        a:(*) ^reuse(NO_THANKS)
 
 
     s: NO_THANKS (-) Okay, let's do something else then. # ^reuse(GOTO_DEEP_LISTENING)
 
     s: GOTO_AWARENESS_1 (-)
-        going to awareness practice stub
-         ^increase_urge(awareness_practice_1, 1.0)
-         ^decrease_urge(introduction, 1.0)
-
+        Great. go to awareness
+        ^increase_urge(awareness_practice_1, 1.0)
+        ^decrease_urge(introduction, 1.0)
+         # ^reuse(START_MED_1)
 
 
     # This needs to be defined here for testing when only this file is loaded, since it is referenced in a rule.
     urge:(awareness_practice_1=0.0) # Starting urge value is 0%
 
     # replacement for lines 62-63 that causes crach
-    #    b: () ^reuse(LETSDOSOMETHING)
-    #    # b: () |thinkl,$medium,1.0| What do you think has lead you to seek out these kind of practices?
-    #    #    c: ()  ^reuse(LETSDOSOMETHING)
+    #    b: (*) ^reuse(LETSDOSOMETHING)
+    #    # b: (*) |thinkl,$medium,1.0| What do you think has lead you to seek out these kind of practices?
+    #    #    c: (*)  ^reuse(LETSDOSOMETHING)
 
 
 # TEST UTILS
-goal: (test=1)
-u: (awareness) ^reuse(GOTO_AWARENESS_1) ^keep()
+# goal: (test=1)
+# u: (awareness) ^reuse(GOTO_AWARENESS_1) ^keep()
 
