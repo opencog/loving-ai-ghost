@@ -154,7 +154,7 @@ concept: ~bad_quality_adjectives
   atrocious awful bad mediocre poor
 )
 
-concept: ~agreed
+concept: ~agree
 (
   ~yes ~good_quality_adjectives ~verbal_agree ~agreement_words better ~thinkso
   ~emomaybe "why not"
