@@ -7,7 +7,7 @@
 #
 # ##############################################################################
 
-urge:(introduction=1.0) # Starting urge value is 100%
+urge:(introduction=1.0) # Starting urge value is max
 
 ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
 
@@ -116,8 +116,9 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
     s: NO_THANKS (-) Okay, let's do something else then. # ^reuse(GOTO_DEEP_LISTENING)
 
     s: GOTO_AWARENESS_1 (-)
-        ^increase_urge(awareness_practice_1,.9)
-        ^decrease_urge(introduction,.9)
+        going to awareness practice stub
+         ^increase_urge(awareness_practice_1, 1.0)
+         ^decrease_urge(introduction, 1.0)
 
 
 
