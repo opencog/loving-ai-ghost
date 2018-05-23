@@ -19,7 +19,7 @@ ordered-goal: (awareness_practice_1=1.0) # All rules satisfy this goal 100%
 # closing their eyes, that would be good, and we could have a bit of an
 # alternate script if they don't close them.
 
-u: (^after_user_stopped_talking($medtime))
+u: START_MED_1 ()
    |nod2,$medium,1.0| |happy,$med,5| Wonderful. I'll guide you through a process
    that people find really interesting. I'll give a series of instructions step
    by step, and pause between each one, so you can follow them. |pause| Okay
@@ -78,8 +78,8 @@ u: (^after_user_stopped_talking($quitelong)) |thinkl,$medium,1.0|
   	b: (*) ^increase_urge(consciousness_prior, 1.0) ^reuse(YOUDIDIT)
 
   # no or catchall
-  a: ([* ~disagree] ^after_user_stopped_talking($medtime))
-     |surprised,$med,3| It's pretty amazing to feel your awareness;
+  a: (* ^after_user_stopped_talking($medtime))
+     |surprised,$med,3| It's pretty amazing to feel your awareness
      but sometimes it can take time.
 
 	b: (*) ^increase_urge(consciousness_prior, 1.0) ^reuse(YOUDIDIT)
