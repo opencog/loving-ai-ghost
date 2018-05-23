@@ -34,38 +34,40 @@ u: (^after_min(.6,meditation))
 
 u: (^after_min(.25,meditation))
    Now, place your attention on your face. |pause,6|
-   Try to feel it from the inside. |pause,6| Really notice
-   how it feels. You don't need to tell me. You can just notice. |pause,6|
+   Try to feel it from the inside. |pause,7| Really notice
+   how it feels. You don't need to tell me. You can just notice. |pause,7|
    ^start_timer(meditation)
 
    # 17+ seconds
 
-u: (^after_min(.6,meditation))
-   Move your attention now to your whole head. |pause,5|  Notice how
-   it feels. |pause,6| Feel it's presence.
+u: (^after_min(.7,meditation))
+   Move your attention now to your whole head. |pause,6|  Notice how
+   it feels. |pause,7| Feel it's presence.
    ^start_timer(meditation)
 
    # 13+ seconds
 
-u: (^after_min(.5,meditation))
+u: (^after_min(.55,meditation))
    Finally, feel the presence of your entire body, from the inside,
-   |pause,6| from the head to the tip of your toes, |pause,7|
+   |pause,7| from the head to the tip of your toes, |pause,7|
     including your arms and legs.
    ^start_timer(meditation)
 
    # 14+ seconds
 
-u: (^after_min(.5,meditation))
-   Now, bring your attention back to your face |pause,3| and imagine
-   that you have a magic eraser. |pause,2| Gently use the magic eraser to
-   erase your face, |pause,7| erase your
-   head, |pause,7| and your legs |pause,7|
-   and your entire body. |pause,7|
+u: (^after_min(.6,meditation))
+   Now, bring your attention back to your face |pause,4|
+   and imagine that you have a magic eraser. |pause,2|
+   Gently use the magic eraser to erase your face, |pause,7|
+   Erase your entire face using the magic eraser, |pause, 7|
+   erase your entire head, |pause,8|
+   and erase your legs |pause,8|
+   and your entire body. |pause,8|
    ^start_timer(meditation)
 
 u: (^after_min(.75,meditation))
    Take some time to notice what is left after erasing everything |pause,10|
-   Notice what it feels like with everything erased.
+   Notice what it feels like with everything erased. |pause,10|
    ^start_timer(meditation)
 
 u: (^after_min(.75,meditation))
