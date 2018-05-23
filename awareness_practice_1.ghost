@@ -15,7 +15,7 @@ ordered-goal: (awareness_practice_1=1.0) # All rules satisfy this goal 100%
 # alternate script if they don't close them.
 
 u: START_MED_1 ()
-   |nod2,$medium,1.0| |happy,$med,5| Wonderful. I'll guide you through a process
+   |nod2,$medium,1.0| |happy,$med,5| I'll guide you through a process
    that people find really interesting. I'll give a series of instructions step
    by step, and pause between each one, so you can follow them. |pause| Okay
    |pause| So you can go ahead and close your eyes |blink,0.03,1.0| |pause,3|

@@ -84,7 +84,7 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
             # matching rule under that goal (which in this case will be the first rule)
             # could be a function: ^goto(awareness_exercise_1) or do(the-goal)  or ^setgoall(the-goal) or ^maxurge(the-goal) ?
             # or
-        a: READY ([~yes ~ready])
+        a: READY ([~yes])
             ^reuse(GOTO_AWARENESS_1)
             # ^increase_urge(awareness_exercise_1)
             # ^decrease_urge(introduction)
