@@ -6,13 +6,8 @@
 #
 # ##############################################################################
 
-
-
-
 urge:(awareness_practice_1=0.0) # Starting urge value is 0%
 ordered-goal: (awareness_practice_1=1.0) # All rules satisfy this goal 100%
-
-# any experience with meditation or awakening practices?
 
 # Every separate line here indicates a pause. Also, the user can say anything
 # here but Sophia continues on. If there's a way to tell if the person is
@@ -23,73 +18,83 @@ u: START_MED_1 ()
    |nod2,$medium,1.0| |happy,$med,5| Wonderful. I'll guide you through a process
    that people find really interesting. I'll give a series of instructions step
    by step, and pause between each one, so you can follow them. |pause| Okay
-   |pause| So you can go ahead and close your eyes |blink,0.03,1.0| |pause|
-   |pause||pause| and get comfortable |pause||pause||pause||pause| just letting
-   yourself relax. |pause||pause||pause||pause||pause|
+   |pause| So you can go ahead and close your eyes |blink,0.03,1.0| |pause,3|
+   and get comfortable |pause,4| just letting
+   yourself relax. |pause,5|
+   ^start_timer(meditation)
 
-u: (^after_user_stopped_talking($medlong))
+# Text speech is about 25 seconds
+
+u: (^after_min(.6,meditation))
    Go ahead and take a nice deep breath. |pause||vocal,7| |pause| And let it out
-   with a big sigh. |vocal,10| |pause||pause||pause|
+   with a big sigh. |vocal,10| |pause,3|
+   ^start_timer(meditation)
 
-u: (^after_user_stopped_talking($long))
-   Now, place your attention on your face. |pause||pause||pause||pause||pause|
-   Try to feel it from the inside. |pause||pause||pause||pause| Really notice
-   how it feels. You don't need to tell me. You can just notice. |pause||pause|
-   |pause||pause|
-	# a: () ^gambit(~)
+   # Text speech is about 7 seconds
 
-u: (^after_user_stopped_talking($long))
-   Move your attention now to your whole head. |pause||pause||pause|  Notice how
-   it feels. |pause||pause||pause||pause| Feel it's presence.
-	# a: ()
+u: (^after_min(.25,meditation))
+   Now, place your attention on your face. |pause,6|
+   Try to feel it from the inside. |pause,6| Really notice
+   how it feels. You don't need to tell me. You can just notice. |pause,6|
+   ^start_timer(meditation)
 
-u: (^after_user_stopped_talking($long))
-   Finally, feel the presence of your entire body, from the inside, |pause|
-   |pause||pause||pause| from the head to the tip of your toes, |pause||pause|
-   |pause| including your arms and legs.
-	# a: () |pause||pause||pause||pause|
+   # 17+ seconds
 
-u: (^after_user_stopped_talking($verylong))
-   Now, bring your attention back to your face |pause||pause||pause| and imagine
-   that you have a magic eraser. |pause||pause| Gently use the magic eraser to
-   erase your face, |pause||pause||pause||pause||pause||pause||pause| erase your
-   head, |pause||pause||pause||pause||pause||pause||pause| and your legs |pause|
-   |pause||pause||pause||pause||pause|  and your entire body. |pause||pause|
-   |pause||pause||pause||pause||pause|
-	# a: ()
+u: (^after_min(.6,meditation))
+   Move your attention now to your whole head. |pause,5|  Notice how
+   it feels. |pause,6| Feel it's presence.
+   ^start_timer(meditation)
 
-u: (^after_user_stopped_talking($verylong))
-   Take some time to notice what is left after erasing everything |pause||pause|
-   |pause||pause||pause||pause||pause| Notice what it feels like with everything
-   erased.
-	# a: ()
+   # 13+ seconds
 
-u: (^after_user_stopped_talking($quitelong)) |thinkl,$medium,1.0|
+u: (^after_min(.5,meditation))
+   Finally, feel the presence of your entire body, from the inside,
+   |pause,6| from the head to the tip of your toes, |pause,7|
+    including your arms and legs.
+   ^start_timer(meditation)
+
+   # 14+ seconds
+
+u: (^after_min(.5,meditation))
+   Now, bring your attention back to your face |pause,3| and imagine
+   that you have a magic eraser. |pause,2| Gently use the magic eraser to
+   erase your face, |pause,7| erase your
+   head, |pause,7| and your legs |pause,7|
+   and your entire body. |pause,7|
+   ^start_timer(meditation)
+
+u: (^after_min(.75,meditation))
+   Take some time to notice what is left after erasing everything |pause,10|
+   Notice what it feels like with everything erased.
+   ^start_timer(meditation)
+
+u: (^after_min(.75,meditation))
+   |thinkl,$medium,1.0|
    Please tell me, do you notice how the nothingness feels?
 
-  a: (^after_user_stopped_talking($verylong) ~agree)
+  a: (~agree)
      |vocal,28|  |pause| Excellent! This is your awareness.
      |pause| You can keep your eyes closed, and I'll be quiet for a bit longer
      so you can continue to feel it. You can let me know when you want to
      continue.
 
-  # TODO: when we are able to detect eyes open/closed, swap "Tell me when you're
-  # ready" with "please open your eyes when you're ready."
-  	b: (*) ^increase_urge(consciousness_prior, 1.0) ^reuse(YOUDIDIT)
+      # TODO: when we are able to detect eyes open/closed, swap "Tell me when you're
+      # ready" with "please open your eyes when you're ready."
+        # b: (*) ^increase_urge(consciousness_prior, 1.0) ^reuse(YOUDIDIT)
 
   # no or catchall
-  a: (* ^after_user_stopped_talking($medtime))
+  a: (*)
      |surprised,$med,3| It's pretty amazing to feel your awareness
      but sometimes it can take time.
 
-	b: (*) ^increase_urge(consciousness_prior, 1.0) ^reuse(YOUDIDIT)
+	    # b: (*) ^increase_urge(consciousness_prior, 1.0) ^reuse(YOUDIDIT)
 
-urge:(consciousness_prior=0.0)
-#goal: (consciousness_prior=1.0)
-u: YOUDIDIT (*)
-   Okay. you can open your eyes now. |pause||pause||pause||pause|
-   |thinkl,$medium,1.0| How was that for you?
-
-    a: (*)
-       Cool. And can you tell me more about what you felt when you were in
-       that state?
+# urge:(consciousness_prior=0.0)
+# goal: (consciousness_prior=1.0)
+# u: YOUDIDIT (*)
+#   Okay. you can open your eyes now. |pause||pause||pause||pause|
+#   |thinkl,$medium,1.0| How was that for you?
+#
+#    a: (*)
+#       Cool. And can you tell me more about what you felt when you were in
+#       that state?
