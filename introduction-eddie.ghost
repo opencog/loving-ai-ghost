@@ -7,6 +7,9 @@
 #
 # ##############################################################################
 
+# Requires awareness_practice_1.ghost (for definition of awareness_practice_1 goal, until multi-goals defined in single
+# single file bug is fixed )
+
 # goal: (temp=1)
 # u: START_MED_1 (-) Here we are START_MED_1
 
@@ -114,9 +117,9 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
     s: NO_THANKS (-) Okay, let's do something else then. # ^reuse(GOTO_DEEP_LISTENING)
 
     s: GOTO_AWARENESS_1 (-)
-        Great. go to awareness
-        ^increase_urge(awareness_practice_1, 1.0)
+        Great.
         ^decrease_urge(introduction, 1.0)
+        ^increase_urge(awareness_practice_1, 1.0)
          # ^reuse(START_MED_1)
 
 
@@ -132,4 +135,8 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
 # TEST UTILS
 # goal: (test=1)
 # u: (awareness) ^reuse(GOTO_AWARENESS_1) ^keep()
+
+# urge:(awareness_practice_1=0)
+# goal:(awareness_practice_1=1)
+# u: (-) nothing
 
