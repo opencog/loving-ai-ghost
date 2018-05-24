@@ -1,10 +1,10 @@
-urge:(testGoal=1.0)
-urge:(intro=0.0)
+urge:(testGoal=0.0)
+urge:(intro=1.0)
 
 goal: (testGoal=1.0)
- u: GOAL_SENSE (^word_perceived(mango)) uh manko ^keep()
- # u: GOAL_SENSE (^word_perceived(mango, 5.0)) uh manko ^keep()
- # u: GOAL_NORML (*) goal c rule two ^keep()
+ # u: GOAL_SENSE (^word_perceived(mango)) uh manko ^keep()
+ u: GOAL_SENSE (^word_perceived(mango, 10.0)) uh manko ^keep()
+ u: GOAL_NORML (*) goal c rule two ^keep()
 
 
 goal: (intro=1.0)
