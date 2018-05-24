@@ -6,7 +6,8 @@
 #
 # ##############################################################################
 
-urge:(awareness_practice_1=0.0) # Starting urge value is 0%
+urge:(awareness_practice_1=1.0) # Starting urge value is 0%
+urge:(awareness_check=1.0)
 
 ordered-goal: (awareness_practice_1=1.0) # All rules satisfy this goal 100%
 
@@ -20,7 +21,9 @@ ordered-goal: (awareness_practice_1=1.0) # All rules satisfy this goal 100%
 # changes (e.g., to the method of checking all rules in order until one matches, as is currently done with rejoinders,
 # the method here for moving from instruction to instruction without user verbal input will need to be reworked.
 
-u: START_MED_1 ()
+# u: SOMETHING-SHORT ()
+
+u: START_MED_1 (start)
    |nod2,$medium,1.0| |happy,$med,5| I'll guide you through a process
    that people find really interesting. I'll give a series of instructions step
    by step, and pause between each one, so you can follow them. |pause| Okay
@@ -28,6 +31,7 @@ u: START_MED_1 ()
    and get comfortable |pause,4| just letting
    yourself relax. |pause,5|
    ^start_timer(meditation)
+   ^increase_urge(awareness_check,1)
 
 # Text speech is about 25 seconds
 
@@ -100,6 +104,30 @@ u: (^after_min(.75,meditation))
 
     # TODO: Ending and transition to 2nd practice
 
+
+# rules to handle user sentence input in the middle of the meditation and/or other perception
+# maybe we want to create a separate goal here?
+
+goal: (awareness_check=1)
+
+    u: STOP ([~stop stop])  ^decrease_urge(awareness_practice_1,1)  ^keep()
+        [Oh, maybe you are wanting to stop. Are you saying you want to stop doing the practice?
+            a: ([~yes yes]) Okay, let's move onto something else then.  ^keep()
+                # increase_urge (something_else,1)
+            a: ([~no no]) Okay, let's continue the meditation then.  ^keep()
+                ^increase_urge(awareness_practice_1,1)
+
+    # handle unknown question
+    ?: (*)  [I'm not sure what you are asking. But I do want to check]
+            [I don't understand your question.]
+            [I'm not sure how to answer that. I should ask you to make sure though]
+        ^reuse(STOP)
+
+
+
+#############
+
+
 # urge:(consciousness_prior=0.0)
 # goal: (consciousness_prior=1.0)
 # u: YOUDIDIT (*)
@@ -109,8 +137,3 @@ u: (^after_min(.75,meditation))
 #    a: (*)
 #       Cool. And can you tell me more about what you felt when you were in
 #       that state?
-
-
-goal: (awareness_practice_1=1)
-
-
