@@ -16,7 +16,7 @@ concept: ~cookie
 urge:(testGoal=1.0)
 goal: (testGoal=1.0)
 
-  u: (I like _0) $interest = _0 I like $interest too. ^keep()
+  u: (I like _*) $interest = '_0 I like $interest too. ^keep()
 
   u: (Let's talk about $interest) Stimulating! ^stimulate_words($interest)
     ^keep()
@@ -28,13 +28,13 @@ goal: (testGoal=1.0)
   u: (Rules of $interest)
     Let's talk about the rules of $interest ^stimulate_rules($interest) ^keep()
 
-  u: DEFAULT_RULE (*) This is the default rule.  ^keep()
+  u: DEFAULT_RULE (*) This is the default rule  ^keep()
 
   u: (Let's only talk about $interest)
     Fascinating! ^max_sti_words($interest) ^keep()
 
   u: (Only concept of ~game)
-    Let's only talk about the concepts of games ^max_sti_concepts(~game)
+    Let's only talk about the concepts of games ^max_sti_concepts(game)
     ^keep()
 
   u: (Only rules of ~game)
@@ -42,7 +42,7 @@ goal: (testGoal=1.0)
     ^keep()
 
   u: (Only concept of ~dog)
-    Let's only talk about the concepts of dogs ^max_sti_concepts(~dog)
+    Let's only talk about the concepts of dogs ^max_sti_concepts(dog)
     ^keep()
 
   u: (Only rules of ~dog)
@@ -50,7 +50,7 @@ goal: (testGoal=1.0)
     ^keep()
 
   u: (Only concept of ~cookie)
-    Let's only talk about the concepts of cookies ^max_sti_concepts(~cookie)
+    Let's only talk about the concepts of cookies ^max_sti_concepts(cookie)
     ^keep()
 
   u: (Only rules of ~cookie)
@@ -62,7 +62,7 @@ goal: (testGoal=1.0)
 
   u: (Never concept of ~game)
     Let's never talk about the concepts of games
-    ^min_sti_concepts(~game) ^keep()
+    ^min_sti_concepts(game) ^keep()
 
   u: (Never rules of ~game)
     Let's never talk about the rules of games ^min_sti_rules(GAME_RULE)
@@ -70,7 +70,7 @@ goal: (testGoal=1.0)
 
   u: (Never concept of ~dog)
     Let's never talk about the concepts of dogs
-    ^min_sti_concepts(~dog) ^keep()
+    ^min_sti_concepts(dog) ^keep()
 
   u: (Never rules of ~dog)
     Let's never talk about the rules of dogs ^min_sti_rules(DOG_RULE)
@@ -78,7 +78,7 @@ goal: (testGoal=1.0)
 
   u: (Never concept of ~cookie)
     Let's never talk about the concepts of cookies
-    ^min_sti_concepts(~cookie) ^keep()
+    ^min_sti_concepts(cookie) ^keep()
 
   u: (Never rules of ~cookie)
     Let's never talk about the rules of cookies ^min_sti_rules(COOKIE_RULE)
