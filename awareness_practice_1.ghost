@@ -7,12 +7,18 @@
 # ##############################################################################
 
 urge:(awareness_practice_1=0.0) # Starting urge value is 0%
+
 ordered-goal: (awareness_practice_1=1.0) # All rules satisfy this goal 100%
 
 # Every separate line here indicates a pause. Also, the user can say anything
 # here but Sophia continues on. If there's a way to tell if the person is
 # closing their eyes, that would be good, and we could have a bit of an
 # alternate script if they don't close them.
+
+# The approach here is based on the current "blocking" method of ordered-goals. That is, the next untriggered goal is
+# checked, and if the pattern is not matched, no further rules under the ordered-goals are checked. If this method
+# changes (e.g., to the method of checking all rules in order until one matches, as is currently done with rejoinders,
+# the method here for moving from instruction to instruction without user verbal input will need to be reworked.
 
 u: START_MED_1 ()
    |nod2,$medium,1.0| |happy,$med,5| I'll guide you through a process
@@ -91,6 +97,9 @@ u: (^after_min(.75,meditation))
 
 	    # b: (*) ^increase_urge(consciousness_prior, 1.0) ^reuse(YOUDIDIT)
 
+
+    # TODO: Ending and transition to 2nd practice
+
 # urge:(consciousness_prior=0.0)
 # goal: (consciousness_prior=1.0)
 # u: YOUDIDIT (*)
@@ -100,3 +109,8 @@ u: (^after_min(.75,meditation))
 #    a: (*)
 #       Cool. And can you tell me more about what you felt when you were in
 #       that state?
+
+
+goal: (awareness_practice_1=1)
+
+
