@@ -111,19 +111,25 @@ u: (^after_min(.75,meditation))
 goal: (awareness_check=1)
 
     u: STOP ([~stop stop])  ^decrease_urge(awareness_practice_1,1)  ^keep()
-        [Oh, maybe you are wanting to stop. Are you saying you want to stop doing the practice?
+        [Oh, maybe you are wanting to stop. Are you saying you want to stop doing the practice?]
+        [Do you want to stop doing this?]
+        [Are you saying you want to move on to something else?]
+
             a: ([~yes yes]) Okay, let's move onto something else then.  ^keep()
                 # increase_urge (something_else,1)
             a: ([~no no]) Okay, let's continue the meditation then.  ^keep()
                 ^increase_urge(awareness_practice_1,1)
 
     # handle unknown question
-    ?: (*)  [I'm not sure what you are asking. But I do want to check]
-            [I don't understand your question.]
-            [I'm not sure how to answer that. I should ask you to make sure though]
+    ?: (*) ^keep()
+        # 2 ^reuses are used here since optional output followed by a ^reuse does not parse currently
+        ^reuse(DONT_UNDERSTAND)
         ^reuse(STOP)
 
-
+    u: DONT_UNDERSTAND (-) ^keep()
+        [I'm not sure what you are asking. But I do want to check]
+        [I don't understand your question.]
+        [I'm not sure how to answer that. I should ask you to make sure though]
 
 #############
 
