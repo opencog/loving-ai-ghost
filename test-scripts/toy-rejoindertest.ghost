@@ -1,0 +1,11 @@
+
+urge:(testGoal=1.0)
+
+goal: (testGoal=1.0)
+ u: RULE1 (*) do you like icecream?
+    a: REJOI1 (yes) uh lala nice me too
+    a: REJOI2 (no)  who doesnt like icecream?
+
+ u: RULE2 (cake) ^reuse(RULE1) ^keep()
+
+

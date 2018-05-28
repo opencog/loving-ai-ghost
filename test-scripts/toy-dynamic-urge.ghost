@@ -1,0 +1,8 @@
+urge:(emotional_connection=1.0)
+
+goal: (emotional_connection=1.0)
+  u: INIT () starting ^start_timer(ACKTIME)
+  u: TRIGGER (^word_perceived(hello,5) ^after_min(0.1, ACKTIME)) ACK1 ^start_timer(ACKTIME) ^keep()
+
+
+

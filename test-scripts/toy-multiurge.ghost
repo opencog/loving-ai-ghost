@@ -9,7 +9,8 @@
 urge:(goalA=0.0005) # Starting urge value is 100%
 ordered-goal: (goalA=1.0) # All following rules satisfy this goal 100%
 
-    u: GOAL_A_ONE (hello) goal a rule one dec  
+    u: GOAL_A_ONE (hello) goal a rule one dec ^decrease_urge(goalA, 0.5) ^increase_urge(goalB, 0.5) ^keep()  
+    #u: GOAL_A_ONE (hello) goal a rule one dec  
     u: GOAL_A_TWO (*) goal a rule two
 
 

@@ -1,0 +1,29 @@
+# ##############################################################################
+# toy-multiurge.ghost
+#
+# test script to see if we can selectively go from goal to goal
+# and from urge to urge
+#
+# ##############################################################################
+
+urge:(goalA=0.0005) # Starting urge value is 100%
+urge:(goalB=0.0005) # Starting urge value is 100%
+urge:(goalC=1.0) # Starting urge value is 100%
+
+
+ordered-goal: (goalA=1.0) # All following rules satisfy this goal 100%
+    #u: GOAL_A_ONE (hello) goal a rule one dec ^decrease_urge(goalA, 0.5) ^increase_urge(goalB, 0.5)
+    u: GOAL_A_ONE (hello) goal a rule one dec
+    u: GOAL_A_TWO (*) goal a rule two
+
+
+ordered-goal: (goalB=1.0) # All following rules satisfy this goal 100%
+    u: GOAL_B_ONE (hello) goal b rule one 
+    u: GOAL_B_TWO (*) goal b rule two
+
+ordered-goal: (goalC=1.0) # All following rules satisfy this goal 100%
+    u: GOAL_C_ONE (hello) goal c rule one 
+    u: GOAL_C_TWO (*) goal c rule two
+
+
+
