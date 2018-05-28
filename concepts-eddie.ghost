@@ -85,7 +85,7 @@ concept: ~no
   "I doubt it" "I dont think so" "I do not" "I do not want to"
   "I do not think so" "I do not believe you" "I do not believe so"
   "I do not believe it" "I do not agree" "I disagree"
-  "I could not disagree more" "I am not sure that I"
+  "I could not disagree more"
   "I am not sure I agree" "I am afraid not" "I am afraid I do not agree"
   "I am afraid I disagree with you" "horse hockey" "hell no" "hardly"
   "get real" "get out" "fortune does not smile on that" "fat chance"
@@ -96,6 +96,15 @@ concept: ~no
   "rarely" "none" "no" "never" "not a prayer"
 )
 
+concept: ~not_sure   # "don't know"? not sure how contractions are handled
+(
+   "not sure"  "do not know"
+)
+
+concept: ~repeat
+(
+   "repeat that" "repeat what" "what * you * [say said]" "say * again"
+)
 
 
 concept: ~quantity_adjectives
@@ -113,7 +122,7 @@ concept: ~emoignorance
 concept: ~dontknow
 (
   ~emoignorance "not know" "no idea" "doubt it" "doubt so" "not sure"
-  "don't know" "what are you saying" "not clear" "already did" ~no
+  "don't know" "what are you saying" "not clear" "already did"
 )
 
 concept: ~thinkso
