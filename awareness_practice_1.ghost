@@ -122,9 +122,9 @@ goal: (awareness_check=1)
 
     # handle unknown question
     ?: (*) ^keep()
-        # 2 ^reuses are used here since optional output followed by a ^reuse does not parse currently
         ^reuse(DONT_UNDERSTAND)
         ^reuse(STOP)
+        # 2 ^reuses are used here since optional output followed by a ^reuse does not parse currently
 
     u: DONT_UNDERSTAND (-) ^keep()
         [I'm not sure what you are asking. But I do want to check]
