@@ -7,16 +7,6 @@
 # ##############################################################################
 
 
-concept: ~emohello
-(
-  "welcome" "salutations" "ohayou" "nice to see you" "nice to meet you"
-  "mornin" "konnichiwa" "konnichi wa" "konbanwa" "konban wa" "howdy"
-  "hola" "hiya" "hi you all" "hi there" "hi" "hey you" "hey there"
-  "hey   there" "hey" "hello there" "hello and welcome" "hello" "hella"
-  "hallo" "greetings" "good to see you again" "good to meet you"
-  "good morning" "good evening" "good afternoon" "gidday" "cheers"
-  "aloha" "top of the morning to you" "top of the morning"
-)
 
 concept: ~yes
 (
@@ -98,7 +88,7 @@ concept: ~no
 
 concept: ~not_sure
 (
-   "not sure"  "do not know"
+   "not sure"  "do not know" "don't know" ~dontknow
 )
 
 concept: ~repeat
