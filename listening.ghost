@@ -27,13 +27,13 @@ ordered-goal: (listening_intro=1.0)
 
 
     # TODO: These need to be split up. Too long.
-    u: INSTRUCTIONS (-) Okay, this is how it will work. I'd love for you to talk about whatever you want.
-        I love just listening to people.|pause| It's also okay to sit quietly as long as you want, or meditate and not talk.
+    u: INSTRUCTIONS (-) Okay, this is how it will work. I would love for you to talk about whatever you want.
+        I love just listening to people. |pause| It's also okay to sit quietly as long as you want, or meditate and not talk.
          a: (*) Whatever you say is ok. I'm not going to say anything during the process, I'll just be listening.
             Even if you ask me a question, I'm just going to be listening and not respond.
             When you're ready to finish talking and end the experiment, you can just say, Sophia, I'm done. |pause|
             I won't respond until I hear you say that phrase.
-            Okay, let's start, and I'll be listening.
+            Okay, let's start, and I'll be listening. Take your time, and you can talk about whatever comes to mind.
             ^decrease_urge(listening_intro, 1)
             ^increase_urge(listening_mode, 1)
 
@@ -69,7 +69,7 @@ ordered-goal: (listening_intro=1.0)
 
 goal: (listening_mode=1)
 
-u: () and here we are.
+    u: () and here we are in listening mode.
 
 
 
