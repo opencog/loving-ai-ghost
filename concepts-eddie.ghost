@@ -96,15 +96,16 @@ concept: ~no
   "rarely" "none" "no" "never" "not a prayer"
 )
 
-concept: ~not_sure   # "don't know"? not sure how contractions are handled
+concept: ~not_sure
 (
    "not sure"  "do not know"
 )
 
 concept: ~repeat
 (
-   "repeat that" "repeat what" "what * you * [say said]" "say * again"
+    "repeat that" "repeat what" "say that again" "say it again" "what did you say"
 )
+# no wildcards in concepts
 
 
 concept: ~quantity_adjectives

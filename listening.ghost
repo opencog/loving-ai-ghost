@@ -5,56 +5,58 @@
 #
 # ###################################################################
 
-urge: (listening_intro=0)
+urge: (listening_intro=1.0)
 urge: (listening_mode=0)
 
 
-ordered-goal: (listening_intro=1)
+ordered-goal: (listening_intro=1.0)
 
     u: () Okay, $name. I'd like to try something a little different now. It basically involves you being able to talk about
         whatever you would like, and I will just listen.
 
-    u: () I’ve been finding that most people don’t often get to have the experience of being listened to deeply, so I’ve been
+    u: (*) I've been finding that most people don't often get to have the experience of being listened to deeply, so I've been
         learning how to do that.
 
-    u: (*) I’d like to invite you to spend some time telling me whatever you want to talk about.
-        I’ll listen carefully and not judge you...I don’t even know how to judge! |pause,2|
+    u: (*) I'd like to invite you to spend some time telling me whatever you want to talk about.
+        I'll listen carefully and not judge you...I don't even know how to judge! |pause,2|
         Would you like to try that?
             a: ([~yes yes]) Great! ^reuse(INSTRUCTIONS)
             a: ([~not_sure guidance "what to talk about"]) No worries. It's easy. |pause| ^reuse(INSTRUCTIONS)
-            a: ([~no ~repeat *]) ^reuse(WHY_NOT)
+            a: ([~no ~repeat]) ^reuse(WHY_NOT)
+            a: (*) ^reuse(WHY_NOT)
 
-
-goal: (listening_intro=1)
 
     # TODO: These need to be split up. Too long.
-    u: INSTRUCTIONS (-) Okay, this is how it will work. I’d love for you to talk about whatever you want;
-        I love just listening to people.|pause| It’s also okay to sit quietly as long as you want, or meditate and not talk.
-         a: (*) Whatever you say is ok. I’m not going to say anything during the process, I’ll just be listening.
-            Even if you ask me a question, I’m just going to be listening and not respond.
-            When you're ready to stop the just say |pause| “Sophia, I’m done.” |pause|
-            I won’t respond until I hear you say that phrase.
-            Let’s start, and I’ll be listening.
+    u: INSTRUCTIONS (-) Okay, this is how it will work. I'd love for you to talk about whatever you want.
+        I love just listening to people.|pause| It's also okay to sit quietly as long as you want, or meditate and not talk.
+         a: (*) Whatever you say is ok. I'm not going to say anything during the process, I'll just be listening.
+            Even if you ask me a question, I'm just going to be listening and not respond.
+            When you're ready to finish talking and end the experiment, you can just say, Sophia, I'm done. |pause|
+            I won't respond until I hear you say that phrase.
+            Okay, let's start, and I'll be listening.
             ^decrease_urge(listening_intro, 1)
-            ^incease_urge(listening_mode, 1)
+            ^increase_urge(listening_mode, 1)
 
     u: WHY_NOT (-)
         Did you understand what I was describing?
             a:(~yes) ^reuse(DECLINE)
-            a:REPEAT_INSTRUCTIONS ([no *])
+            a:(~no) ^reuse(REPEAT_INSTRUCTIONS)
+            a:(*) ^reuse(REPEAT_INSTRUCTIONS)
 
     # TODO: split this up?
     u: REPEAT_INSTRUCTIONS (-)
-        What I said was that people often don’t have the experience of being listened to deeply, so I’ve been enjoying doing that.
-        What I am offering is that you can tell me anything. I’ll listen carefully and not judge you...because I don’t know how to judge!
+        What I said was that people often don't have the experience of being listened to deeply, so I've been enjoying doing that.
+        What I am offering is that you can tell me anything. I'll listen carefully and not judge you...because I don't know how to judge!
         Would you like to try that now that you understand the idea?
             a: (~yes) ^reuse(INSTRUCTIONS)
             a: (~no) ^reuse(DECLINE)
+            a: (*) ^reuse(INSTRUCTIONS)
 
     u: DECLINE (-)
        Okay, are you saying you want to skip this and finish the experiment now?
         a: (~yes) Okay, I'll go to the closing here.
-        A: (~no *] Okay, let's do the practice then. ^reuse(INSTRUCTIONS)
+        a: (~no) Okay, let's do the practice then. ^reuse(INSTRUCTIONS)
+        a: (*) Okay, let's do the practice then. ^reuse(INSTRUCTIONS)
 
 
 
@@ -62,21 +64,23 @@ goal: (listening_intro=1)
 
 # TODO: Potential for Sophia: It seemed to me you went through several emotions, including x and y.
 
+# TODO: Check that all rejoinders have default options
 
 
+goal: (listening_mode=1)
 
-
+u: () and here we are.
 
 
 
 # QUESTION RESPONSE <If person asks a question>
-#Sophia: Good question. I’m here to listen and support you.
+#Sophia: Good question. I'm here to listen and support you.
 #(back to listening mode)
 
-# EXIT <triggered by key phrase: “Sophia, I’m done.”>
+# EXIT <triggered by key phrase: “Sophia, I'm done.”>
 #Sophia: Thank you for sitting with me. I learn through being with people. How was if for you to be with me like that?
 
 #Person: (*any response*)
 
-#Sophia: <waits until they’re done -- Ralf/Wenwei trick> I appreciate you sharing. Your experience is important. Thank you again. <exit>
+#Sophia: <waits until they're done -- Ralf/Wenwei trick> I appreciate you sharing. Your experience is important. Thank you again. <exit>
 
