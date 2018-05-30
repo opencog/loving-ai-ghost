@@ -7,16 +7,6 @@
 # ##############################################################################
 
 
-concept: ~emohello
-(
-  "welcome" "salutations" "ohayou" "nice to see you" "nice to meet you"
-  "mornin" "konnichiwa" "konnichi wa" "konbanwa" "konban wa" "howdy"
-  "hola" "hiya" "hi you all" "hi there" "hi" "hey you" "hey there"
-  "hey   there" "hey" "hello there" "hello and welcome" "hello" "hella"
-  "hallo" "greetings" "good to see you again" "good to meet you"
-  "good morning" "good evening" "good afternoon" "gidday" "cheers"
-  "aloha" "top of the morning to you" "top of the morning"
-)
 
 concept: ~yes
 (
@@ -85,7 +75,7 @@ concept: ~no
   "I doubt it" "I dont think so" "I do not" "I do not want to"
   "I do not think so" "I do not believe you" "I do not believe so"
   "I do not believe it" "I do not agree" "I disagree"
-  "I could not disagree more" "I am not sure that I"
+  "I could not disagree more"
   "I am not sure I agree" "I am afraid not" "I am afraid I do not agree"
   "I am afraid I disagree with you" "horse hockey" "hell no" "hardly"
   "get real" "get out" "fortune does not smile on that" "fat chance"
@@ -96,6 +86,16 @@ concept: ~no
   "rarely" "none" "no" "never" "not a prayer"
 )
 
+concept: ~not_sure
+(
+   "not sure"  "do not know" "don't know" ~dontknow
+)
+
+concept: ~repeat
+(
+    "repeat that" "repeat what" "say that again" "say it again" "what did you say"
+)
+# no wildcards in concepts
 
 
 concept: ~quantity_adjectives
@@ -113,7 +113,7 @@ concept: ~emoignorance
 concept: ~dontknow
 (
   ~emoignorance "not know" "no idea" "doubt it" "doubt so" "not sure"
-  "don't know" "what are you saying" "not clear" "already did" ~no
+  "don't know" "what are you saying" "not clear" "already did"
 )
 
 concept: ~thinkso
