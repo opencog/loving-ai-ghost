@@ -9,31 +9,37 @@
 urge: (menu=0)
 goal: (menu=1)
 
-  u: (-) ^keep()
+  u: MENU (-) ^keep()
     [What do you want to talk about?]
     [Would you like to go back to a previous topic?]
 
-    a: INTRO (introduction) ^keep()
+    a: INTRO ([introduction start beginning]) ^keep()
       Ok, let's start at the beginning.
       ^decrease_urge(menu, 1)
       ^increase_urge(introduction, 1)
 
-    a: AP1 (awareness practice one) ^keep()
+    a: AP1 (awareness [practice exercise] one) ^keep()
       Ok, let's go to the first awareness practice.
       ^decrease_urge(menu, 1)
       ^increase_urge(awareness_practice_1, 1)
 
-    a: AP2 (awareness practice two) ^keep()
+    a: (first awareness [practice exercise]) ^keep()
+      ^reuse(AP1)
+
+    a: AP2 (awareness [practice exercise] two) ^keep()
       Ok, let's go to the second awarness practice.
       ^decrease_urge(menu, 1)
       ^increase_urge(awareness_practice_2, 1)
 
+    a: (second awareness [practice exercise]) ^keep()
+      ^reuse(AP2)
+
     a: DL (deep listening) ^keep()
       Ok, let's go to the deep listening.
       ^decrease_urge(menu, 1)
-      ^increase_urge(deep_listening, 1)
+      ^increase_urge(listening_intro, 1)
 
-    a: CLOSE (closing) ^keep()
+    a: CLOSE ([closing end ending]) ^keep()
       Ok, let's end this conversation.
       ^decrease_urge(menu, 1)
       ^increase_urge(closing, 1)

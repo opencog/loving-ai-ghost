@@ -88,7 +88,7 @@ u: (^after_min(.75,meditation))
      |vocal,28|  |pause| Excellent! This is your awareness.
      |pause| You can keep your eyes closed, and I'll be quiet for a bit longer
      so you can continue to feel it. You can let me know when you want to
-     continue.
+     continue.$end_first_meditation=1
 
       # TODO: when we are able to detect eyes open/closed, swap "Tell me when you're
       # ready" with "please open your eyes when you're ready."
@@ -97,13 +97,17 @@ u: (^after_min(.75,meditation))
   # no or catchall
   a: (*)
      |surprised,$med,3| It's pretty amazing to feel your awareness
-     but sometimes it can take time.
+     but sometimes it can take time.$end_first_meditation=1
 
 	    # b: (*) ^increase_urge(consciousness_prior, 1.0) ^reuse(YOUDIDIT)
 
 
     # TODO: Ending and transition to 2nd practice
 
+u: ([^word_perceived(continue) "go on" "move on"] $end_first_meditation)
+  Ok, let's continue to the next awareness practice.
+  ^decrease_urge(awareness_practice_1, 1)
+  ^increase_urge(awareness_practice_2, 1)
 
 # rules to handle user sentence input in the middle of the meditation and/or other perception
 # maybe we want to create a separate goal here?
@@ -118,7 +122,7 @@ goal: (awareness_check=1)
         [Are you saying you want to move on to something else?]
 
             a: ([~yes yes]) Okay, let's move onto something else then.  ^keep()
-                # increase_urge (something_else,1)
+                ^increase_urge (menu,1)
             a: ([~no no]) Okay, let's continue the meditation then.  ^keep()
                 ^increase_urge(awareness_practice_1,1)
 
