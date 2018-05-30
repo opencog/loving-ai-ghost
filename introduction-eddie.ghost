@@ -14,6 +14,7 @@
 # u: START_MED_1 (-) Here we are START_MED_1
 
 urge:(introduction=1.0) # Starting urge value is max
+urge:(awareness_practice_1=0) # Needed to avoid error if awareness practice file is not laoded also
 
 ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
 
