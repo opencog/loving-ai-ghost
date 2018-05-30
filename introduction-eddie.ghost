@@ -120,7 +120,7 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
         Great.
         ^decrease_urge(introduction, 1.0)
         ^increase_urge(awareness_practice_1, 1.0)
-         # ^reuse(START_MED_1)
+        ^reuse(START_MED_1)
 
 
     # This needs to be defined here for testing when only this file is loaded, since it is referenced in a rule.
@@ -139,4 +139,3 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
 # urge:(awareness_practice_1=0)
 # goal:(awareness_practice_1=1)
 # u: (-) nothing
-

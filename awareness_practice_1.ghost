@@ -6,8 +6,8 @@
 #
 # ##############################################################################
 
-urge:(awareness_practice_1=1.0) # Starting urge value is 0%
-urge:(awareness_check=1.0)
+urge:(awareness_practice_1=0.0) # Starting urge value is 0%
+urge:(awareness_check=0.0)
 
 ordered-goal: (awareness_practice_1=1.0) # All rules satisfy this goal 100%
 
@@ -110,8 +110,10 @@ u: (^after_min(.75,meditation))
 
 goal: (awareness_check=1)
 
-    u: STOP ([~stop stop])  ^decrease_urge(awareness_practice_1,1)  ^keep()
-        [Oh, maybe you are wanting to stop. Are you saying you want to stop doing the practice?]
+    u: STOP ([~stop stop ^word_perceived(stop)])
+        ^decrease_urge(awareness_practice_1,1)  ^keep()
+        [Oh, maybe you are wanting to stop.
+          Are you saying you want to stop doing the practice?]
         [Do you want to stop doing this?]
         [Are you saying you want to move on to something else?]
 
@@ -121,8 +123,8 @@ goal: (awareness_check=1)
                 ^increase_urge(awareness_practice_1,1)
 
     # handle unknown question
+            # 2 ^reuses are used here since optional output followed by a ^reuse does not parse currently
     ?: (*) ^keep()
-        # 2 ^reuses are used here since optional output followed by a ^reuse does not parse currently
         ^reuse(DONT_UNDERSTAND)
         ^reuse(STOP)
 
@@ -132,7 +134,6 @@ goal: (awareness_check=1)
         [I'm not sure how to answer that. I should ask you to make sure though]
 
 #############
-
 
 # urge:(consciousness_prior=0.0)
 # goal: (consciousness_prior=1.0)

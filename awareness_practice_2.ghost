@@ -42,7 +42,7 @@ u: (^after_user_stopped_talking($medlong))
 
 u: (^after_user_stopped_talking($long))
    Now, let's try opening your eyes for a little longer.|pause| Again, try to
-   stay situated in the back of your head as that happens. |pause,2| Okay, go 
+   stay situated in the back of your head as that happens. |pause,2| Okay, go
    ahead and open your eyes now, for a little longer.
 
 # u: (^after_user_stopped_talking($short)) Alright, you can open your eyes now.
