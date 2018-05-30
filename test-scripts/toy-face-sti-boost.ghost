@@ -1,0 +1,6 @@
+urge:(goalFace=1.0) # Starting urge value is 100%
+ordered-goal: (goalFace=1.0) # All following rules satisfy this goal 100%
+
+    u: FACE_APPEAR (^new_face()) hello pretty Man! ^keep() 
+    u: FACE_DISAPPEAR (^end_face()) hello pretty Man! ^keep() 
+

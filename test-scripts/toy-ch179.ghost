@@ -1,0 +1,45 @@
+concept: ~yes (
+         "we do" "touche" "they do" "they are" "she is" "she does" "right o"
+         "okey" "okay" "it is" "it does" "I would say so" "he is" "he does"
+         "daccord" "bring it on" "yuppers" "yup" "you may have a point"
+         "you may be right" "you may" "you could say that" "you bet"
+         "you are right" "yip" "yes really" "yes please" "yes" "yeppers" "yep"
+         "yeh" "yeah sure" "yeah definitely" "yeah" "yea" "yay" "yah"
+         "wonderful" "without a doubt" "with pleasure" "will do" "whatever"
+         "well perhaps you are right" "well maybe you are right" "we should try"
+         "we did" "we can try" "very well indeed" "very well" "unquestionably"
+         "undoubtedly" "uh huh" "two thumbs up" "true" "totally" "thumbs up"
+         "that is right" "that is good" "that is correct" "that is alright"
+         "surely" "sure thing" "sure" "supposedly" "sounds wonderful"
+         "so will you" "si" "shure" "righty ho" "righto" "right on" "right brah"
+         "right" "probably" "precisely" "positively" "please do" "perfect"
+         "only just" "one hundred percent" "okey dokey" "ok" "OK" "oh sure"
+         "oh okay" "oh alright" "of course" "nods" "nod" "no problem"
+         "no objections" "no doubt" "naturally" "my pleasure" "mostly"
+         "most certainly" "most assuredly" "makes sense" "let us try"
+         "it would be a pleasure" "it will be my pleasure to"
+         "it will be a pleasure to" "it is highly likely" "indubitably"
+         "indefinitely" "indeed" "in this case" "I will drink to that"
+         "I totally agree" "I think so" "I have no objection" "i guess"
+         "I give my consent" "I give consent" "I do" "I did"
+         "I could not agree with you more" "I consent" "I can try"
+         "I can see that" "I can believe that" "I can believe it" "I am"
+         "I am sure" "I am pleased to" "I am listening" "I am certain" "I agree"
+         "I understand" "how true" "highly likely" "hell yeah" "go ahead"
+         "generally" "fully" "fortune smiles on that" "for sure" "fine"
+         "fantastic" "extremely" "exactly" "evidently" "especially" "delighted"
+         "definitely" "damn skippy" "damn straight" "damn good" "da"
+         "could not have said it better" "could be" "correct" "constantly"
+         "confirmed" "completely" "certainly" "can not argue with that"
+         "by all means" "but of course" "beyond a doubt" "be my guest" "aye"
+         "ay" "approved" "apparently" "always" "alright" "all right" "ah yes"
+         "agreed" "affirmative" "accepted" "accept" "absolutely"
+         "abso fucking lutely" "aright" "aight" "I guess so" "do it"
+         "make it so" "continue"
+)
+
+urge:(testGoal=1.0)
+
+goal: (testGoal=1.0)
+ u: RULE4 (banana) ^max_sti_concepts(yes) ^keep()
+ u: RULE2 (cake) the cake is a lie ^keep()

@@ -1,0 +1,10 @@
+goal: (testGoal=1.0)
+ u: RULE1 (animal) rule one ^reuse(RULE2) ^keep()
+ u: RULE2 (bird) rule two ^reuse(RULE3)
+ u: RULE3 (cage) rule three ^reuse(RULE4)
+ u: RULE4 (word) this ^reuse(RULE5)
+ u: RULE5 (rr) rule ^reuse(RULE6)
+ u: RULE6 (ww) is  ^reuse(RULE7)
+ u: RULE7 (yyy) actually a whole ^reuse(RULE8)
+ u: RULE8 (fdsfds) chain of freakin ^reuse(RULE9)
+ u: RULE9 (zzz) rules man
