@@ -8,8 +8,8 @@
 # ##############################################################################
 
 # concept: ~emogoodbye ("have to quit" "have to go" )
-
-goal: (closing=1.0) # All following rules satisfy this goal 100%
+urge: (closing=0.0)
+ordered-goal: (closing=1.0) # All following rules satisfy this goal 100%
   # Initial line from Sophia, responds to anything user comments with
  u: DIDYOULIKEMEDITATION (*) |happy,0.4,3| Well! It was nice to do this exercise with you. Did you like it?
  # Note: \[ ^join(express: happy) ^join(magnitude: .5) ^join(duration: 3) \]

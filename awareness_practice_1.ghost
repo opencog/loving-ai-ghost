@@ -6,8 +6,8 @@
 #
 # ##############################################################################
 
-urge:(awareness_practice_1=0) # Starting urge value is 0%
-urge:(awareness_check=1.0)
+urge:(awareness_practice_1=0.0) # Starting urge value is 0%
+urge:(awareness_check=0.0)
 
 ordered-goal: (awareness_practice_1=1.0) # All rules satisfy this goal 100%
 
@@ -23,7 +23,7 @@ ordered-goal: (awareness_practice_1=1.0) # All rules satisfy this goal 100%
 
 # u: SOMETHING-SHORT ()
 
-u: START_MED_1 ()
+u: START_MED_1 (-)
    |nod2,$medium,1.0| |happy,$med,5| I'll guide you through a process
    that people find really interesting. I'll give a series of instructions step
    by step, and pause between each one, so you can follow them. |pause| Okay
@@ -88,7 +88,7 @@ u: (^after_min(.75,meditation))
      |vocal,28|  |pause| Excellent! This is your awareness.
      |pause| You can keep your eyes closed, and I'll be quiet for a bit longer
      so you can continue to feel it. You can let me know when you want to
-     continue.
+     continue.$end_first_meditation=1
 
       # TODO: when we are able to detect eyes open/closed, swap "Tell me when you're
       # ready" with "please open your eyes when you're ready."
@@ -97,30 +97,41 @@ u: (^after_min(.75,meditation))
   # no or catchall
   a: (*)
      |surprised,$med,3| It's pretty amazing to feel your awareness
-     but sometimes it can take time.
+     but sometimes it can take time.$end_first_meditation=1
 
 	    # b: (*) ^increase_urge(consciousness_prior, 1.0) ^reuse(YOUDIDIT)
 
 
     # TODO: Ending and transition to 2nd practice
 
+u: CONTINUE (^word_perceived(continue) $end_first_meditation)
+  Ok, let's continue to the next awareness practice.
+  ^decrease_urge(awareness_practice_1, 1)
+  ^increase_urge(awareness_practice_2, 1)
+
+u: (["go on" "move on"] $end_first_meditation) ^reuse(CONTINUE)
 
 # rules to handle user sentence input in the middle of the meditation and/or other perception
 # maybe we want to create a separate goal here?
 
 goal: (awareness_check=1)
 
-    u: STOP ([~stop stop])  ^decrease_urge(awareness_practice_1,1)  ^keep()
-        [Oh, maybe you are wanting to stop. Are you saying you want to stop doing the practice?]
+    u: STOP (^word_perceived(stop))
+        ^decrease_urge(awareness_practice_1,1)  ^keep()
+        [Oh, maybe you are wanting to stop.
+          Are you saying you want to stop doing the practice?]
         [Do you want to stop doing this?]
         [Are you saying you want to move on to something else?]
 
             a: ([~yes yes]) Okay, let's move onto something else then.  ^keep()
-                # increase_urge (something_else,1)
+                ^increase_urge (menu,1)
             a: ([~no no]) Okay, let's continue the meditation then.  ^keep()
                 ^increase_urge(awareness_practice_1,1)
 
+    u: ([~stop stop]) ^reuse(STOP)
+
     # handle unknown question
+            # 2 ^reuses are used here since optional output followed by a ^reuse does not parse currently
     ?: (*) ^keep()
         ^reuse(DONT_UNDERSTAND)
         ^reuse(STOP)
@@ -132,7 +143,6 @@ goal: (awareness_check=1)
         [I'm not sure how to answer that. I should ask you to make sure though]
 
 #############
-
 
 # urge:(consciousness_prior=0.0)
 # goal: (consciousness_prior=1.0)

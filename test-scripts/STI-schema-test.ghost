@@ -18,17 +18,17 @@ goal: (testGoal=1.0)
 
   u: (I like _*) $interest = '_0 I like $interest too. ^keep()
 
-  u: (Let's talk about $interest) Stimulating! ^stimulate_words($interest)
+  u: (Let's talk about dog) Stimulating! ^stimulate_words($interest)
     ^keep()
 
-  u: (Concept of $interest)
+  u: (Concept of dog)
     Let's talk about the concepts of $interest ^stimulate_concepts($interest)
     ^keep()
 
-  u: (Rules of $interest)
+  u: (Rules of dog)
     Let's talk about the rules of $interest ^stimulate_rules($interest) ^keep()
 
-  u: DEFAULT_RULE (*) This is the default rule  ^keep()
+  # u: DEFAULT_RULE (*) This is the default rule  ^keep()
 
   u: (Let's only talk about $interest)
     Fascinating! ^max_sti_words($interest) ^keep()
@@ -87,10 +87,10 @@ goal: (testGoal=1.0)
   u: (I'm undecided about $interest)
     I'm also undecided about $interest ^set_rule_sti($interest, 0.5) ^keep()
 
-  u: (Game) You said game! ^keep()
-  u: (Dog) You said dog! ^keep()
-  u: (Cookie) You said cookie! ^keep()
+  # u: (Game) You said game! ^keep()
+  # u: (Dog) You said dog! ^keep()
+  # u: (Cookie) You said cookie! ^keep()
 
-  u: GAME_RULE(*) This is the game rule ^keep()
-  u: DOG_RULE(*) This is the dog rule ^keep()
-  u: COOKIE_RULE(*) This is the cookie rule ^keep()
+  # u: GAME_RULE(*) This is the game rule ^keep()
+  # u: DOG_RULE(*) This is the dog rule ^keep()
+  # u: COOKIE_RULE(*) This is the cookie rule ^keep()
