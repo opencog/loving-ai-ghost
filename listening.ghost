@@ -5,7 +5,7 @@
 #
 # ###################################################################
 
-urge: (listening_intro=1.0)
+urge: (listening_intro=0.0)
 urge: (listening_mode=0)
 urge: (listening_end=0)
 
@@ -134,4 +134,3 @@ goal: (listening_end=1)
             ^increase_urge(closing, 1)
 
 # TODO: add reflection about perceived emotions
-

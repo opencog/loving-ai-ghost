@@ -104,7 +104,7 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
     			# if no, go to Conversation_Steering document, to some topic other than consciousness
     			c: (~no) ^reuse(NO_THANKS)
     			#! catchall
-    			c: (*) ^reuse(IS_THAT_YES)
+          c: (*) ^reuse(IS_THAT_YES)
     	a: (*) ^reuse(IS_THAT_YES)
 
     s: IS_THAT_YES (-) Okay, is that a yes?
@@ -120,7 +120,7 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
         Great.
         ^decrease_urge(introduction, 1.0)
         ^increase_urge(awareness_practice_1, 1.0)
-        ^reuse(START_MED_1)
+        # ^reuse(START_MED_1)
 
 
     # This needs to be defined here for testing when only this file is loaded, since it is referenced in a rule.

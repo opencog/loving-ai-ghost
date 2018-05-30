@@ -23,7 +23,7 @@ ordered-goal: (awareness_practice_1=1.0) # All rules satisfy this goal 100%
 
 # u: SOMETHING-SHORT ()
 
-u: START_MED_1 ()
+u: START_MED_1 (-)
    |nod2,$medium,1.0| |happy,$med,5| I'll guide you through a process
    that people find really interesting. I'll give a series of instructions step
    by step, and pause between each one, so you can follow them. |pause| Okay
@@ -104,17 +104,19 @@ u: (^after_min(.75,meditation))
 
     # TODO: Ending and transition to 2nd practice
 
-u: ([^word_perceived(continue) "go on" "move on"] $end_first_meditation)
+u: CONTINUE (^word_perceived(continue) $end_first_meditation)
   Ok, let's continue to the next awareness practice.
   ^decrease_urge(awareness_practice_1, 1)
   ^increase_urge(awareness_practice_2, 1)
+
+u: (["go on" "move on"] $end_first_meditation) ^reuse(CONTINUE)
 
 # rules to handle user sentence input in the middle of the meditation and/or other perception
 # maybe we want to create a separate goal here?
 
 goal: (awareness_check=1)
 
-    u: STOP ([~stop stop ^word_perceived(stop)])
+    u: STOP (^word_perceived(stop))
         ^decrease_urge(awareness_practice_1,1)  ^keep()
         [Oh, maybe you are wanting to stop.
           Are you saying you want to stop doing the practice?]
@@ -125,6 +127,8 @@ goal: (awareness_check=1)
                 ^increase_urge (menu,1)
             a: ([~no no]) Okay, let's continue the meditation then.  ^keep()
                 ^increase_urge(awareness_practice_1,1)
+
+    u: ([~stop stop]) ^reuse(STOP)
 
     # handle unknown question
             # 2 ^reuses are used here since optional output followed by a ^reuse does not parse currently
