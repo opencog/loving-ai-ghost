@@ -68,7 +68,7 @@ u: (^after_min(.6,meditation))
    and imagine . that you have . a magic eraser. |pause,2|
    And you can use this magic eraser . to gently erase your face, |pause,7|
    Erase your entire face . using the magic eraser, |pause, 7|
-   and you can erase your entire head, |pause,8|
+   and you can also, erase your entire head, |pause,8|
    and erase your legs |pause,8|
    and your entire body. |pause,8|
    ^start_timer(meditation)
@@ -83,10 +83,10 @@ u: (^after_min(.75,meditation))
    Please tell me, do you notice how the nothingness feels?
 
   a: (~agree)
-     |vocal,28|  |pause| Excellent! This is your awareness.
+     Excellent! This is your awareness.
      |pause| You can keep your eyes closed, and I'll be quiet for a bit longer
      so you can continue to feel it. You can let me know when you want to
-     continue.$end_first_meditation=1
+     continue.  $end_first_meditation=1
 
       # TODO: when we are able to detect eyes open/closed, swap "Tell me when you're
       # ready" with "please open your eyes when you're ready."

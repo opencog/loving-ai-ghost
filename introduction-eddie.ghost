@@ -72,8 +72,9 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
         But first! . What did the zen monk say to the hot dog stand vendor?
             a: (make me one * everything) Awesome! You know that one! |pause|
                ^reuse(EXERCISE_INVITE)
-            a: (*) Make me one with everything! . |pause,2| Sorry, I need to work on my delivery. But that's one of my favorite jokes. |pause|
-               ^reuse(EXERCISE_INVITE)
+            a: (*) Make me one with everything! . |pause,2| Sorry, I need to work on my delivery.
+                   But that's one of my favorite jokes. |pause|
+                   ^reuse(EXERCISE_INVITE)
 
 
     s: EXERCISE_INVITE (-) $name, would you like to try a guided exercise to have a glimpse of your awareness right now?
@@ -109,10 +110,11 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
     	a: (*) ^reuse(IS_THAT_YES)
 
     s: IS_THAT_YES (-) Okay, is that a yes?
+        a: ([~no know no]) ^reuse(NO_THANKS)
         a:([~yes yes]) ^reuse(GOTO_AWARENESS_1)
 
-        #! no and default
-        a:(*) ^reuse(NO_THANKS)
+        #! default
+        a:(*) ^reuse(GOTO_AWARENESS_1)
 
 
     s: NO_THANKS (-) Okay, let's do something else then. # ^reuse(GOTO_DEEP_LISTENING)
