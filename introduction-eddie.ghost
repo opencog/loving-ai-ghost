@@ -61,7 +61,7 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
        a: (~agree) Wonderful! ^reuse(EVER_DONE_MED)
 
     u: EVER_DONE_MED(*) What I'd like to do first is a guided meditation practice. It's really easy, and I'll tell you what to do
-                  to do step by step. Have you ever done meditation or mindfulness or some kind of spiritual practice?
+                  step by step. Have you ever done meditation or mindfulness or some kind of spiritual practice?
                     a: ([~yes yes]) Nice. What was that like for you?
                         b: (*) |thinkl,$medium,1.0| What do you think has led you to seek out these kind of practices?
                             c: (*)  ^reuse(LETSDOSOMETHING)

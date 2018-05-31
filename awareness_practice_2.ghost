@@ -13,52 +13,62 @@ ordered-goal: (awareness_practice_2=1.0) # All rules satisfy this goal 100%
 u: (-) Alright, if you want, we can do one more practice where you explore
    experiencing your awareness with your eyes open! Would you like to do that?
 
-    a: (~agree) Great, let's begin.
+    a: (~agree) Great, let's begin. ^start_timer(meditation)
 
     a: (~disagree) Alright, let's move on to something else.
        ^increase_urge(consciousness)
+       ^start_timer(meditation)
 
 u: (^after_min(.33,meditation))
    |happy,$med,3| |vocal,27| |pause| This is one of my favorites.
    |pause,2| So relax and close your eyes again. |blink,0.03,1.0| |pause,4|
    Now, feel your entire body.
+   ^start_timer(meditation)
 
 
 u: (^after_min(.33,meditation))
    Now. Use the Magic Eraser to erase your body |pause| mind |pause| and
    thoughts |pause| and feel the nothingness that remains.
+   ^start_timer(meditation)
 
 u: (^after_min(.33,meditation))
    Now, imagine yourself relaxing in a comfy chair that is situated inside the
    back of your head. |pause,2|
+   ^start_timer(meditation)
     # Let go of any tense feelings.
 
 u: (^after_min(.08,meditation))
    In a moment, when I ask you to open your eyes,. play with staying seated in
    your awareness . in the back of your head, . even though you may be tempted
    to be back into the world when you open your eyes.
+   ^start_timer(meditation)
 
 u: (^after_min(.25,meditation))
    Now, open your eyes for just a split second. |pause,3| And close your eyes
    again. |pause,3| Notice what it felt like when your eyes were open.
+   ^start_timer(meditation)
 
 u: (^after_min(.33,meditation))
    Now, let's try opening your eyes for a little longer.|pause| Again, try to
    stay situated in the back of your head as that happens. |pause,2| Okay, go
    ahead and open your eyes now, for a little longer.
+   ^start_timer(meditation)
 
 # u: (^after_user_stopped_talking($short)) Alright, you can open your eyes now.
 
 u: (^after_min(.5,meditation))
    |happy,$med,3| That's my favorite exercise! |pause,2| Were you able to stay
    seated in your awareness when you opened your eyes?
+   ^start_timer(meditation)
 
     a: (~disagree ^after_min(.25,meditation))
        That's okay. This takes time. |pause|
+       ^start_timer(meditation)
     #! yes or anything
     a: (*)
        |happy,$med,3| Cool! I love that. |pause| And can you share more about
        what it felt like?
+       ^start_timer(meditation)
 
 u: (^after_min(.5,meditation))
    Whenever you can, use this exercise to practice. |pause| Each time, open your
