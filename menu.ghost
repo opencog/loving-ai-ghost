@@ -46,5 +46,5 @@ goal: (menu=1)
 
     a: OTHER (*) ^keep()
       Ok, let's talk about something else.  What do you want to talk about?
-      ^set_urge(menu, 1)
-      ^fall_back(chatscript)
+      ^increase_urge(menu, 1)
+      ^fallback_on(chatscript)
