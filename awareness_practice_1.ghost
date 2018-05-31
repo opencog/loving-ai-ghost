@@ -21,9 +21,7 @@ ordered-goal: (awareness_practice_1=1.0) # All rules satisfy this goal 100%
 # changes (e.g., to the method of checking all rules in order until one matches, as is currently done with rejoinders,
 # the method here for moving from instruction to instruction without user verbal input will need to be reworked.
 
-# u: SOMETHING-SHORT ()
-
-u: START_MED_1 (-)
+u: START_MED_1 ()
    |nod2,$medium,1.0| |happy,$med,5| I'll guide you through a process
    that people find really interesting. I'll give a series of instructions step
    by step, and pause between each one, so you can follow them. |pause| Okay
