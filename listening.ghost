@@ -10,6 +10,8 @@ urge: (listening_mode=0)
 urge: (listening_end=0)
 
 urge: (closing=0)
+goal: (closing=1)
+u: nothing (-) nothing
 
 
 ordered-goal: (listening_intro=1.0)
@@ -97,7 +99,7 @@ goal: (listening_mode=1)
            [That's a good question]
            [|vocal,13| |pause| What do, you think]
            [.]
-           [Interesting question, isn't it.]
+           [Interesting question]
            [|vocal,13|]
            [|vocal,29| . Good question.]
 

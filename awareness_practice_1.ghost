@@ -108,14 +108,15 @@ u: QUIET_TIME (-)
         # Todo: check to see if eyes are opened before "You can open your eyes" ?
         a:(*) ^reuse(HOWWASTHAT)
 
-        a:(^after_min(.5, meditation))
+        a:(^after_min(2, meditation))
           # TODO: rework to incorporate above
           ^reuse(HOWWASTHAT)
 
 u: HOWWASTHAT (-)
     Ok |pause| You can open your eyes. |pause,3| Nice work. |pause|
     Please tell me, how was that?
-    $end_first_meditation=1
+    $end_first_meditation=1,
+        # TODO: add something here to allow more space for longer user pauses (e.g., time since user stopped talking)
         a: (*) ^reuse(CONTINUE)
 
 # TODO: improve/rework this
@@ -131,22 +132,30 @@ u: CONTINUE (-)
 
 goal: (awareness_check=1)
 
-    u: STOP (^word_perceived(stop))
-        ^decrease_urge(awareness_practice_1,1)  ^keep()
+    u: STOP (^word_perceived(stop))  ^keep()
+        ^decrease_urge(awareness_practice_1,1)
+        # ^shutup()
         [Oh, maybe you are wanting to stop.
           Are you saying you want to stop doing the practice?]
-        [Do you want to stop doing this?]
-        [Are you saying you want to move on to something else?]
+        [Do you want to stop doing this exercise?]
+        [Are you saying you want to stop doing this and move on to something else?]
 
             a: ([~yes yes]) Okay, let's move onto something else then.  ^keep()
                 ^increase_urge (menu,1)
             a: ([~no no]) Okay, let's continue the meditation then.  ^keep()
                 ^increase_urge(awareness_practice_1,1)
+            a: (*) Okay, let's continue the meditation then.  ^keep()
+                ^increase_urge(awareness_practice_1,1)
+
+    u: (^word_perceived(wait))  ^reuse(STOP) ^keep()
+    u: (^word_perceived(don't)) ^reuse(STOP) ^keep()
+    u: (^word_perceived(not))   ^reuse(STOP) ^keep()
+
 
     u: ([~stop stop]) ^reuse(STOP)
 
     # handle unknown question
-            # 2 ^reuses are used here since optional output followed by a ^reuse does not parse currently
+    # 2 ^reuses are used here since optional output followed by a ^reuse does not parse currently
     ?: (*) ^keep()
         ^reuse(DONT_UNDERSTAND)
         ^reuse(STOP)
@@ -158,7 +167,6 @@ goal: (awareness_check=1)
         [I'm not sure how to answer that. I should ask you to make sure though]
 
 #############
-
 # urge:(consciousness_prior=0.0)
 # goal: (consciousness_prior=1.0)
 # u: YOUDIDIT (*)

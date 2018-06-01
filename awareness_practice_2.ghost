@@ -15,8 +15,10 @@ u: () Alright, if you want, we can do one more practice where you explore
 
     a: (~agree) Great, let's begin. ^reuse(START_MED_2)
 
+    # Todo: send to deep listening
     a: (~disagree) Alright, let's move on to something else.
-       ^increase_urge(consciousness)
+       ^decrease_urge(awareness_practice_2, 1)
+       # ^increase_urge(consciousness)
 
 u: START_MED_2 (-)
    ^start_timer(meditation)
