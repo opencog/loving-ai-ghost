@@ -10,17 +10,17 @@
 urge:(awareness_practice_2=0.0) # Starting urge value is 0%
 ordered-goal: (awareness_practice_2=1.0) # All rules satisfy this goal 100%
 
-u: (-) Alright, if you want, we can do one more practice where you explore
+u: () Alright, if you want, we can do one more practice where you explore
    experiencing your awareness with your eyes open! Would you like to do that?
 
-    a: (~agree) Great, let's begin. ^start_timer(meditation)
+    a: (~agree) Great, let's begin. ^reuse(START_MED_2)
 
     a: (~disagree) Alright, let's move on to something else.
        ^increase_urge(consciousness)
-       ^start_timer(meditation)
 
-u: (^after_min(.33,meditation))
-   |happy,$med,3| |vocal,27| |pause| This is one of my favorites.
+u: START_MED_2 (-)
+   ^start_timer(meditation)
+   |happy,$med,3| |pause| This is one of my favorites.
    |pause,2| So relax and close your eyes again. |blink,0.03,1.0| |pause,4|
    Now, feel your entire body.
    ^start_timer(meditation)
