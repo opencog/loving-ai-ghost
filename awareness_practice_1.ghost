@@ -6,7 +6,7 @@
 #
 # ##############################################################################
 
-urge: (awareness_practice_1=1) # Starting urge value is 0%
+urge: (awareness_practice_1=0) # Starting urge value is 0%
 urge: (awareness_check=0)
 
 urge: (awareness_practice_2=0) # declare here in case this file is loaded alone
