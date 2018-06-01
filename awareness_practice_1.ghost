@@ -134,9 +134,9 @@ goal: (awareness_check=1)
 
     u: STOP (^word_perceived(stop))  ^keep()
         ^decrease_urge(awareness_practice_1,1)
-        # ^shutup()
+        ^shutup()
         [Oh, maybe you are wanting to stop.
-          Are you saying you want to stop doing the practice?]
+          Are you saying you want to stop doing this practice?]
         [Do you want to stop doing this exercise?]
         [Are you saying you want to stop doing this and move on to something else?]
 
