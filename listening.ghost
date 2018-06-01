@@ -87,6 +87,10 @@ goal: (listening_mode=1)
         [Take your time and see what comes to mind.]
         [You can try being quiet for a moment and see what comes up.]
 
+    # Todo: add more responses here
+    u: ( you * answer ) ^keep()
+        [The point of this exercise is for me to listen to you without judgement, not to answer your questions.]
+
 
     #######################
     #  Question Handling
