@@ -6,8 +6,10 @@
 #
 # ##############################################################################
 
-urge:(awareness_practice_1=0.0) # Starting urge value is 0%
-urge:(awareness_check=0.0)
+urge: (awareness_practice_1=1) # Starting urge value is 0%
+urge: (awareness_check=0)
+urge: (awareness_practice_2=0) # declare here in case this file is loaded alone
+
 
 ordered-goal: (awareness_practice_1=1.0) # All rules satisfy this goal 100%
 
@@ -21,7 +23,9 @@ ordered-goal: (awareness_practice_1=1.0) # All rules satisfy this goal 100%
 # changes (e.g., to the method of checking all rules in order until one matches, as is currently done with rejoinders,
 # the method here for moving from instruction to instruction without user verbal input will need to be reworked.
 
-u: START_MED_1 ()
+u: TEST (tell me) ^reuse(TELLME)
+
+u: START_MED_1 (-)
    |nod2,$medium,1.0| |happy,$med,5| I'll guide you through a process
    that people find really interesting. I'll give a series of instructions step
    by step, and pause between each one, so you can follow them. |pause| Okay
@@ -34,80 +38,89 @@ u: START_MED_1 ()
 # Text speech is about 25 seconds
 
 u: (^after_min(.6,meditation))
-   Go ahead and take a nice deep breath. |pause||vocal,7| |pause| And let it out
+   Go ahead and take a nice, deep, breath. |pause||vocal,7| |pause| And let it out
    with a big sigh. |vocal,10| |pause,3|
    ^start_timer(meditation)
 
    # Text speech is about 7 seconds
 
 u: (^after_min(.25,meditation))
-   Now, place your attention on your face. |pause,6|
-   Try to feel it from the inside. |pause,7| Really notice
-   how it feels. |pause,2| just notice. |pause,7|
+   Now, place your attention on your face. |pause,7|
+   Really notice how your face feels. |pause,7|
+   Try to feel it from the inside. |pause,3| just notice any sensations.
    ^start_timer(meditation)
 
    # 17+ seconds
 
 u: (^after_min(.7,meditation))
-   You can move your attention now to your whole head. |pause,6|  Notice how
-   your head feels. |pause,7| Feel it's presence.
+   You can move your attention now to your whole head. |pause,7|
+   Notice how your head feels. |pause,7| Feel it's presence.
    ^start_timer(meditation)
 
    # 13+ seconds
 
 u: (^after_min(.55,meditation))
-   Finally, feel the presence of your entire body, from the inside,
-   |pause,7| from the head to the tip of your toes, |pause,7|
-    including your arms and legs.
+   Finally, feel the presence of your entire body, from the inside, |pause,8|
+   Feel your entire body |pause,5| from the head to the tip of your toes, |pause,7|
+   including your arms and legs.
    ^start_timer(meditation)
 
    # 14+ seconds
 
-u: (^after_min(.6,meditation))
+u: (^after_min(.7,meditation))
    Now, you can bring your attention back to your face |pause,6|
    and imagine . that you have . a magic eraser. |pause,2|
    And you can use this magic eraser . to gently erase your face, |pause,7|
-   Erase your entire face . using the magic eraser, |pause, 7|
-   and you can also, erase your entire head, |pause,8|
-   and erase your legs |pause,8|
-   and your entire body. |pause,8|
+   Erase the entire face . using the magic eraser, |pause, 9|
+   and you can also, erase your entire head, |pause,10|
+   and erase your legs |pause,10|
+   and erase your entire body. |pause,10|
    ^start_timer(meditation)
 
-u: (^after_min(.75,meditation))
-   Take some time to notice . what is left after erasing everything |pause,10|
-   Notice what it feels like . with everything erased. |pause,10|
+u: (^after_min(.8,meditation))
+   Take some time to notice . what is left . after erasing everything |pause,12|
+   Notice what it feels like |pause, 4|  with everything erased. |pause,10|
    ^start_timer(meditation)
 
-u: (^after_min(.75,meditation))
+u: TELLME (^after_min(.8,meditation))
    |thinkl,$medium,1.0|
    Please tell me, do you notice how the nothingness feels?
 
   a: (~agree)
-     Excellent! This is your awareness.
-     |pause| You can keep your eyes closed, and I'll be quiet for a bit longer
-     so you can continue to feel it. You can let me know when you want to
-     continue.  $end_first_meditation=1
-
-      # TODO: when we are able to detect eyes open/closed, swap "Tell me when you're
-      # ready" with "please open your eyes when you're ready."
-        # b: (*) ^increase_urge(consciousness_prior, 1.0) ^reuse(YOUDIDIT)
+     Excellent! This is your awareness. |pause|
+     ^reuse(QUIET_TIME)
 
   # no or catchall
   a: (*)
      |surprised,$med,3| It's pretty amazing to feel your awareness
-     but sometimes it can take time.$end_first_meditation=1
+     but sometimes it can take time. |pause|
+     ^reuse(QUIET_TIME)
 
-	    # b: (*) ^increase_urge(consciousness_prior, 1.0) ^reuse(YOUDIDIT)
+u: QUIET_TIME (-)
+    You can keep your eyes closed, and I'll be quiet for a bit longer
+    so you can continue to experience it. You can let me know when you want to
+    continue.
+    ^start_timer(meditation)
+        # Todo: check to see if eyes are opened before "You can open your eyes" ?
+        a:(*) ^reuse(HOWWASTHAT)
 
+        a:(^after_min(.5, meditation))
+          # TODO: rework to incorporate above
+          ^reuse(HOWWASTHAT)
 
-    # TODO: Ending and transition to 2nd practice
+u: HOWWASTHAT (-)
+    Ok |pause| You can open your eyes. |pause,3| Nice work. |pause|
+    Please tell me, how was that?
+    $end_first_meditation=1
+        a: (*) ^reuse(CONTINUE)
 
-u: CONTINUE (^word_perceived(continue) $end_first_meditation)
+# u: CONTINUE (^word_perceived(continue) $end_first_meditation)
+u: CONTINUE (-)
   Ok, let's continue to the next awareness practice.
   ^decrease_urge(awareness_practice_1, 1)
   ^increase_urge(awareness_practice_2, 1)
 
-u: (["go on" "move on"] $end_first_meditation) ^reuse(CONTINUE)
+# u: (["go on" "move on"] $end_first_meditation) ^reuse(CONTINUE)
 
 # rules to handle user sentence input in the middle of the meditation and/or other perception
 # maybe we want to create a separate goal here?
