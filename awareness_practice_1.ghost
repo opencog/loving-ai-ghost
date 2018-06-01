@@ -8,7 +8,11 @@
 
 urge: (awareness_practice_1=1) # Starting urge value is 0%
 urge: (awareness_check=0)
+
 urge: (awareness_practice_2=0) # declare here in case this file is loaded alone
+goal: (awareness_practice_2=1) # this goal and rule needed to avoid crash when this file is loaded alone
+u: NOTHING (-) nothing
+
 
 
 ordered-goal: (awareness_practice_1=1.0) # All rules satisfy this goal 100%
@@ -23,9 +27,9 @@ ordered-goal: (awareness_practice_1=1.0) # All rules satisfy this goal 100%
 # changes (e.g., to the method of checking all rules in order until one matches, as is currently done with rejoinders,
 # the method here for moving from instruction to instruction without user verbal input will need to be reworked.
 
-u: TEST (tell me) ^reuse(TELLME)
+# u: TEST (tell me) ^reuse(TELLME)
 
-u: START_MED_1 (-)
+u: START_MED_1 ()
    |nod2,$medium,1.0| |happy,$med,5| I'll guide you through a process
    that people find really interesting. I'll give a series of instructions step
    by step, and pause between each one, so you can follow them. |pause| Okay
@@ -114,7 +118,7 @@ u: HOWWASTHAT (-)
     $end_first_meditation=1
         a: (*) ^reuse(CONTINUE)
 
-# u: CONTINUE (^word_perceived(continue) $end_first_meditation)
+# TODO: improve/rework this
 u: CONTINUE (-)
   Ok, let's continue to the next awareness practice.
   ^decrease_urge(awareness_practice_1, 1)
