@@ -13,7 +13,6 @@ urge: (closing=0)
 goal: (closing=1)
 u: nothing (-) nothing
 
-
 ordered-goal: (listening_intro=1.0)
 
     u: () Alright, $name. I'd like to try something a little different now. It basically involves you being able to talk about
@@ -90,6 +89,8 @@ goal: (listening_mode=1)
     # Todo: add more responses here
     u: ( you * answer ) ^keep()
         [The point of this exercise is for me to listen to you without judgement, not to answer your questions.]
+
+    # Todo: use "thoughtfuf" gesture
 
 
     #######################

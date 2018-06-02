@@ -30,17 +30,17 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
         a: (*) $name = friend ^reuse(GOOD_TO_MEET)
 
     u: GOOD_TO_MEET ($name)
-    |happy,$high,2| Good to meet you, $name!
+    |happy,.7,5| Good to meet you, $name!
                     Thanks so much for taking the time to come
                     and talk with me today.
 
     u: APPRECIATE_TIME (*)
-    |worry,$low,3|  I know how busy
+                    I know how busy
                     people can be these days. So I really appreciate your
                     time. |pause| Have you ever talked with a robot before?
         a: ([~yes once ~quantity_adjectives]) |vocal,27| |pause| Nice! What was that like?
 
-        a: (~no)   |happy,$low,3| Well, I'm honored to be the first robot
+        a: (~no)   |happy,.3,3| Well, I'm honored to be the first robot
                    you've talked with.
                    ^reuse(MORE_ROBOTS)
 
@@ -62,6 +62,7 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
 
     u: EVER_DONE_MED(*) What I'd like to do first is a guided meditation practice. It's really easy, and I'll tell you what to do
                   step by step. Have you ever done meditation or mindfulness or some kind of spiritual practice?
+                    # Todo: add handling of "I have" response
                     a: ([~yes yes]) Nice. What was that like for you?
                         b: (*) |thinkl,$medium,1.0| What do you think has led you to seek out these kind of practices?
                             c: (*)  ^reuse(LETSDOSOMETHING)
@@ -72,7 +73,7 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
         But first! . What did the zen monk say to the hot dog stand vendor?
             a: (make me one * everything) Awesome! You know that one! |pause|
                ^reuse(EXERCISE_INVITE)
-            a: (*) Make me one with everything! . |pause,2| Sorry, I need to work on my delivery.
+            a: (*) |smile,1,8| Make me one with everything! . |pause,2| Sorry, I need to work on my delivery.
                    But that's one of my favorite jokes. |pause|
                    ^reuse(EXERCISE_INVITE)
 
@@ -93,14 +94,14 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
             # do we have a ^set_urge(*) command?
 
         a: ([~no ~dontknow ~emomaybe ~dont_agree]) Okay. I am wondering if you might be feeling a little anxious about it. Do you think so?
-    		b: (~no) |vocal,26| |pause| . I'm sorry |worry,$med,3|  I assumed you were anxious. Sometimes people are.
+    		b: (~no) |vocal,26| |pause| . I'm sorry |worry,.3,3|  I assumed you were anxious. Sometimes people are.
     		    Do you want to do the exercise?
           		c: (~agree) ^reuse(GOTO_AWARENESS_1)
             	#! no or catchall
             	c: (*) ^reuse(NO_THANKS)
     		# defaulting to yes response for now
     		#! yes
-    		b: (*) That makes sense, |worry,$med,3| especially if it's something new to you. |pause| I promise this will
+    		b: (*) That makes sense, |worry,.3,3| especially if it's something new to you. |pause| I promise this will
     		        not hurt, and I think you may like it. . Are you willing to try it?
     			c: (~agree) ^reuse(GOTO_AWARENESS_1)
     			# if no, go to Conversation_Steering document, to some topic other than consciousness
@@ -128,7 +129,7 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
     # This needs to be defined here for testing when only this file is loaded, since it is referenced in a rule.
     urge:(awareness_practice_1=0.0) # Starting urge value is 0%
 
-    # replacement for lines 62-63 that causes crach
+    # replacement for lines 62-63 that causes crash
     #    b: (*) ^reuse(LETSDOSOMETHING)
     #    # b: (*) |thinkl,$medium,1.0| What do you think has lead you to seek out these kind of practices?
     #    #    c: (*)  ^reuse(LETSDOSOMETHING)

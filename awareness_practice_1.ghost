@@ -30,14 +30,15 @@ ordered-goal: (awareness_practice_1=1.0) # All rules satisfy this goal 100%
 # u: TEST (tell me) ^reuse(TELLME)
 
 u: START_MED_1 ()
-   |nod2,$medium,1.0| |happy,$med,5| I'll guide you through a process
+   |nod2,.5,1.0| |happy,.5,5| I'll guide you through a process
    that people find really interesting. I'll give a series of instructions step
-   by step, and pause between each one, so you can follow them. |pause| Okay
+   by step, and pause between each one, so you can follow them. |pause| Alright
    |pause| So you can go ahead and close your eyes |blink,0.03,1.0| |pause,3|
    and get comfortable |pause,4| just letting
    yourself relax. |pause,5|
    ^start_timer(meditation)
    ^increase_urge(awareness_check,1)
+   $doing_meditation=1
 
 # Text speech is about 25 seconds
 
@@ -132,6 +133,8 @@ u: CONTINUE (-)
 
 goal: (awareness_check=1)
 
+    # Todo: debug stop functionality using variable in pattern as below
+    # u: STOP ($doing_meditation=1 ^word_perceived(stop))  ^keep()
     u: STOP (^word_perceived(stop))  ^keep()
         ^decrease_urge(awareness_practice_1,1)
         ^shutup()
