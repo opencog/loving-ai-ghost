@@ -64,7 +64,7 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
                                    hesitation. |pause| The practices we're going to do today are really easy and can be
                                    enjoyable as well.
                                    ^reuse(EVER_DONE_MED)
-       a: (~agree) Wonderful! ^reuse(EVER_DONE_MED)
+       a: (~agree ~yes) Wonderful! ^reuse(EVER_DONE_MED)
 
     u: EVER_DONE_MED(*) What I'd like to do first is a guided meditation practice. It's really easy, and I'll tell you what to do
                   step by step. Have you ever done meditation or mindfulness or some kind of spiritual practice?

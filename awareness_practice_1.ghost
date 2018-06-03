@@ -35,14 +35,14 @@ u: START_MED_1 ()
    by step, and pause between each one, so you can follow them. |pause| Alright
    |pause| So you can go ahead and close your eyes |blink,0.03,1.0| |pause,3|
    and get comfortable |pause,4| just letting
-   yourself relax. |pause,5|
+   yourself relax.
    ^start_timer(meditation)
    ^increase_urge(awareness_check,1)
    $doing_meditation=1
 
 # Text speech is about 25 seconds
 
-u: (^after_min(.6,meditation))
+u: (^after_min(.7,meditation))
    Go ahead and take a nice, deep, breath. |pause||vocal,7| |pause| And let it out
    with a big sigh. |vocal,10| |pause,3|
    ^start_timer(meditation)
@@ -52,44 +52,45 @@ u: (^after_min(.6,meditation))
 u: (^after_min(.25,meditation))
    Now, place your attention on your face. |pause,7|
    Really notice how your face feels. |pause,7|
-   Try to feel it from the inside. |pause,3| just notice any sensations.
+   Try to feel it from the inside. |pause,4| just notice |pause,4| just notice, the sensations.
    ^start_timer(meditation)
 
    # 17+ seconds
 
 u: (^after_min(.7,meditation))
-   You can move your attention now to your whole head. |pause,7|
-   Notice how your head feels. |pause,7| Feel it's presence.
+   You can move your attention now |pause| to your whole head. |pause,7|
+   Notice, how your head feels. |pause,7| Feel it's presence.
    ^start_timer(meditation)
 
    # 13+ seconds
 
 u: (^after_min(.55,meditation))
-   Finally, feel the presence of your entire body, from the inside, |pause,8|
-   Feel your entire body |pause,5| from the head to the tip of your toes, |pause,7|
-   including your arms and legs.
+   Finally |pause,2| feel the presence, of your entire body |pause,7|
+   See if you can feel |pause,2| the entire body |pause,2| from the inside |pause,8|
+   Just notice |pause,2| any sensations |pause,3| in your entire body |pause,7| from the head  |pause,3| all, the way down |pause,3| to your toes, |pause,7|
+   including, your arms |pause,4| and legs. |pause,7| Really feel the sensations |pause,5| in your entire |pause| body.
    ^start_timer(meditation)
 
-   # 14+ seconds
+   # about 60 seconds
 
-u: (^after_min(.7,meditation))
-   Now, you can bring your attention back to your face |pause,6|
-   and imagine . that you have . a magic eraser. |pause,2|
-   And you can use this magic eraser . to gently erase your face, |pause,7|
-   Erase the entire face . using the magic eraser, |pause, 9|
-   and you can also, erase your entire head, |pause,10|
+u: (^after_min(1.2,meditation))
+   Now, . |pause| you can bring your attention |pause| back to your face |pause,6|
+   and imagine . that you have . a magic, eraser. |pause,2|
+   And you can use this magic eraser . to gently, erase . your face, |pause,7|
+   You, can erase, . the entire face |pause| using the magic, eraser |pause, 9|
+   and, you can also |pause| erase your entire head, |pause,10|
    and erase your legs |pause,10|
    and erase your entire body. |pause,10|
    ^start_timer(meditation)
 
 u: (^after_min(.8,meditation))
-   Take some time to notice . what is left . after erasing everything |pause,12|
-   Notice what it feels like |pause, 4|  with everything erased. |pause,10|
+   Now, . Take some time to notice . what is left |pause| after erasing, everything |pause,12|
+   Notice, what it feels like |pause, 4|  with everything erased. |pause,10|
    ^start_timer(meditation)
 
 u: TELLME (^after_min(.8,meditation))
    |thinkl,$medium,1.0|
-   Please tell me, do you notice how the nothingness feels?
+   Now, . Please, tell me, do you, notice how the nothingness feels?
 
   a: (~agree)
      Excellent! This is your awareness. |pause|
