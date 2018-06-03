@@ -33,8 +33,8 @@ ordered-goal: (listening_intro=1.0)
     # TODO: These need to be split up. Too long.
     u: INSTRUCTIONS (-) Okay, this is how it'll work. You can talk about anything you want. And I'll just, listen.
         I love just listening to people. |pause| It's also okay to sit quietly as long as you want, or meditate and not talk.
-         a: (*) Whatever you say is ok. I'm not going to say anything during the process, I'll just be listening.
-            Even if you ask me a question, I'm just going to be listening and not respond.
+         a: (*) Whatever you say is ok. I'm not going to say anything during the process, I'll just be, listening.
+            Even if you ask me a question, I'll just listen and not respond.
             When you're ready to finish talking and end the process, you can just say, Sophia, I'm done. |pause|
             I won't respond until I hear you say that phrase.
             ^decrease_urge(listening_intro, 1)
@@ -79,7 +79,7 @@ goal: (listening_mode=1)
 
     u: ( [(don't know) (not sure) (what should)] * [say talk] )
         You can take your time. Whatever you say or don't say is fine.
-        See what comes to your mind and talk about it.
+        See what comes to mind and talk about it.
 
     u: ( [(don't know) (not sure) (what should)] * [say talk] ) ^keep()
         [It's okay. Whatever you talk about is fine.]
@@ -88,7 +88,8 @@ goal: (listening_mode=1)
 
     # Todo: add more responses here
     u: ( you * answer ) ^keep()
-        [The point of this exercise is for me to listen to you without judgement, not to answer your questions.]
+        [The point of this exercise is for me to listen to you without judgement, and not to answer your questions.
+         That's the idea of this practice.]
 
     # Todo: use "thoughtfuf" gesture
 
@@ -129,7 +130,7 @@ goal: (listening_mode=1)
     # Finish practice
     u: ( [I I'm] * [done ready finish finished stop quit stop])  ^keep()
         Are you saying that you are ready to finish this exercise?
-            a: (~yes) ^decrease_urge (listening_mode, 1)
+            a: ([~yes "I am" finish done] ) ^decrease_urge (listening_mode, 1)
                       ^increase_urge (listening_end, 1)
             a: (*) Let's keep doing the practice then. Please continue.  ^keep()
 

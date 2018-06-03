@@ -10,80 +10,74 @@
 
 concept: ~yes
 (
-  "we do" "touche" "they do" "they are" "she is" "she does" "right o"
+  "yes" "we do" "they do" "they are" "she is" "she does" "right o"
   "okey" "okay" "it is" "it does" "I would say so" "he is" "he does"
   "daccord" "bring it on" "yuppers" "yup" "you may have a point"
   "you may be right" "you may" "you could say that" "you bet"
-  "you are right" "yip" "yes really" "yes please" "yes" "yeppers" "yep"
-  "yeh" "yeah sure" "yeah definitely" "yeah" "yea" "yay" "yah"
+  "you are right" "yip" "yeppers" "yep"
+  "yeh" "yeah" "yea" "yay" "yah"
   "wonderful" "without a doubt" "with pleasure" "will do" "whatever"
-  "well perhaps you are right" "well maybe you are right" "we should try"
-  "we did" "we can try" "very well indeed" "very well" "unquestionably"
+  "you are right" "should try"
+  "we did" "we can try" "very well" "unquestionably"
   "undoubtedly" "uh huh" "two thumbs up" "true" "totally" "thumbs up"
   "that is right" "that is good" "that is correct" "that is alright"
-  "surely" "sure thing" "sure" "supposedly" "sounds wonderful"
-  "so will you" "si" "shure" "righty ho" "righto" "right on" "right brah"
-  "right" "probably" "precisely" "positively" "please do" "perfect"
-  "only just" "one hundred percent" "okey dokey" "ok" "OK" "oh sure"
-  "oh okay" "oh alright" "of course" "nods" "nod" "no problem"
+  "surely" "sure" "supposedly" "wonderful"
+  "si" "righto" "right on" "right brah"
+  "right" "probably" "precisely" "positively" "please" "perfect"
+  "one hundred percent" "okey dokey" "ok" "OK" "sure"
+  "alright" "of course" "nods" "nod" "no problem"
   "no objections" "no doubt" "naturally" "my pleasure" "mostly"
-  "most certainly" "most assuredly" "makes sense" "let us try"
-  "it would be a pleasure" "it will be my pleasure to"
-  "it will be a pleasure to" "it is highly likely" "indubitably"
+  "certainly" "assuredly" "makes sense" "let us try" "let's try"
+  "be a pleasure" "my pleasure"
+  "likely" "indubitably"
   "indefinitely" "indeed" "in this case" "I will drink to that"
-  "I totally agree" "I think so" "I have no objection" "i guess"
+  "totally agree" "I think so" "no objection" "i guess"
   "I give my consent" "I give consent" "I do" "I did"
-  "I could not agree with you more" "I consent" "I can try"
-  "I can see that" "I can believe that" "I can believe it" "I am"
-  "I am sure" "I am pleased to" "I am listening" "I am certain" "I agree"
-  "I understand" "how true" "highly likely" "hell yeah" "go ahead"
+  "I could not agree with you more" "I consent" "can try"
+  "I am"
+  "sure" "pleased to" "I am certain" "I agree"
+  "I understand" "true" "hell yeah" "go ahead"
   "generally" "fully" "fortune smiles on that" "for sure" "fine"
   "fantastic" "extremely" "exactly" "evidently" "especially" "delighted"
   "definitely" "damn skippy" "damn straight" "damn good" "da"
   "could not have said it better" "could be" "correct" "constantly"
-  "confirmed" "completely" "certainly" "can not argue with that"
-  "by all means" "but of course" "beyond a doubt" "be my guest" "aye"
-  "ay" "approved" "apparently" "always" "alright" "all right" "ah yes"
+  "confirmed" "completely" "can not argue with that"
+  "by all means" "beyond a doubt" "be my guest" "aye"
+  "ay" "approved" "apparently" "always" "alright" "all right"
   "agreed" "affirmative" "accepted" "accept" "absolutely"
-  "abso fucking lutely" "aright" "aight" "I guess so" "do it"
+  "aright" "aight" "I guess so" "do it"
   "make it so" "continue" "once"
 )
 
 concept: ~no
 (
-  "we do not" "they do not" "they are not" "she is not" "she does not"
-  "it is not" "it does not" "he is not" "he does not"
+  "no" "do not" "don't" "I haven't" "have not" "I've not"
   "you must be kidding" "you must be joking" "you have got to be kidding"
-  "you have got that wrong" "you can not be serious"
-  "you are winding me up" "you are not serious" "you are kidding"
-  "you are joking" "you are having me on" "you are dead wrong"
-  "yeah yeah" "unlikely" "unfortunately not" "unbelievable" "uhuh"
-  "uh uh" "uh hu" "thinks not" "there is no reason to think so"
-  "that is unbelievable" "that is rubbish" "that is impossible"
-  "surely not" "strange" "seldom" "rubbish" "on the contrary"
-  "oh come on" "of course not" "nuts to you" "not very often"
+  "unlikely" "unfortunately not"
+  "thinks not" "no reason to think so"
+  "that is impossible"
+  "surely not" "rubbish" "on the contrary"
+  "oh come on" "of course not" "not very often"
   "not to speak of" "not to my knowledge" "not that I know of"
   "not so much" "not really" "not particularly" "not on your life"
   "not much" "not many" "not likely" "not in a million years"
   "not especially" "not by any means" "not by a long shot" "not at all"
-  "not a snowball s chance in hell" "not a chance" "nope" "noo"
+  "not a snowball's chance in hell" "not a chance" "nope"
   "no thanks" "no thank you" "no chance" "no can do" "never mind"
-  "negative" "nay" "naw" "nah" "naah" "naaah" "most certainly not"
-  "me thinks not" "it is unlikely" "it is not possible" "inconceivable"
-  "improbable" "impossible" "iie" "if you say so" "I would not"
-  "I will not" "I think not" "I refuse" "I just do not get it"
-  "I doubt it" "I dont think so" "I do not" "I do not want to"
-  "I do not think so" "I do not believe you" "I do not believe so"
-  "I do not believe it" "I do not agree" "I disagree"
+  "negative" "nay" "naw" "nah" "most certainly not"
+  "me thinks not" "it is unlikely" "not possible" "inconceivable"
+  "improbable" "impossible" "would not" "woudn't"
+  "I will not" "I won't" "I think not" "I refuse" "I just do not get it"
+  "I doubt it" "I dont think so" "I do not" "I don't"
+  "I disagree"
   "I could not disagree more"
-  "I am not sure I agree" "I am afraid not" "I am afraid I do not agree"
-  "I am afraid I disagree with you" "horse hockey" "hell no" "hardly"
-  "get real" "get out" "fortune does not smile on that" "fat chance"
-  "false" "doubtful" "does not seem possible" "does not seem likely"
-  "do not be stupid" "do not be silly" "do not be ridiculous"
-  "do not be absurd" "disagree" "did not" "come off it" "by no means"
-  "but of course not" "but no" "bollocks" "neah" "no way" "barely"
-  "rarely" "none" "no" "never" "not a prayer"
+  "I am not sure I agree" "afraid not" "I do not agree"
+  "I disagree" "horse hockey" "hell no" "hardly"
+  "get real" "get out" "fat chance"
+  "false" "doubtful" "not seem possible" "not seem likely"
+  "disagree" "did not" "come off it" "by no means"
+  "of course not" "but no" "bollocks" "no way" "barely"
+  "rarely" "none" "never" "not a prayer"
 )
 
 concept: ~not_sure
@@ -102,6 +96,20 @@ concept: ~quantity_adjectives
 (
   ~FEW ~MUCH middling several some
 )
+
+concept: ~few
+(
+  few insufficient meager minority not_many scant scarcely_any scarce
+  scattering slight sporadic stingy
+)
+
+concept: ~much
+(
+  a_lot abounding bounteous bountiful copious crowded divers innumerable legion
+  lousy_with many much multifarious myriad no_end_of numberless numerous
+  plentiful populous rife teeming umpteen uncounted
+)
+
 
 concept: ~emoignorance
 (
@@ -143,9 +151,7 @@ concept: ~verbal_agree
 concept: ~emomaybe
 (
   "within the realm of possiblity" "that may be true" "possibly"
-  "perhaps" "maybe" "it may not be true"
-  "I do not know if that is true or not"
-  "I do not know if it is true or not" "I can imagine it"
+  "perhaps" "maybe" "it may not be true"     "I can imagine it"
   "I am uncertain" "for all I know" "conceivably" "not sure"
 )
 
@@ -156,11 +162,11 @@ concept: ~bad_quality_adjectives
 
 concept: ~agree
 (
-  ~yes ~good_quality_adjectives ~verbal_agree ~agreement_words better ~thinkso
-  ~emomaybe "why not"
+  ~yes ~good_quality_adjectives ~verbal_agree ~agreement_words better
+  ~emomaybe "why not" ready
 )
 
 concept: ~disagree
 (
-  ~no ~bad_quality_adjectives
+  ~no ~bad_quality_adjectives "don't think so"
 )

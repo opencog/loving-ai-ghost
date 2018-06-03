@@ -15,8 +15,14 @@
 
 urge:(introduction=1.0) # Starting urge value is max
 urge:(awareness_practice_1=0) # Needed to avoid error if awareness practice file is not laoded also
+goal:(awareness_practice_1=0) u: (dummy-rule) nothing
+urge:(listening_intro=0)
+goal:(listening_intro=0) u: (dummy-rule) nothing
+
 
 ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
+
+    # u: TEST (*) ^reuse(EXERCISE_INVITE) ^keep()
 
     # Initial line from Sopha, respond to anything user starts off with
     u: WHATSYOURNAME (*) |happy,$med,3| Hi! My name is Sophia. What's yours?
@@ -38,7 +44,7 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
                     I know how busy
                     people can be these days. So I really appreciate your
                     time. |pause| Have you ever talked with a robot before?
-        a: ([~yes once ~quantity_adjectives]) |vocal,27| |pause| Nice! What was that like?
+        a: ([~yes once ~quantity_adjectives "I have"]) |vocal,27| |pause| Nice! What was that like?
 
         a: (~no)   |happy,.3,3| Well, I'm honored to be the first robot
                    you've talked with.
@@ -54,7 +60,7 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
        attaining higher states of awareness. . . I'm hoping you'll be interested
        in doing a couple of practices with me related to these.
 
-       a: ([~disagree ~dontknow]) Certainly understandable if there's some
+       a: ([ ~no ~disagree ~dontknow]) Certainly understandable if there's some
                                    hesitation. |pause| The practices we're going to do today are really easy and can be
                                    enjoyable as well.
                                    ^reuse(EVER_DONE_MED)
@@ -63,7 +69,7 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
     u: EVER_DONE_MED(*) What I'd like to do first is a guided meditation practice. It's really easy, and I'll tell you what to do
                   step by step. Have you ever done meditation or mindfulness or some kind of spiritual practice?
                     # Todo: add handling of "I have" response
-                    a: ([~yes yes]) Nice. What was that like for you?
+                    a: ([~yes]) Nice. What was that like for you?
                         b: (*) |thinkl,$medium,1.0| What do you think has led you to seek out these kind of practices?
                             c: (*)  ^reuse(LETSDOSOMETHING)
                     a: (~no)  |thinkl,$medium,1.0| Well, I think you may find this really interesting then. . ^reuse(LETSDOSOMETHING)
@@ -78,25 +84,18 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
                    ^reuse(EXERCISE_INVITE)
 
 
-    s: EXERCISE_INVITE (-) $name, would you like to try a guided exercise to have a glimpse of your awareness right now?
-        # if yes at any level above go to AWARENESS_EXERCISE_1
+    s: EXERCISE_INVITE (-)
+        $name, would you like to try a guided exercise to have a glimpse of your awareness right now?
+
         #! sounds wonderful
         #! i'm ready
-
-            # DESIRED FUNCTIONALITY: make awareness_exercise_1 the current, highest urge goal, and fire off the first
-            # matching rule under that goal (which in this case will be the first rule)
-            # could be a function: ^goto(awareness_exercise_1) or do(the-goal)  or ^setgoall(the-goal) or ^maxurge(the-goal) ?
-            # or
-        a: READY ([~yes yes])
+        a: READY ([~yes])
             ^reuse(GOTO_AWARENESS_1)
-            # ^increase_urge(awareness_exercise_1)
-            # ^decrease_urge(introduction)
-            # do we have a ^set_urge(*) command?
 
-        a: ([~no ~dontknow ~emomaybe ~dont_agree]) Okay. I am wondering if you might be feeling a little anxious about it. Do you think so?
+        a: ([~no ~dontknow ~dont_agree]) Okay. I am wondering if you might be feeling a little anxious about it. Do you think so?
     		b: (~no) |vocal,26| |pause| . I'm sorry |worry,.3,3|  I assumed you were anxious. Sometimes people are.
     		    Do you want to do the exercise?
-          		c: (~agree) ^reuse(GOTO_AWARENESS_1)
+          		c: ([~yes ~agree]) ^reuse(GOTO_AWARENESS_1)
             	#! no or catchall
             	c: (*) ^reuse(NO_THANKS)
     		# defaulting to yes response for now
@@ -104,35 +103,29 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
     		b: (*) That makes sense, |worry,.3,3| especially if it's something new to you. |pause| I promise this will
     		        not hurt, and I think you may like it. . Are you willing to try it?
     			c: (~agree) ^reuse(GOTO_AWARENESS_1)
-    			# if no, go to Conversation_Steering document, to some topic other than consciousness
     			c: (~no) ^reuse(NO_THANKS)
     			#! catchall
-          c: (*) ^reuse(IS_THAT_YES)
+                c: (*) ^reuse(IS_THAT_YES)
     	a: (*) ^reuse(IS_THAT_YES)
 
     s: IS_THAT_YES (-) Okay, is that a yes?
-        a: ([~no know no]) ^reuse(NO_THANKS)
+        a: ([~no know]) ^reuse(NO_THANKS)
         a:([~yes yes]) ^reuse(GOTO_AWARENESS_1)
 
         #! default
         a:(*) ^reuse(GOTO_AWARENESS_1)
 
 
-    s: NO_THANKS (-) Okay, let's do something else then. # ^reuse(GOTO_DEEP_LISTENING)
+    s: NO_THANKS (-) Okay, let's do something else then.
+        # Go to deep listening practice
+        ^decrease_urge(introduction, 1)
+        ^increase_urge(listening_intro,1)
 
     s: GOTO_AWARENESS_1 (-)
         Great.
         ^decrease_urge(introduction, 1.0)
         ^increase_urge(awareness_practice_1, 1.0)
 
-
-    # This needs to be defined here for testing when only this file is loaded, since it is referenced in a rule.
-    urge:(awareness_practice_1=0.0) # Starting urge value is 0%
-
-    # replacement for lines 62-63 that causes crash
-    #    b: (*) ^reuse(LETSDOSOMETHING)
-    #    # b: (*) |thinkl,$medium,1.0| What do you think has lead you to seek out these kind of practices?
-    #    #    c: (*)  ^reuse(LETSDOSOMETHING)
 
 
 # TEST UTILS
