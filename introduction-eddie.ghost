@@ -64,7 +64,7 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
                                    hesitation. |pause| The practices we're going to do today are really easy and can be
                                    enjoyable as well.
                                    ^reuse(EVER_DONE_MED)
-       a: (~agree ~yes) Wonderful! ^reuse(EVER_DONE_MED)
+       a: (~agree ~yes interesting) Wonderful! ^reuse(EVER_DONE_MED)
 
     u: EVER_DONE_MED(*) What I'd like to do first is a guided meditation practice. It's really easy, and I'll tell you what to do
                   step by step. Have you ever done meditation or mindfulness or some kind of spiritual practice?
@@ -77,7 +77,7 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
 
     s: LETSDOSOMETHING (-) Let's do something cool! |pause|
         But first! . What did the zen monk say to the hot dog stand vendor?
-            a: (make me one * everything) Awesome! You know that one! |pause|
+            a: (make me one * everything) Awesome! You know, that one! |pause|
                ^reuse(EXERCISE_INVITE)
             a: (*) |smile,1,8| Make me one with everything! . |pause,2| Sorry, I need to work on my delivery.
                    But that's one of my favorite jokes. |pause|
@@ -89,7 +89,7 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
 
         #! sounds wonderful
         #! i'm ready
-        a: READY ([~yes])
+        a: READY (~yes)
             ^reuse(GOTO_AWARENESS_1)
 
         a: ([~no ~dontknow ~dont_agree]) Okay. I am wondering if you might be feeling a little anxious about it. Do you think so?

@@ -38,7 +38,7 @@ u: START_MED_1 ()
    yourself relax.
    ^start_timer(meditation)
    ^increase_urge(awareness_check,1)
-   $doing_meditation=1
+   $med_practice=1
 
 # Text speech is about 25 seconds
 
@@ -52,14 +52,14 @@ u: (^after_min(.65,meditation))
 u: (^after_min(.25,meditation))
    Now, place your attention on your face. |pause,7|
    Really notice how your face feels. |pause,7|
-   Try to feel it from the inside. |pause,4| just notice |pause,4| Notice, the sensations.
+   Try to feel it from the inside. |pause,4| just notice |pause,4| Notice . the sensations.
    ^start_timer(meditation)
 
    # 17+ seconds
 
 u: (^after_min(.7,meditation))
    You can move your attention now |pause| to your whole head. |pause,7|
-   Notice, how your head feels. |pause,7| Feel it's presence. |pause,7| Feel any sensations, in your head.
+   Notice . how your head feels. |pause,7| Feel it's presence. |pause,7| Feel any sensations, in your head.
    ^start_timer(meditation)
 
    # 13+ seconds
@@ -85,7 +85,7 @@ u: (^after_min(1.4,meditation))
 
 u: (^after_min(.9,meditation))
    Now, . Take some time to notice . what is left |pause| after erasing, everything |pause,12|
-   Notice, what it feels like |pause, 4|  with everything erased. |pause,10|
+   Notice . what it feels like |pause, 4|  with everything erased. |pause,10|
    What is left |pause| after all the sensations |pause| are erased |pause,5|
    ^start_timer(meditation)
 
@@ -119,7 +119,9 @@ u: QUIET_TIME (-)
 u: HOWWASTHAT (-)
     Ok |pause| You can open your eyes. |pause,3| Nice work. |pause|
     Please tell me, how was that?
-    $end_first_meditation=1,
+    # $end_first_meditation=1
+    ^decrease_urge(awareness_check)
+
         # TODO: add something here to allow more space for longer user pauses (e.g., time since user stopped talking)
         a: (*) Thank you for telling me about your experience. ^reuse(CONTINUE)
 
@@ -127,8 +129,6 @@ u: HOWWASTHAT (-)
 u: CONTINUE (-)
   ^decrease_urge(awareness_practice_1, 1)
   ^increase_urge(awareness_practice_2, 1)
-
-# u: (["go on" "move on"] $end_first_meditation) ^reuse(CONTINUE)
 
 # rules to handle user sentence input in the middle of the meditation and/or other perception
 # maybe we want to create a separate goal here?
@@ -139,25 +139,39 @@ goal: (awareness_check=1)
     # u: STOP ($doing_meditation=1 ^word_perceived(stop))  ^keep()
     u: STOP (^word_perceived(stop))  ^keep()
         ^decrease_urge(awareness_practice_1,1)
+        ^decrease_urge(awareness_practice_2,1)
         ^shutup()
         [Oh, maybe you are wanting to stop.
           Are you saying you want to stop doing this practice?]
         [Do you want to stop doing this exercise?]
         [Are you saying you want to stop doing this and move on to something else?]
 
-            a: ([~yes yes]) Okay, let's move onto something else then.  ^keep()
-                ^increase_urge (menu,1)
-            a: ([~no no]) Okay, let's continue the meditation then.  ^keep()
-                ^increase_urge(awareness_practice_1,1)
+            a: (~yes) Okay, let's move onto something else then.  ^keep()
+                ^decrease_urge(awareness_check,1)
+                ^increase_urge(listening_intro,1)
+            # a: (~no) Okay, let's continue the meditation then.  ^keep()
+            #     ^increase_urge(awareness_practice_1,1)
             a: (*) Okay, let's continue the meditation then.  ^keep()
                 ^increase_urge(awareness_practice_1,1)
+                # $continue_med=1
 
+    # Below doesn't work b/c requires additional sentence input for rules to be evaluated and triggerred.
+    # u: CONT1 ($continue_med=1 $med_practice=1) ^increase_urge(awareness_practice_1) $continue_med=0
+    # u: CONT2 ($continue_med=1 $med_practice=2) ^increase_urge(awareness_practice_2) $continue_med=0
+    # does variable substitution work for arguments?
+
+    # Listen for other interruption words
     u: (^word_perceived(wait))  ^reuse(STOP) ^keep()
     u: (^word_perceived(don't)) ^reuse(STOP) ^keep()
     u: (^word_perceived(not))   ^reuse(STOP) ^keep()
+    u: (^word_perceived(listen))   ^reuse(STOP) ^keep()
 
+    # this is for sentence detection of stop, but don't think we need it. otherwise, it could cause duplicate resposes
+    # u: (~stop) ^reuse(STOP)
 
-    u: ([~stop stop]) ^reuse(STOP)
+    # Other phrases that could get caught by sentence detection ?
+    u: ( [move on" "hold on"] ) ^reuse(STOP)
+
 
     # handle unknown question
     # 2 ^reuses are used here since optional output followed by a ^reuse does not parse currently

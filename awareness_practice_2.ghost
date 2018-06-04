@@ -26,6 +26,9 @@ u: START_MED_2 (-)
    So, relax |pause| and close your eyes again. |blink,0.03,1.0| |pause,4|
    Now, feel your entire body. |pause,8|
    Really feel |pause| the sensations |pause| through the whole |pause| body.
+   $med_practice=2
+   # Todo: implement "stop" interrupt for meditation 2
+   # ^increase_urge(awareness_check)
    ^start_timer(meditation)
 
    # approx 30 seconds
@@ -75,6 +78,7 @@ u: (^after_min(.4,meditation))
 u: (^after_min(.5,meditation)) Alright . . you can open your eyes now. |pause,4|
    |happy,$med,3| That's my favorite exercise! |pause,2| Were you able to stay
    seated in your awareness when you opened your eyes?
+   ^decrease_urge(awareness_check,1)
    ^start_timer(meditation)
 
     a: (~no ~disagree)
