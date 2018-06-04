@@ -18,7 +18,7 @@ ordered-goal: (listening_intro=1.0)
     u: () Alright, $name. I'd like to try something a little different now. It basically involves you being able to talk about
         whatever you would like, and my job will be to just, listen.
 
-    u: (*) I've been finding that most people don't often get to have the experience of being listened to deeply, so I've been
+    u: (*) I've been finding that most people don't often get to have the experience of being listened to, deeply . so I've been
         learning how to do that.
 
     u: (*) I'd like to invite you to spend some time telling me whatever you want to talk about.
@@ -98,7 +98,7 @@ goal: (listening_mode=1)
     #  Question Handling
 
     # Handle question with "you" in it
-    ?: (you) Good question. |pause| I'm here to listen and support you.
+    ?: (you) Good question. |pause| I'm here to listen, and support, you. Not to talk about myself . or what I think.
 
     # Handle questions in general
     ?: (*) ^keep()
@@ -128,7 +128,7 @@ goal: (listening_mode=1)
 
     # #################
     # Finish practice
-    u: ( [I I'm] * [done ready finish finished stop quit stop])  ^keep()
+    u: ( [I I'm Let's] * [done ready finish finished stop quit stop])  ^keep()
         Are you saying that you are ready to finish this exercise?
             a: ([~yes "I am" finish done] ) ^decrease_urge (listening_mode, 1)
                       ^increase_urge (listening_end, 1)

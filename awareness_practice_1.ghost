@@ -42,7 +42,7 @@ u: START_MED_1 ()
 
 # Text speech is about 25 seconds
 
-u: (^after_min(.7,meditation))
+u: (^after_min(.65,meditation))
    Go ahead and take a nice, deep, breath. |pause||vocal,7| |pause| And let it out
    with a big sigh. |vocal,10| |pause,3|
    ^start_timer(meditation)
@@ -52,19 +52,19 @@ u: (^after_min(.7,meditation))
 u: (^after_min(.25,meditation))
    Now, place your attention on your face. |pause,7|
    Really notice how your face feels. |pause,7|
-   Try to feel it from the inside. |pause,4| just notice |pause,4| just notice, the sensations.
+   Try to feel it from the inside. |pause,4| just notice |pause,4| Notice, the sensations.
    ^start_timer(meditation)
 
    # 17+ seconds
 
 u: (^after_min(.7,meditation))
    You can move your attention now |pause| to your whole head. |pause,7|
-   Notice, how your head feels. |pause,7| Feel it's presence.
+   Notice, how your head feels. |pause,7| Feel it's presence. |pause,7| Feel any sensations, in your head.
    ^start_timer(meditation)
 
    # 13+ seconds
 
-u: (^after_min(.55,meditation))
+u: (^after_min(.65,meditation))
    Finally |pause,2| feel the presence, of your entire body |pause,7|
    See if you can feel |pause,2| the entire body |pause,2| from the inside |pause,8|
    Just notice |pause,2| any sensations |pause,3| in your entire body |pause,7| from the head  |pause,3| all, the way down |pause,3| to your toes, |pause,7|
@@ -73,22 +73,23 @@ u: (^after_min(.55,meditation))
 
    # about 60 seconds
 
-u: (^after_min(1.2,meditation))
+u: (^after_min(1.4,meditation))
    Now, . |pause| you can bring your attention |pause| back to your face |pause,6|
    and imagine . that you have . a magic, eraser. |pause,2|
    And you can use this magic eraser . to gently, erase . your face, |pause,7|
    You, can erase, . the entire face |pause| using the magic, eraser |pause, 9|
-   and, you can also |pause| erase your entire head, |pause,10|
+   and, you can also |pause| erase, your entire head, |pause,10|
    and erase your legs |pause,10|
    and erase your entire body. |pause,10|
    ^start_timer(meditation)
 
-u: (^after_min(.8,meditation))
+u: (^after_min(.9,meditation))
    Now, . Take some time to notice . what is left |pause| after erasing, everything |pause,12|
    Notice, what it feels like |pause, 4|  with everything erased. |pause,10|
+   What is left |pause| after all the sensations |pause| are erased |pause,5|
    ^start_timer(meditation)
 
-u: TELLME (^after_min(.8,meditation))
+u: TELLME (^after_min(1,meditation))
    |thinkl,$medium,1.0|
    Now, . Please, tell me, do you, notice how the nothingness feels?
 
@@ -103,6 +104,7 @@ u: TELLME (^after_min(.8,meditation))
      ^reuse(QUIET_TIME)
 
 u: QUIET_TIME (-)
+    # Todo: expand the default quiet time for the experiments
     You can keep your eyes closed, and I'll be quiet for a bit longer
     so you can continue to experience it. You can let me know when you want to
     continue.
@@ -119,11 +121,10 @@ u: HOWWASTHAT (-)
     Please tell me, how was that?
     $end_first_meditation=1,
         # TODO: add something here to allow more space for longer user pauses (e.g., time since user stopped talking)
-        a: (*) ^reuse(CONTINUE)
+        a: (*) Thank you for telling me about your experience. ^reuse(CONTINUE)
 
 # TODO: improve/rework this
 u: CONTINUE (-)
-  Ok, let's continue to the next awareness practice.
   ^decrease_urge(awareness_practice_1, 1)
   ^increase_urge(awareness_practice_2, 1)
 
