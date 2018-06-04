@@ -40,12 +40,15 @@ u: (^after_min(.7,meditation))
 u: (^after_min(.8,meditation))
    Now |pause| imagine yourself, relaxing |pause| in a comfy chair |pause|
    that is situated |pause| inside, the back, of your head. |pause,7|
-   You, can let, go |pause| of any. tense. feelings.
+   You, can let, go |pause| of any. tense. feelings. |pause,2|
+   as you settle . down . into . your comfy, chair.
+
+
    ^start_timer(meditation)
 
-   # 23 seconds
+   # 30 seconds
 
-u: (^after_min(.5,meditation))
+u: (^after_min(.65,meditation))
    In a moment |pause| when I ask you . to open your eyes, . . play with staying seated . in
    your awareness . . in the back of your head, . . even though . you may be tempted . .
    to be back into the world . . . when you open your eyes.
@@ -53,7 +56,7 @@ u: (^after_min(.5,meditation))
 
    #19 seconds
 
-u: (^after_min(.3,meditation))
+u: (^after_min(.35,meditation))
    Now . open your eyes, for just . a split second. |pause,3| And close your eyes
    again. |pause,2| Notice . what it felt like . when your eyes . were open.
    ^start_timer(meditation)
@@ -91,3 +94,4 @@ u: PRACTICEATHOME (-)
    	 a: (*) Okay, it's time to move on to our last exercise we'll do today. |pause|
      ^decrease_urge(awareness_practice_2, 1)
      ^increase_urge(listening_intro, 1)
+

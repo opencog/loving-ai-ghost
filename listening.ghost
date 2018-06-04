@@ -81,7 +81,7 @@ goal: (listening_mode=1)
         You can take your time. Whatever you say or don't say is fine.
         See what comes to mind and talk about it.
 
-    u: ( [(don't know) (not sure) (what should)] * [say talk] ) ^keep()
+    u: WHATTOSAY( [(don't know) (not sure) (what should)] * [say talk] ) ^keep()
         [It's okay. Whatever you talk about is fine.]
         [Take your time and see what comes to mind.]
         [You can try being quiet for a moment and see what comes up.]
