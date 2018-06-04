@@ -58,7 +58,7 @@ u: (^after_min(.65,meditation))
    to be back into the world . . . when you open your eyes.
    ^start_timer(meditation)
 
-   #19 seconds
+   # 19 seconds
 
 u: (^after_min(.35,meditation))
    Now . open your eyes, for just . a split second. |pause,3| And close your eyes
@@ -82,7 +82,7 @@ u: (^after_min(.5,meditation)) Alright . . you can open your eyes now. |pause,4|
    ^decrease_urge(awareness_check,1)
    ^start_timer(meditation)
 
-    a: (~no ~disagree)
+    a: ([~no ~disagree])
        That's okay. This takes time. |pause| ^reuse(PRACTICEATHOME)
     #! yes or anything
     a: (*)
@@ -99,4 +99,3 @@ u: PRACTICEATHOME (-)
    	 a: (*) Okay, it's time to move on to our last exercise we'll do today. |pause|
      ^decrease_urge(awareness_practice_2, 1)
      ^increase_urge(listening_intro, 1)
-

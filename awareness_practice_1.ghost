@@ -197,7 +197,7 @@ goal: (awareness_check=1)
         [I don't understand your question.]
         [I'm not sure how to answer that. I should ask you to make sure though]
 
-#############
+# ############
 # urge:(consciousness_prior=0.0)
 # goal: (consciousness_prior=1.0)
 # u: YOUDIDIT (*)
