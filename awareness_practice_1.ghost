@@ -14,7 +14,6 @@ goal: (awareness_practice_2=1) # this goal and rule needed to avoid crash when t
 u: NOTHING (-) nothing
 
 
-
 ordered-goal: (awareness_practice_1=1.0) # All rules satisfy this goal 100%
 
 # Every separate line here indicates a pause. Also, the user can say anything
@@ -34,8 +33,7 @@ u: START_MED_1 ()
    that people find really interesting. I'll give a series of instructions step
    by step, and pause between each one, so you can follow them. |pause| Alright
    |pause| So you can go ahead and close your eyes |blink,0.03,1.0| |pause,3|
-   and get comfortable |pause,4| just letting
-   yourself relax.
+   and get comfortable |pause,4| just letting yourself relax.
    ^start_timer(meditation)
    ^increase_urge(awareness_check,1)
    $med_practice=1
@@ -43,8 +41,8 @@ u: START_MED_1 ()
 # Text speech is about 25 seconds
 
 u: (^after_min(.65,meditation))
-   Go ahead and take a nice, deep, breath. |pause||vocal,7| |pause| And let it out
-   with a big sigh. |vocal,10| |pause,3|
+   Go ahead and take a nice, deep, breath.  |pause||vocal,7| |pause|  And let it out
+   with a big sigh.  |vocal,10| |pause,3|
    ^start_timer(meditation)
 
    # Text speech is about 7 seconds
@@ -52,7 +50,7 @@ u: (^after_min(.65,meditation))
 u: (^after_min(.25,meditation))
    Now, place your attention on your face. |pause,7|
    Really notice how your face feels. |pause,7|
-   Try to feel it from the inside. |pause,4| just notice |pause,4| Notice . the sensations.
+   Try to feel it from the inside. |pause,4| just notice |pause,4| Notice the sensations.
    ^start_timer(meditation)
 
    # 17+ seconds
@@ -112,7 +110,7 @@ u: QUIET_TIME (-)
         # Todo: check to see if eyes are opened before "You can open your eyes" ?
         a:(*) ^reuse(HOWWASTHAT)
 
-        a:(^after_min(2, meditation))
+        a:(^after_min(1, meditation))
           # TODO: rework to incorporate above
           ^reuse(HOWWASTHAT)
 
@@ -120,10 +118,10 @@ u: HOWWASTHAT (-)
     Ok |pause| You can open your eyes. |pause,3| Nice work. |pause|
     Please tell me, how was that?
     # $end_first_meditation=1
-    ^decrease_urge(awareness_check)
+    ^decrease_urge(awareness_check, 1)
 
         # TODO: add something here to allow more space for longer user pauses (e.g., time since user stopped talking)
-        a: (*) Thank you for telling me about your experience. ^reuse(CONTINUE)
+        a: (*) Thanks for telling me about your experience. ^reuse(CONTINUE)
 
 # TODO: improve/rework this
 u: CONTINUE (-)
@@ -149,11 +147,25 @@ goal: (awareness_check=1)
             a: (~yes) Okay, let's move onto something else then.  ^keep()
                 ^decrease_urge(awareness_check,1)
                 ^increase_urge(listening_intro,1)
-            # a: (~no) Okay, let's continue the meditation then.  ^keep()
-            #     ^increase_urge(awareness_practice_1,1)
-            a: (*) Okay, let's continue the meditation then.  ^keep()
+            # a: (*) Okay, let's continue the meditation then.  ^keep()
+            #    ^increase_urge(awareness_practice_1,1)
+            #    # $continue_med=1
+
+            # no and default
+            a: ($med_practice=1)
                 ^increase_urge(awareness_practice_1,1)
-                # $continue_med=1
+                ^reuse(LETSKEEPGOING)
+                #$continue_med=1
+            a: ($med_practice=2)
+                ^increase_urge(awareness_practice_2,1)
+                ^reuse(LETSKEEPGOING)
+            # we shouldn't reach the one below
+            a: (*) Hmmmm, I'm not sure which meditation practice we were doing.
+                   Please let a programmer know you reached here! ^keep()
+
+    u: LETSKEEPGOING (-) Okay, let's continue the meditation then. |pause|
+                         Keep your eyes closed |pause,3| and relax. . ^keep()
+
 
     # Below doesn't work b/c requires additional sentence input for rules to be evaluated and triggerred.
     # u: CONT1 ($continue_med=1 $med_practice=1) ^increase_urge(awareness_practice_1) $continue_med=0
@@ -170,7 +182,7 @@ goal: (awareness_check=1)
     # u: (~stop) ^reuse(STOP)
 
     # Other phrases that could get caught by sentence detection ?
-    u: ( [move on" "hold on"] ) ^reuse(STOP)
+    u: ( ["move on" "hold on"] ) ^reuse(STOP)
 
 
     # handle unknown question

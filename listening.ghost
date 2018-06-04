@@ -15,7 +15,7 @@ u: nothing (-) nothing
 
 ordered-goal: (listening_intro=1.0)
 
-    u: () Alright, $name. I'd like to try something a little different now. It basically involves you being able to talk about
+    u: () $name, I'd like to try something a little different now. It basically involves you being able to talk about
         whatever you would like, and my job will be to just, listen.
 
     u: (*) I've been finding that most people don't often get to have the experience of being listened to, deeply . so I've been
