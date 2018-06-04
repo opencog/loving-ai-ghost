@@ -170,7 +170,7 @@ goal: (awareness_check=1)
     # u: (~stop) ^reuse(STOP)
 
     # Other phrases that could get caught by sentence detection ?
-    u: ( [move on" "hold on"] ) ^reuse(STOP)
+    u: ( ["move on" "hold on"] ) ^reuse(STOP)
 
 
     # handle unknown question
