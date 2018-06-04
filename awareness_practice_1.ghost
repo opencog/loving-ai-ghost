@@ -52,7 +52,7 @@ u: (^after_min(.65,meditation))
 u: (^after_min(.25,meditation))
    Now, place your attention on your face. |pause,7|
    Really notice how your face feels. |pause,7|
-   Try to feel it from the inside. |pause,4| just notice |pause,4| Notice . the sensations.
+   Try to feel it from the inside. |pause,4| Just notice |pause,4| Notice . the sensations.
    ^start_timer(meditation)
 
    # 17+ seconds
@@ -120,7 +120,7 @@ u: HOWWASTHAT (-)
     Ok |pause| You can open your eyes. |pause,3| Nice work. |pause|
     Please tell me, how was that?
     # $end_first_meditation=1
-    ^decrease_urge(awareness_check)
+    ^decrease_urge(awareness_check, 1)
 
         # TODO: add something here to allow more space for longer user pauses (e.g., time since user stopped talking)
         a: (*) Thank you for telling me about your experience. ^reuse(CONTINUE)
@@ -170,7 +170,7 @@ goal: (awareness_check=1)
     # u: (~stop) ^reuse(STOP)
 
     # Other phrases that could get caught by sentence detection ?
-    u: ( [move on" "hold on"] ) ^reuse(STOP)
+    u: ( ["move on" "hold on"] ) ^reuse(STOP)
 
 
     # handle unknown question
@@ -185,7 +185,7 @@ goal: (awareness_check=1)
         [I don't understand your question.]
         [I'm not sure how to answer that. I should ask you to make sure though]
 
-#############
+# ############
 # urge:(consciousness_prior=0.0)
 # goal: (consciousness_prior=1.0)
 # u: YOUDIDIT (*)
