@@ -6,7 +6,7 @@
 urge: (closing=0.0)
 ordered-goal: (closing=1.0)
 
-u: () |happy,0.6,7| Well, $name! That finishes up our time together today.
+u: () |happy,0.6,7| Well! That finishes up our time together today.
       Thank you again for coming and doing these practices with me.
       I hope they might be of value to you.
 

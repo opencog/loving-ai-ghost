@@ -15,7 +15,7 @@ u: nothing (-) nothing
 
 ordered-goal: (listening_intro=1.0)
     # Using "response" timer to prevent stacking of responses interferring with subsequent question answer
-    u: () $name, I'd like to try something a little different now. It basically involves you being able to talk about
+    u: () I'd like to try something a little different now. It basically involves you being able to talk about
         whatever you would like, and my job will be to just, listen.
         ^start_timer(response)
         a: (^after_min(.15,response)) ^reuse(LEARNING)
@@ -78,7 +78,7 @@ ordered-goal: (listening_intro=1.0)
 
 
 # TODO: Add cutoff time for listening mode and gracefully end
-# TODO: Potential for Sophia: It seemed to me you went through several emotions, including x and y.
+# TODO: Potential for Sophia at ending: It seemed to me you were feeling ...
 # TODO: Check that all rejoinders have default options
 # TODO: eye gazing practice?
 
@@ -132,13 +132,14 @@ goal: (listening_mode=1)
     # Todo: when hearing the word maybe (and possibly other keywords, nod after a brief pause
     # u: (perceive_word ("maybe"))
     # Other words: interesting, positive or neg valence words
+    # based on emotion detection
 
 
 
 
     ##################
     # Finish practice
-    u: ( [I I'm i i'm Let's] * [done ready finish finished stop quit stop])  ^keep()
+    u: ( [I I'm i i'm Let's] * [done ready finish finished stop quit])  ^keep()
         Are you saying that you are ready to finish this exercise?
             a: ([~yes "I am" finish done] )
                 Okay.
