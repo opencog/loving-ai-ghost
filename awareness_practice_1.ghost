@@ -153,7 +153,7 @@ goal: (awareness_check=1)
             a: (~yes) Okay, let's move onto something else then.  ^keep()
                 ^decrease_urge(awareness_check,1)
                 ^increase_urge(listening_intro,1)
-                ^stop=0
+                $stop=0
 
             # a: (*) Okay, let's continue the meditation then.  ^keep()
             #    ^increase_urge(awareness_practice_1,1)
