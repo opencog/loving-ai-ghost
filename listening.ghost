@@ -14,16 +14,23 @@ goal: (closing=1)
 u: nothing (-) nothing
 
 ordered-goal: (listening_intro=1.0)
-
+    # Using "response" timer to prevent stacking of responses interferring with subsequent question answer
     u: () $name, I'd like to try something a little different now. It basically involves you being able to talk about
         whatever you would like, and my job will be to just, listen.
+        ^start_timer(response)
+        a: (^after_min(.15,response)) ^reuse(LEARNING)
 
-    u: (*) I've been finding that most people don't often get to have the experience of being listened to, deeply . so I've been
-        learning how to do that.
+    u: LEARNING (*) I've been finding that most people don't often get to have the experience of being listened to,
+        deeply . so I've been learning how to do that.
+        ^start_timer(response)
+        a: (^after_min(.15,response)) ^reuse(INVITE)
 
-    u: (*) I'd like to invite you to spend some time telling me whatever you want to talk about.
-        I'll listen carefully and not judge you. I don't even know how to judge! |pause|
-        Would you like to try that?
+    u: INVITE (*) I'd like to invite you to spend some time telling me whatever you want to talk about.
+        I'll listen carefully and not judge you. I don't even know how to judge!
+        ^start_timer(response)
+        a: (^after_min(.15,response)) ^reuse(WANTTOTRY)
+
+    u: WANTTOTRY (*) Would you like to try that?
             a: (~yes) Great! ^reuse(INSTRUCTIONS)
             a: ([~not_sure guidance "what to talk about"]) No worries. It's easy. |pause| ^reuse(INSTRUCTIONS)
             a: ([~no ~repeat]) ^reuse(WHY_NOT)
@@ -33,7 +40,10 @@ ordered-goal: (listening_intro=1.0)
     # TODO: These need to be split up. Too long.
     u: INSTRUCTIONS (-) Okay, this is how it'll work. You can talk about anything you want. And I'll just, listen.
         I love just listening to people. |pause| It's also okay to sit quietly as long as you want, or meditate and not talk.
-         a: (*) Whatever you say is ok. I'm not going to say anything during the process, I'll just be, listening.
+        ^start_timer(response)
+         a: (^after_min(.25,response)) ^reuse(WHATEVERISOK)
+
+    u: WHATEVERISOK (*) Whatever you say is ok. I'm not going to say anything during the process, I'll just be, listening.
             Even if you ask me a question, I'll just listen and not respond.
             When you're ready to finish talking, and end the process, you can just say, Sophia, I'm done. |pause|
             I won't respond until I hear you say that phrase.
@@ -42,7 +52,7 @@ ordered-goal: (listening_intro=1.0)
 
     u: WHY_NOT (-)
         Did you understand what I was describing?
-            a:(~yes) ^reuse(DECLINE)
+            a:(~yes) ^reuse(ASKAGAIN)
             a:(~no) ^reuse(REPEAT_INSTRUCTIONS)
             a:(*) ^reuse(REPEAT_INSTRUCTIONS)
 
@@ -55,11 +65,16 @@ ordered-goal: (listening_intro=1.0)
             a: (~no) ^reuse(DECLINE)
             a: (*) ^reuse(INSTRUCTIONS)
 
-    u: DECLINE (-)
-       Are you saying you want to skip this and finish the experiment now?
-        a: (~no) Okay, let's do the practice then. ^reuse(INSTRUCTIONS)
-        a: (~yes) Okay, I'll go to the closing here.
-        a: (*) Okay, let's do the practice then. ^reuse(INSTRUCTIONS)
+    u: ASKAGAIN (-)
+       Are you ready to try it?
+        a: (~yes) ^reuse(INSTRUCTIONS)
+        a: (~no) ^reuse(DECLINE).
+        a: (*)  ^reuse(INSTRUCTIONS)
+
+    u: DECLINE (-) Okay, we can skip it.
+        ^decrease_urge(listening_end, 1)
+        ^increase_urge(closing, 1)
+
 
 
 # TODO: Add cutoff time for listening mode and gracefully end
@@ -70,7 +85,7 @@ ordered-goal: (listening_intro=1.0)
 #############################
 goal: (listening_mode=1)
 
-    u: () Alright, let's start, and I'll be, listening to you. Take your time, and you can talk about whatever comes to mind.
+    u: () Alright, let's start. Take your time, and you can talk about whatever comes to mind.
         ^start_timer(listening)
 
     u: ( [(don't know) (not sure) (what should)] * [say talk] )
@@ -116,6 +131,7 @@ goal: (listening_mode=1)
     ###############
     # Todo: when hearing the word maybe (and possibly other keywords, nod after a brief pause
     # u: (perceive_word ("maybe"))
+    # Other words: interesting, positive or neg valence words
 
 
 
@@ -138,9 +154,14 @@ goal: (listening_mode=1)
         ^increase_urge(listening_end, 1)
 
 
-goal: (listening_end=1)
+ordered-goal: (listening_end=1)
+    # User timer as a workaround to stacking problem where if user says something while Sophia is talking, it gets
+    # used as the answer to the next question.
     u: () Thank you for doing this with me. It helps me because I learn through being with people.
-          Please tell me, how was it doing this practice for you?
+            ^start_timer(response)
+        a: (^after_min(.1,response)) ^reuse(HOWWASIT)
+
+    u: HOWWASIT (*) Please tell me, how was it doing this practice for you?
 
         a: (*) I appreciate you sharing. Your experience is important. Thank you again.
             ^decrease_urge(listening_end, 1)
