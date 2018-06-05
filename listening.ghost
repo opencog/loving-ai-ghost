@@ -24,7 +24,7 @@ ordered-goal: (listening_intro=1.0)
     u: (*) I'd like to invite you to spend some time telling me whatever you want to talk about.
         I'll listen carefully and not judge you. I don't even know how to judge! |pause|
         Would you like to try that?
-            a: ([~yes yes]) Great! ^reuse(INSTRUCTIONS)
+            a: (~yes) Great! ^reuse(INSTRUCTIONS)
             a: ([~not_sure guidance "what to talk about"]) No worries. It's easy. |pause| ^reuse(INSTRUCTIONS)
             a: ([~no ~repeat]) ^reuse(WHY_NOT)
             a: (*) ^reuse(WHY_NOT)
@@ -35,7 +35,7 @@ ordered-goal: (listening_intro=1.0)
         I love just listening to people. |pause| It's also okay to sit quietly as long as you want, or meditate and not talk.
          a: (*) Whatever you say is ok. I'm not going to say anything during the process, I'll just be, listening.
             Even if you ask me a question, I'll just listen and not respond.
-            When you're ready to finish talking and end the process, you can just say, Sophia, I'm done. |pause|
+            When you're ready to finish talking, and end the process, you can just say, Sophia, I'm done. |pause|
             I won't respond until I hear you say that phrase.
             ^decrease_urge(listening_intro, 1)
             ^increase_urge(listening_mode, 1)
@@ -73,7 +73,7 @@ ordered-goal: (listening_intro=1.0)
 
 goal: (listening_mode=1)
 
-    u: () Alright, let's start, and I'll be listening to you. Take your time, and you can talk about whatever comes to mind.
+    u: () Alright, let's start, and I'll be, listening to you. Take your time, and you can talk about whatever comes to mind.
 
         # ^start_timer(listening)  # temporarily removing due to timer bug
 

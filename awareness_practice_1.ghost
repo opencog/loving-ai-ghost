@@ -139,6 +139,10 @@ goal: (awareness_check=1)
         ^decrease_urge(awareness_practice_1,1)
         ^decrease_urge(awareness_practice_2,1)
         ^shutup()
+        $stop=1
+
+    # this approach depends on sentence input being sent to ghost during duplexing
+    u: ($stop=1)  ^keep()
         [Oh, maybe you are wanting to stop.
           Are you saying you want to stop doing this practice?]
         [Do you want to stop doing this exercise?]
@@ -147,6 +151,7 @@ goal: (awareness_check=1)
             a: (~yes) Okay, let's move onto something else then.  ^keep()
                 ^decrease_urge(awareness_check,1)
                 ^increase_urge(listening_intro,1)
+                ^stop=0
 
             # a: (*) Okay, let's continue the meditation then.  ^keep()
             #    ^increase_urge(awareness_practice_1,1)
@@ -166,6 +171,7 @@ goal: (awareness_check=1)
 
     u: LETSKEEPGOING (-) Okay, let's continue the meditation then. |pause|
                          Keep your eyes closed |pause,3| and relax. . ^keep()
+                         $stop=0
 
 
     # Below doesn't work b/c requires additional sentence input for rules to be evaluated and triggerred.

@@ -11,7 +11,7 @@
 concept: ~yes
 (
   "yes" "we do" "they do" "they are" "she is" "she does" "right o"
-  "I have" "sounds good" "good"
+  "I have" "sounds good" "good" "great"
   "okey" "okay" "it is" "it does" "I would say so" "he is" "he does"
   "daccord" "bring it on" "yuppers" "yup" "you may have a point"
   "you may be right" "you may" "you could say that" "you bet"
@@ -52,7 +52,7 @@ concept: ~yes
 
 concept: ~no
 (
-  "no" "do not" "don't" "I haven't" "have not" "I've not"
+  "no" "do not" "don't" "I haven't" "have not" "I've not" "know"
   "you must be kidding" "you must be joking" "you have got to be kidding"
   "unlikely" "unfortunately not"
   "thinks not" "no reason to think so"
@@ -79,6 +79,17 @@ concept: ~no
   "disagree" "did not" "come off it" "by no means"
   "of course not" "but no" "bollocks" "no way" "barely"
   "rarely" "none" "never" "not a prayer"
+)
+
+concept: ~agree
+(
+  ~yes ~good_quality_adjectives ~verbal_agree ~agreement_words better
+  ~emomaybe "why not" ready
+)
+
+concept: ~disagree
+(
+  ~no ~bad_quality_adjectives "don't think so"
 )
 
 concept: ~not_sure
@@ -161,13 +172,3 @@ concept: ~bad_quality_adjectives
   atrocious awful bad mediocre poor
 )
 
-concept: ~agree
-(
-  ~yes ~good_quality_adjectives ~verbal_agree ~agreement_words better
-  ~emomaybe "why not" ready
-)
-
-concept: ~disagree
-(
-  ~no ~bad_quality_adjectives "don't think so"
-)
