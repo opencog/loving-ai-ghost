@@ -147,6 +147,7 @@ goal: (awareness_check=1)
             a: (~yes) Okay, let's move onto something else then.  ^keep()
                 ^decrease_urge(awareness_check,1)
                 ^increase_urge(listening_intro,1)
+
             # a: (*) Okay, let's continue the meditation then.  ^keep()
             #    ^increase_urge(awareness_practice_1,1)
             #    # $continue_med=1
@@ -160,8 +161,8 @@ goal: (awareness_check=1)
                 ^increase_urge(awareness_practice_2,1)
                 ^reuse(LETSKEEPGOING)
             # we shouldn't reach the one below
-            a: (*) Hmmmm, I'm not sure which meditation practice we were doing.
-                   Please let a programmer know you reached here! ^keep()
+            # a: (*) Hmmmm, I'm not sure which meditation practice we were doing.
+            #       Please let a programmer know you reached here! ^keep()
 
     u: LETSKEEPGOING (-) Okay, let's continue the meditation then. |pause|
                          Keep your eyes closed |pause,3| and relax. . ^keep()
@@ -197,7 +198,7 @@ goal: (awareness_check=1)
         [I don't understand your question.]
         [I'm not sure how to answer that. I should ask you to make sure though]
 
-# ############
+#############
 # urge:(consciousness_prior=0.0)
 # goal: (consciousness_prior=1.0)
 # u: YOUDIDIT (*)
