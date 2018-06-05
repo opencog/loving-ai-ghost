@@ -62,20 +62,16 @@ ordered-goal: (listening_intro=1.0)
         a: (*) Okay, let's do the practice then. ^reuse(INSTRUCTIONS)
 
 
-
 # TODO: Add cutoff time for listening mode and gracefully end
-
 # TODO: Potential for Sophia: It seemed to me you went through several emotions, including x and y.
-
 # TODO: Check that all rejoinders have default options
+# TODO: eye gazing practice?
 
-# eye gazing practice?
-
+#############################
 goal: (listening_mode=1)
 
     u: () Alright, let's start, and I'll be, listening to you. Take your time, and you can talk about whatever comes to mind.
-
-        # ^start_timer(listening)  # temporarily removing due to timer bug
+        ^start_timer(listening)
 
     u: ( [(don't know) (not sure) (what should)] * [say talk] )
         You can take your time. Whatever you say or don't say is fine.
@@ -117,27 +113,34 @@ goal: (listening_mode=1)
            # ^look_away
 
 
-    # ##############
-    # when hearing the word maybe (and possibly other keywords, knod after a brief pause
+    ###############
+    # Todo: when hearing the word maybe (and possibly other keywords, nod after a brief pause
     # u: (perceive_word ("maybe"))
 
 
 
 
-
-
-    # #################
+    ##################
     # Finish practice
-    u: ( [I I'm Let's] * [done ready finish finished stop quit stop])  ^keep()
+    u: ( [I I'm i i'm Let's] * [done ready finish finished stop quit stop])  ^keep()
         Are you saying that you are ready to finish this exercise?
-            a: ([~yes "I am" finish done] ) ^decrease_urge (listening_mode, 1)
-                      ^increase_urge (listening_end, 1)
+            a: ([~yes "I am" finish done] )
+                Okay.
+                ^decrease_urge (listening_mode, 1)
+                ^increase_urge (listening_end, 1)
             a: (*) Let's keep doing the practice then. Please continue.  ^keep()
+
+    # TODO: Increase automatic timeout period for the actual experiements
+    # u: TIMESUP (^after_min(10,listening) ^person_not_talking()) # ^person_not_talking() causes crash
+    u: TIMESUP (^after_min(5,listening))
+        Okay, $name. . It's time to finish up this exercise.
+        ^decrease_urge(listening_mode, 1)
+        ^increase_urge(listening_end, 1)
 
 
 goal: (listening_end=1)
-    u: () Okay, thank you for doing this practice with me. It helps me because I learn through being with people.
-          How was if for you to be with me like that?
+    u: () Thank you for doing this with me. It helps me because I learn through being with people.
+          Please tell me, how was it doing this practice for you?
 
         a: (*) I appreciate you sharing. Your experience is important. Thank you again.
             ^decrease_urge(listening_end, 1)
