@@ -107,14 +107,13 @@ u: QUIET_TIME (-)
     so you can continue to experience it. You can let me know when you want to
     continue.
     ^start_timer(meditation)
-        # Todo: check to see if eyes are opened before "You can open your eyes" ?
         a:(*) ^reuse(HOWWASTHAT)
 
         a:(^after_min(1, meditation))
-          # TODO: rework to incorporate above
           ^reuse(HOWWASTHAT)
 
 u: HOWWASTHAT (-)
+    # Todo: check to see if eyes are opened before "You can open your eyes" ?
     Ok |pause| You can open your eyes. |pause,3| Nice work. |pause|
     Please tell me, how was that?
     # $end_first_meditation=1
@@ -141,7 +140,10 @@ goal: (awareness_check=1)
         ^shutup()
         $stop=1
 
-    # this approach depends on sentence input being sent to ghost during duplexing
+    # This approach depends on sentence input being sent to ghost during duplexing.
+    # In particular, the word_perceived from the user utterance triggers the STOP rule above
+    # and the sentence input sent to ghost from the same user utterance triggers evaluation of
+    # the rule below.
     u: ($stop=1)  ^keep()
         [Oh, maybe you are wanting to stop.
           Are you saying you want to stop doing this practice?]
