@@ -67,6 +67,9 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
                                    ^reuse(EVER_DONE_MED)
        a: ([~agree interesting]) Wonderful! ^reuse(EVER_DONE_MED)
 
+       # hmmmm, this can send us way off here
+       # a: (*) ^fallback_on(chatscript)
+
     u: EVER_DONE_MED(*) What I'd like to do first is a guided meditation practice. It's really easy, and I'll tell you what to do
                   step by step. Have you ever done meditation or mindfulness or some kind of spiritual practice?
                     # Todo: add handling of "I have" response
@@ -78,14 +81,18 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
 
     s: LETSDOSOMETHING (-) Let's do something cool! |pause|
         But first! . What did the zen monk say to the hot dog stand vendor?
+            # temporarily turn off cs callback in case the user responds with "what?"
+            ^decrease_urge(chatscript,1)
             a: (make me one * everything) Awesome! You know, that one! |pause|
+               ^increase_urge(chatscript,1)
                ^reuse(EXERCISE_INVITE)
             a: (*) |smile,1,8| Make me one with everything! . |pause,2| Sorry, I need to work on my delivery.
                    But that's one of my favorite jokes. |pause|
+                   ^increase_urge(chatscript,1)
                    ^reuse(EXERCISE_INVITE)
 
 
-    s: EXERCISE_INVITE (-)
+    s: EXERCISE_INVITE (*)
         $name, would you like to try a guided exercise to have a glimpse of your awareness right now?
 
         #! sounds wonderful
@@ -94,7 +101,7 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
             ^reuse(GOTO_AWARENESS_1)
 
         a: ([~no ~dontknow ~dont_agree]) Okay. I am wondering if you might be feeling a little anxious about it. Do you think so?
-    		b: (~no) |vocal,26| |pause| . I'm sorry |worry,.3,3|  I assumed you were anxious. Sometimes people are.
+    		b: (~no) I'm sorry |worry,.3,3|  I thought you might be anxious. Sometimes people are.
     		    Do you want to do the exercise?
           		c: (~agree) ^reuse(GOTO_AWARENESS_1)
             	#! no or catchall

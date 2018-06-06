@@ -1,7 +1,7 @@
-# ##############################################################################
+###############################################################################
 # closing.ghost
 #
-# ##############################################################################
+###############################################################################
 
 urge: (closing=0.0)
 ordered-goal: (closing=1.0)
@@ -11,4 +11,27 @@ u: () |happy,0.6,7| Well! That finishes up our time together today.
       I hope they might be of value to you.
 
 u: (*) Hope you have a great rest of your day, $name. Take care.
+
+
+
+##############################
+# Chatscript background
+##############################
+
+urge: (chatscript=1)
+goal: (chatscript=1)
+
+?: (*) . ^fallback_on(chatscript) ^keep()
+
+u: (you) ^fallback_on(chatscript) ^keep()
+
+# u: (*) this is a chatscript fall back rule ^keep()
+
+# ?: (*) this is a question?
+
+urge: (cs-full=0)
+goal: (cs-full=1)
+
+u: (*) ^fallback_on(chatscript) ^keep()
+
 

@@ -144,7 +144,7 @@ goal: (awareness_check=1)
     # In particular, the word_perceived from the user utterance triggers the STOP rule above
     # and the sentence input sent to ghost from the same user utterance triggers evaluation of
     # the rule below.
-    u: ($stop=1)  ^keep()
+    u: STOP2 ($stop=1)  ^keep()
         [Oh, maybe you are wanting to stop.
           Are you saying you want to stop doing this practice?]
         [Do you want to stop doing this exercise?]
@@ -199,6 +199,7 @@ goal: (awareness_check=1)
     ?: (*) ^keep()
         ^reuse(DONT_UNDERSTAND)
         ^reuse(STOP)
+        ^reuse(STOP2)
         # 2 ^reuses are used here since optional output followed by a ^reuse does not parse currently
 
     u: DONT_UNDERSTAND (-) ^keep()
