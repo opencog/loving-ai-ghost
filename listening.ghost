@@ -153,11 +153,14 @@ goal: (listening_mode=1)
                 Please continue.  ^keep()
 
     # TODO: Increase automatic timeout period for the actual experiements
-    # u: TIMESUP (^after_min(10,listening) ^person_not_talking()) # ^person_not_talking() causes crash
-    u: TIMESUP (^after_min(5,listening))
+    u: TIMESUP (^after_min(5,listening) ^not_talking())
         Okay, $name. . It's time to finish up this exercise.
         ^decrease_urge(listening_mode, 1)
         ^increase_urge(listening_end, 1)
+
+    # u: TEST (^not_talking()) |detected not_talking|
+    # u: TEST2 (^talking()) |detected talking|
+
 
 
 ordered-goal: (listening_end=1)
