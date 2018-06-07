@@ -17,6 +17,7 @@ ordered-goal: (listening_intro=1.0)
     # Using "response" timer to prevent stacking of responses interferring with subsequent question answer
     u: () I'd like to try something a little different now. It basically involves you being able to talk about
         whatever you would like, and my job will be to just, listen.
+        ^clear-detected-emotions()
         ^start_timer(response)
         a: (^after_min(.15,response)) ^reuse(LEARNING)
 
@@ -39,9 +40,10 @@ ordered-goal: (listening_intro=1.0)
 
     # TODO: These need to be split up. Too long.
     u: INSTRUCTIONS (-) Okay, this is how it'll work. You can talk about anything you want. And I'll just, listen.
-        I love just listening to people. |pause| It's also okay to sit quietly as long as you want, or meditate and not talk.
+       |pause| It's also okay to sit quietly as long as you want, or we can just stare into
+        each others eyes, and not talk.
         ^start_timer(response)
-         a: (^after_min(.25,response)) ^reuse(WHATEVERISOK)
+         a: (^after_min(.2,response)) ^reuse(WHATEVERISOK)
 
     u: WHATEVERISOK (*) Whatever you say is ok. I'm not going to say anything during the process, I'll just be, listening.
             Even if you ask me a question, I'll just listen and not respond.
@@ -89,6 +91,7 @@ goal: (listening_mode=1)
         # turn off answering questions with chatscript in deep listening mode
         ^decrease_urge(chatscript,1)
         ^start_timer(listening)
+        ^clear-detected-emotions()
 
     u: ( [(don't know) (not sure) (what should)] * [say talk] )
         You can take your time. Whatever you say or don't say is fine.
@@ -105,6 +108,15 @@ goal: (listening_mode=1)
          That's the idea of this practice.]
 
     # Todo: use "thoughtfuf" gesture
+
+    #######################
+    #  Emotion detection
+    u: (^new_emotion(happy)) ^register-emotion(happy) $emotion-detected=1
+    u: (^new_emotion(sad))   ^register-emotion(sad)  $emotion-detected=1
+    u: (^new_emotion(anger)) ^register-emotion(angry) $emotion-detected=1
+    u: (^new_emotion(fear))  ^register-emotion(anxious) $emotion-detected=1
+    u: (^new_emotion(disgust)) ^register-emotion(disgusted) $emotion-detected=1
+    u: (^new_emotion(surprised)) ^register-emotion(surprised) $emotion-detected=1
 
 
     #######################
@@ -144,7 +156,7 @@ goal: (listening_mode=1)
     u: ( [I I'm i i'm Let's] *~2 [done ready finish finished stop quit])  ^keep()
         Are you saying that you are ready to finish this exercise?
             a: ([~yes "I am" finish done] )
-                Okay.
+                Okay, thanks.
                 ^decrease_urge (listening_mode, 1)
                 ^increase_urge (listening_end, 1)
             a: (*) [Let's keep doing the practice then.]
@@ -162,19 +174,38 @@ goal: (listening_mode=1)
     # u: TEST2 (^talking()) |detected talking|
 
 
-
+################################
 ordered-goal: (listening_end=1)
     # User timer as a workaround to stacking problem where if user says something while Sophia is talking, it gets
     # used as the answer to the next question.
-    u: () Thank you for doing this with me. It helps me because I learn through being with people.
-            ^increase_urge(chatscript,1)
-            ^start_timer(response)
-        a: (^after_min(.1,response)) ^reuse(HOWWASIT)
+#    u: () Thanks for doing this with me. It helps me because I learn through being with people.
+#            ^increase_urge(chatscript,1)
+#            ^start_timer(response)
+#        a: (^after_min(.1,response)) ^reuse(HOWWASIT)
 
-    u: HOWWASIT (*) Please tell me, how was it doing this practice for you?
+    u: HOWWASIT () ^increase_urge(chatscript,1)
+        Please tell me, how was it doing this practice for you?
+        a: ($emotion-detected=1)
+            It seemed to me, that at different points during the practice, you felt, ^detected-emotions()
+            b: (*) ^reuse(LEAVE_LISTENING)
 
-        a: (*) I appreciate you sharing. Your experience is important. # Thank you again.
+        a: (*) ^reuse(LEAVE_LISTENING)
+
+    u: LEAVE_LISTENING (*)
+            I appreciate you sharing. Your experience is important. |pause|
             ^decrease_urge(listening_end, 1)
             ^increase_urge(closing, 1)
 
-# TODO: add reflection about perceived emotions
+
+##############################
+# Emotion debugging
+
+urge: (emotion-debugging=0)
+goal: (emotion-debugging=1)
+    u: (^new_emotion(neutral)) |detected neutral|  ^keep()
+    u: (^new_emotion(happy)) |detected happy| ^keep()
+    u: (^new_emotion(sad)) |detected sad|  ^keep()
+    u: (^new_emotion(surprised)) |detected surprised|  ^keep()
+    u: (^new_emotion(anger)) |detected anger|  ^keep()
+    u: (^new_emotion(fear)) |detected fear|  ^keep()
+    u: (^new_emotion(disgust)) |detected disgust| ^keep()

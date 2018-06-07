@@ -45,8 +45,7 @@ u: (^after_min(.8,meditation))
    Now |pause| imagine yourself, relaxing |pause| in a comfy chair |pause|
    that is situated |pause| inside, the back, of your head. |pause,7|
    You, can let, go |pause| of any. tense. feelings. |pause,2|
-   as you settle . down . into . your comfy, chair.
-
+   as you settle, down . . into your comfy, chair.
 
    ^start_timer(meditation)
 

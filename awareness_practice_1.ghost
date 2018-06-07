@@ -40,7 +40,7 @@ u: START_MED_1 ()
 
 # Text speech is about 25 seconds
 
-u: (^after_min(.62,meditation))
+u: (^after_min(.6,meditation))
    Go ahead and take a nice, deep, breath.  |pause||vocal,7| |pause|  And let it out
    with a big sigh.  |vocal,10| |pause,3|
    ^start_timer(meditation)
@@ -120,7 +120,7 @@ u: HOWWASTHAT (-)
     ^decrease_urge(awareness_check, 1)
 
         # TODO: add something here to allow more space for longer user pauses (e.g., time since user stopped talking)
-        a: (*) Thanks for telling me about your experience. ^reuse(CONTINUE)
+        a: (*) Thanks. ^reuse(CONTINUE)
 
 # TODO: improve/rework this
 u: CONTINUE (-)
