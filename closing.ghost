@@ -25,7 +25,7 @@ goal: (chatscript=1)
 
     ?: (*) . ^fallback_on(chatscript) ^keep()
 
-    u: (you) ^fallback_on(chatscript) ^keep()
+    u: ([you Sophia]) ^fallback_on(chatscript) ^keep()
 
 # Full chatscript interaction
 urge: (cs-full=0)

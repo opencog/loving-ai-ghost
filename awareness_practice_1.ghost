@@ -40,7 +40,7 @@ u: START_MED_1 ()
 
 # Text speech is about 25 seconds
 
-u: (^after_min(.65,meditation))
+u: (^after_min(.62,meditation))
    Go ahead and take a nice, deep, breath.  |pause||vocal,7| |pause|  And let it out
    with a big sigh.  |vocal,10| |pause,3|
    ^start_timer(meditation)
