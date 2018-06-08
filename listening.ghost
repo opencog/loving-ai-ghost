@@ -106,8 +106,8 @@ goal: (listening_mode=1)
 
     # Todo: use "thoughtfuf" gesture
 
-    #######################
-    #  Emotion detection
+
+    ###  Emotion detection ###
     # u: (^new_emotion(happy)) ^register-emotion(happy) $emotion-detected=1
     # u: (^new_emotion(sad))   ^register-emotion(sad)  $emotion-detected=1
     # u: (^new_emotion(anger)) ^register-emotion(angry) $emotion-detected=1
@@ -116,8 +116,7 @@ goal: (listening_mode=1)
     # u: (^new_emotion(surprised)) ^register-emotion(surprised) $emotion-detected=1
 
 
-    #######################
-    #  Question Handling
+    ###  Question Handling ###
 
     # Handle question with "you" in it
     ?: (you) Good question. |pause| I'm here to listen, and support, you. Not to talk about myself . or what I think.
@@ -147,9 +146,9 @@ goal: (listening_mode=1)
 
 
 
+    ### Finish practice triggers ###
 
-    ##################
-    # Finish practice
+    # User triggered
     u: ( [I I'm i i'm Let's] *~2 [done ready finish finished stop quit])  ^keep()
         Are you saying that you are ready to finish this exercise?
             a: ([~yes "I am" finish done] )
@@ -161,14 +160,20 @@ goal: (listening_mode=1)
                 [.]
                 Please continue.  ^keep()
 
-    # TODO: Increase automatic timeout period for the actual experiements
+    # Timeout after x minutes
     u: TIMESUP (^after_min(5,listening) ^not_talking())
         Okay, $name. . It's time to finish up this exercise.
         ^decrease_urge(listening_mode, 1)
         ^increase_urge(listening_end, 1)
 
-    # u: TEST (^not_talking()) |detected not_talking|
-    # u: TEST2 (^talking()) |detected talking|
+    # Researcher triggered
+    #! We need to finish the experiment.
+    #! It's time to stop the experiment.
+    #! We are done with the experiment.
+    u:( ["time" "we need" "we are"] * [finish stop done] * experiment)
+        Ok, sounds like it's time to wrap up. Thanks for doing this with me.
+        ^decrease_urge (listening_mode, 1)
+        ^increase_urge (listening_end, 1)
 
 
 ##### Finish #####

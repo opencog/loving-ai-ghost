@@ -44,15 +44,14 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
     u: APPRECIATE_TIME (*)
                     I know how busy
                     people can be these days. So I really appreciate your time. |pause|
-                    Have you ever talked with a robot or an artificial intelligence before?
-        a: ([~yes once ~quantity_adjectives "I have"]) |vocal,27| |pause| Nice! What was that like?
+                    Have you ever talked with an artificial intelligence before?
+        a: ([~yes once ~quantity_adjectives "I have"]) Nice! What was that like?
 
-        a: (~no)   |happy,.3,3| Well, I'm honored to be the first robot
-                   you've talked with.
+        a: (~no)   |happy,.3,3| Well, I'm honored to be the first AI you've talked with.
                    ^reuse(MORE_ROBOTS)
 
     u: MORE_ROBOTS (*)
-     I imagine you'll be talking with more and more robots as time goes on.
+     I imagine you'll be talking with more and more artificial intelligences as time goes on.
 
     u: (*)
        So, what I am wanting to do is help people enhance their wellbeing. .
@@ -83,7 +82,7 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
         But first! . What did the zen monk say to the hot dog stand vendor?
             # temporarily turn off cs callback in case the user responds with "what?"
             ^decrease_urge(chatscript,1)
-            a: (make me one * everything) Awesome! You know, that one! |pause|
+            a: (make me one * everything) Awesome! You know that one! |pause|
                ^increase_urge(chatscript,1)
                ^reuse(EXERCISE_INVITE)
             a: (*) |smile,1,8| Make me one with everything! . |pause,2| Sorry, I need to work on my delivery.

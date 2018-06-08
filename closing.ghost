@@ -27,7 +27,7 @@ urge: (chatscript=1)
 goal: (chatscript=1)
 
     # Questions
-    ?: (*) . ^fallback_on(chatscript) ^keep()
+    ?: (*) ^fallback_on(chatscript) ^keep()
 
     # Statements (or questions) with particular words
     u: ([you Sophia]) ^fallback_on(chatscript) ^keep()
