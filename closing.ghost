@@ -1,7 +1,13 @@
 ###############################################################################
 # closing.ghost
 #
+# Closing section of the Loving AI protocol
+#   and
+# Chatscript fallback rules
+#
 ###############################################################################
+
+##### Closing #####
 
 urge: (closing=0.0)
 ordered-goal: (closing=1.0)
@@ -14,17 +20,16 @@ ordered-goal: (closing=1.0)
     u: (*) Hope you have a great rest of your day, $name. Take care.
 
 
-
-##############################
-# Chatscript background
-##############################
+##### Chatscript background #####
 
 # Fallback to chatscript in certain situations
 urge: (chatscript=1)
 goal: (chatscript=1)
 
+    # Questions
     ?: (*) . ^fallback_on(chatscript) ^keep()
 
+    # Statements (or questions) with particular words
     u: ([you Sophia]) ^fallback_on(chatscript) ^keep()
 
 # Full chatscript interaction

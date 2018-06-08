@@ -43,8 +43,8 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
 
     u: APPRECIATE_TIME (*)
                     I know how busy
-                    people can be these days. So I really appreciate your
-                    time. |pause| Have you ever talked with a robot before?
+                    people can be these days. So I really appreciate your time. |pause|
+                    Have you ever talked with a robot or an artificial intelligence before?
         a: ([~yes once ~quantity_adjectives "I have"]) |vocal,27| |pause| Nice! What was that like?
 
         a: (~no)   |happy,.3,3| Well, I'm honored to be the first robot
