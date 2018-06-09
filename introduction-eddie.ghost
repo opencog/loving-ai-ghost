@@ -96,20 +96,22 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
 
         #! sounds wonderful
         #! i'm ready
-        a: READY (~agree)
+        a: (~emomaybe) Oh, I think you will like it. And if at any point you want to stop you can just let me know. |pause|
+            Let's try it. ^reuse(GOTO_AWARENESS_1)
+        a: READY (~agree) Great!
             ^reuse(GOTO_AWARENESS_1)
 
         a: ([~no ~dontknow ~dont_agree]) Okay. I am wondering if you might be feeling a little anxious about it. Do you think so?
     		b: (~no) I'm sorry |worry,.3,3|  I thought you might be anxious. Sometimes people are.
     		    Do you want to do the exercise?
-          		c: (~agree) ^reuse(GOTO_AWARENESS_1)
+          		c: (~agree) Great! ^reuse(GOTO_AWARENESS_1)
             	#! no or catchall
             	c: (*) ^reuse(NO_THANKS)
     		# defaulting to yes response for now
     		#! yes
     		b: (*) That makes sense, |worry,.3,3| especially if it's something new to you. |pause| I promise this will
     		        not hurt, and I think you may like it. . Are you willing to try it?
-    			c: (~agree) ^reuse(GOTO_AWARENESS_1)
+    			c: (~agree) Great! ^reuse(GOTO_AWARENESS_1)
     			c: (~no) ^reuse(NO_THANKS)
     			#! catchall
                 c: (*) ^reuse(IS_THAT_YES)
@@ -117,10 +119,10 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
 
     s: IS_THAT_YES (-) Okay, is that a yes?
         a: (~no) ^reuse(NO_THANKS)
-        a: (~yes) ^reuse(GOTO_AWARENESS_1)
+        a: (~yes) Great! ^reuse(GOTO_AWARENESS_1)
 
         #! default
-        a:(*) ^reuse(GOTO_AWARENESS_1)
+        a:(*) Great! ^reuse(GOTO_AWARENESS_1)
 
 
     s: NO_THANKS (-) Okay, let's do something else then.
@@ -129,7 +131,6 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
         ^increase_urge(listening_intro,1)
 
     s: GOTO_AWARENESS_1 (-)
-        Great.
         ^decrease_urge(introduction, 1.0)
         ^increase_urge(awareness_practice_1, 1.0)
 
