@@ -262,7 +262,7 @@ ordered-goal: (listening_end=1)
                 b: EMOTIONS_DETECTED ($emotion-detected=1)
                    Thanks. . So I'm still learning to understand what people might be feeling,
                    but, it seemed to me, that at different points during the practice, you were feeling, ^detected-emotions()
-                       d: (*) ^reuse(LEAVE_LISTENING)
+                       c: (*) ^reuse(LEAVE_LISTENING)
 
                 b: (*) ^reuse(LEAVE_LISTENING)
 
