@@ -20,7 +20,7 @@ scm
 (ghost-parse-file "$HR_WORKSPACE/OpenCog/loving-ai-ghost/listening.ghost")
 (ghost-parse-file "$HR_WORKSPACE/OpenCog/loving-ai-ghost/closing.ghost")
 (ghost-parse-file "$HR_WORKSPACE/OpenCog/loving-ai-ghost/menu.ghost")
-# (load "$HR_WORKSPACE/OpenCog/loving-ai-ghost/lai-scheme-functions.scm")
+(load "$HR_WORKSPACE/OpenCog/loving-ai-ghost/lai-scheme-functions.scm")
 (cog-execute! (Put (DefinedSchema "say") (List (Concept "System is ready!") (Concept ""))))
 EOF
 printf "\nLoaded\n"

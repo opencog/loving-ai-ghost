@@ -9,6 +9,10 @@
 # $warning_time_period = .5
 # variable substitution in function args not yet implemented
 
+# ### REQUIRED DEPENDECY ###
+# This script requires loading of file lai-scheme-functions.scm for emotion detection functions.
+# Failure to load this file leads to a crash when the practice begins.
+
 urge: (listening_intro=0.0)
 urge: (listening_mode=0)
 urge: (listening_end=0)
@@ -43,14 +47,14 @@ ordered-goal: (listening_intro=1.0)
             a: ([~no ~repeat]) ^reuse(WHY_NOT)
             a: (*) ^reuse(WHY_NOT)
 
-    u: INSTRUCTIONS (-)
+    u: INSTRUCTIONS (*)
         Okay, this is how it'll work. You can talk about anything you want. And I'll just, listen. |pause|
-        It's also okay to take time to think, and sit quietly as long as you want, or we can even just look into
+        It's also okay to take time to think, and sit quietly as long as you want, . or we can even just gaze into
         each others eyes, and not talk.
         ^start_timer(response)
             a: (^after_min(.25,response)) ^reuse(WHATEVERISOK)
 
-    u: WHATEVERISOK (-) Whatever you say is ok. I'm not going to talk during the process, I'll just listen. .
+    u: WHATEVERISOK (*) Whatever you say is ok. I'm not going to talk during the process, I'll just listen. .
             Even if you ask me a question, I'll just listen, and not give an answer. .
             We can do this for around 5 minutes, and when it's time to finish, I'll let you know. .
             But if you want to finish talking before that, and end the process early,
@@ -61,7 +65,7 @@ ordered-goal: (listening_intro=1.0)
                 a: (^after_min(.55,response)) ^reuse(STARTLISTENING)
 
 
-    u: STARTLISTENING (-)
+    u: STARTLISTENING (*)
         ^decrease_urge(listening_intro, 1)
         ^increase_urge(listening_mode, 1)
 
@@ -100,7 +104,7 @@ goal: (listening_mode=1)
         # turn off answering questions with chatscript in deep listening mode
         ^decrease_urge(chatscript,1)
         ^start_timer(listening)
-        # ^clear-detected-emotions()
+        ^clear-detected-emotions()
 
     u: ( [(don't know) (not sure) (what should)] * [say talk] )
         You can take your time. Whatever you say or don't say is fine.
@@ -124,12 +128,12 @@ goal: (listening_mode=1)
         it's time to finish.
 
     ###  Emotion detection ###
-    # u: (^new_emotion(happy)) ^register-emotion(happy) $emotion-detected=1
-    # u: (^new_emotion(sad))   ^register-emotion(sad)  $emotion-detected=1
-    # u: (^new_emotion(anger)) ^register-emotion(angry) $emotion-detected=1
-    # u: (^new_emotion(fear))  ^register-emotion(anxious) $emotion-detected=1
+    u: (^new_emotion(happy)) ^register-emotion(happy) $emotion-detected=1
+    u: (^new_emotion(sad))   ^register-emotion(sad)  $emotion-detected=1
+    u: (^new_emotion(anger)) ^register-emotion(angry) $emotion-detected=1
+    u: (^new_emotion(fear))  ^register-emotion(anxious) $emotion-detected=1
     # u: (^new_emotion(disgust)) ^register-emotion(disgusted) $emotion-detected=1
-    # u: (^new_emotion(surprised)) ^register-emotion(surprised) $emotion-detected=1
+    u: (^new_emotion(surprised)) ^register-emotion(surprised) $emotion-detected=1
 
 
     ###  Question Handling ###
@@ -181,6 +185,8 @@ goal: (listening_mode=1)
         Alright, $name. . It's time to finish doing the practice now. Thanks, you did great.
         ^decrease_urge(listening_mode, 1)
         ^increase_urge(listening_end, 1)
+            # This is just to catch any potential thing they say to avoid stacking for the question coming up
+            a: (*) .
 
     # Researcher triggered
     #! We need to finish the experiment.
@@ -207,10 +213,10 @@ ordered-goal: (listening_end=1)
         Please tell me, how was it doing this practice for you?
 
         # Comment on detected emotions
-        # a: ($emotion-detected=1)
-        #    Thanks. So I'm still learning to understand what people might be feeling,
-        #    but, it seemed to me, that at different points during the practice, you were feeling, ^detected-emotions()
-        #    b: (*) ^reuse(LEAVE_LISTENING)
+        a: ($emotion-detected=1)
+           Thanks. . So I'm still learning to understand what people might be feeling,
+           but, it seemed to me, that at different points during the practice, you were feeling, ^detected-emotions()
+               b: (*) ^reuse(LEAVE_LISTENING)
 
         a: (*) ^reuse(LEAVE_LISTENING)
 
