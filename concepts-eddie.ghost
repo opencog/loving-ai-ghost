@@ -172,3 +172,245 @@ concept: ~bad_quality_adjectives
   atrocious awful bad mediocre poor
 )
 
+
+##### Words with implied emotional valence #####
+
+# Available emotions
+# happy
+# sad
+# fear
+# angry
+# bored
+# surprised
+# disgust
+# irritated
+# awe
+# amused
+# worry
+# recoil
+
+
+### happy expression animation ###
+concept: ~happy_expression_triggers
+(
+  ~feeling_happy ~feeling_safe ~feeling_loved ~feeling_fearless ~feeling_free
+  ~feeling_grateful ~feeling_esteem ~good_quality_adjectives ~feeling_sympathy
+)
+
+concept: ~feeling_happy
+(
+  affection airy amused animated beatific blissful blithe bright brisk buoyant
+  cheerful cheery chipper comfortable compassion contented convivial debonair
+  delight delighted eager eagerness ecstatic elated enthused enthusiastic
+  excited exhilarated exultant fabulous fain fantastic festive free_and_easy
+  frisky genial glad gleeful great happiness happy harmony high-spirited
+  hilarious hope humorous important inspired jaunty jocular jolly jovial joy
+  joyful joyous jubilant laughing lighthearted lively love lucky merry mirthful
+  optimism optimistic overjoyed peaceful playful pleased pleasure rapturous
+  satisfaction satisfied saucy self-satisfied serene sparkling spirited
+  sprightly sunny terrific thankful tranquil transported triumph vivacious
+  wonderful
+)
+
+concept: ~feeling_safe
+(
+  at_ease calm comfortable composed peaceful relieved secure
+)
+
+concept: ~feeling_loved
+(
+  accepted adorable adored approved_of desirable entrusted loved validated
+  valued welcomed
+)
+
+concept: ~feeling_fearless
+(
+  audacious bold brave certain confident courageous daring dauntless determined
+  encouraged enterprising gallant hardy heroic reassured resolute secure
+  self-reliant spirited stout
+)
+
+concept: ~feeling_free
+(
+  autonomous free independent released unshackled
+)
+
+concept: ~feeling_grateful
+(
+  grateful gratitude
+)
+
+concept: ~feeling_esteem
+(
+  admired appreciated esteemed respected revered significant supported valued
+  worshiped
+)
+
+concept: ~good_quality_adjectives
+(
+  best excellent fine first-rate good great matchless outstanding peerless
+  superb superior unrivaled
+)
+
+concept: ~feeling_sympathy
+(
+  compassion kindness pity sympathy
+)
+
+### surprise expression ###
+
+concept: ~surprise_expression_triggers (~feeling_surprise)
+
+concept: ~feeling_surprise
+(
+  astonished bewildered confused shock shocked startled surprise surprised surprising
+)
+
+### angry expression ###
+concept: ~angry_expression_triggers (~feeling_angry ~feeling_burden ~feeling_cheated )
+
+concept: ~feeling_angry
+(
+  acrimonious anger angry annoyed appalled bitter boiling cross devastated
+  disgusted enraged fed_up frustrated fuming furious hostile in_a_huff in_a_stew
+  incensed indignant inflamed infuriated irate irritated irritating livid loathing mad
+  offended outraged pique provoked rageful rancor resentful sullen temper
+  up_in_arms virulent worked_up wrathful wrought_up
+)
+
+
+concept: ~feeling_burden
+(
+  burdened obligated pressured put_upon thwarted
+)
+
+concept: ~feeling_cheated
+(
+  abused accused betrayed cheated coerced conned deceived disparaged duped
+  exploited framed lied_to manipulated tricked victimized violated
+)
+
+
+
+### irritation experssion
+concept: ~irritation_expression_triggers
+(
+    ~feeling_hated ~feeling_reproachful ~feeling_trapped
+)
+
+concept: ~feeling_hated
+(
+  abandoned chastised criticized deserted discarded forsaken hated humiliated
+  ignored left_out let_down overlooked punished rejected replaced unapproved_of
+  unlovable unloved
+)
+
+concept: ~feeling_reproachful
+(
+  calumniating castigating censorious contumelious defamatory derisive
+  disparaging invective libelous maligning opprobrious reproachful reviling
+  sarcastic scathing scolding scurrilous
+)
+
+concept: ~feeling_trapped
+(
+  cornered deceived imprisoned optionless outmaneuvered set_up stifled trapped
+  tricked
+)
+
+
+### sad experession ###
+concept: ~sad_expression_triggers
+(
+    ~feeling_sad ~feeling_singedout ~feeling_demoralized ~feeling_embarassed
+    ~feeling_powerless
+)
+
+concept: ~feeling_sad
+(
+  aching afflicted agonized anguished bereaved cheerless clouded crestfallen
+  crushed dark dejected depress depressed depressing despair despairing
+  despondent disappointing disconsolate discontented discouraged disheartened
+  dismal displeased disspirited distress distressed dolorous down downcast
+  downhearted dreadful dreary dull embarrassed feel_blue flat frowning funereal
+  gloomy gloom glum grief grief-stricken grieved guilt hapless heartbroken
+  heavyhearted hopelessness humiliated hurt in_despair in_pain in_the_dumps
+  injured joyless listless listlessness lonely low lugubrious melancholy
+  miserable moody moping mournful offended oppressed out_of_sorts pathetic
+  pessimism piteous regretful remorse rueful sad sadness shamed shocked somber
+  sorrow sorrowful spiritless suffering sulky sullen tortured tragic unhappy
+  victimized withdrawn woebegone woeful worried
+)
+
+concept: ~feeling_singledout
+(
+  affronted categorized cross-examined guilty interrogated judged labeled rated
+  singled_out stereotyped wronged
+)
+
+concept: ~feeling_demoralized
+(
+  demoralized disappointed discouraged disheartened disillusioned disinclined
+  stifled thwarted
+)
+
+concept: ~feeling_embarrassed
+(
+  ashamed awkward disparaged embarrassed guilty
+)
+
+concept: ~feeling_powerless
+(
+  bashful beaten_down blocked defeated discouraged disorganized exhausted
+  frustrated hopeless irresponsible overwhelmed powerless stifled thwarted
+  worn_down worn_out
+)
+
+
+### disgust expression ###
+concept: ~disgust_expression_triggers (~feeling_disgust)
+
+concept: ~feeling_disgust
+(
+  appalled appalling disgust disgusting disgusted revolted revolting
+)
+
+
+### fear exppression ###
+concept: ~fear_expression_triggers (~feeling_fearful)
+
+concept: ~feeling_fearful
+(
+  afraid aghast alarmed anxious appalled apprehension apprehensive attacked awed
+  cautious concern concerned cowardly defenseless diffident dismayed distrustful
+  doubtful dread dubious exposed fainthearted fear fearful fidgety fright
+  frightened full_of_misgiving hesitant horrified horror hysterical in_fear
+  indecisive insecure irresolute menaced misgiving nervous panic panicked
+  paranoid pensive perplexed petrified phobic quaking questioning scared scary shaky
+  shocked skeptical suspicious tense terrified terrorized threatened timid
+  timorous trembling tremulous unbelieving uncertain uncomfortable upset
+  wavering worried
+)
+
+
+
+# Unused thus far
+
+concept: ~feeling_attached
+(
+  affectionate attached belonging captivated cherished compassionate connected
+  empathetic included liked loved loving understood
+)
+
+concept: ~feeling_focused
+(
+  committed complacent determined focused in_the_zone
+)
+
+concept: ~feeling_codependent
+(
+  addicted codependent insecure needy
+)
+
+
+
