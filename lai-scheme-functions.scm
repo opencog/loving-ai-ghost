@@ -14,12 +14,16 @@
 (define-public (detected-emotions)
     ; Pull the emotion names from list of WordNodes
     (define emos (map cog-name emotions))
-    (define emotions-string
+    (define emotions-string)
+    (if (> (length emos) 3)
+        (set! emos (list-head emos 3))
+    )
+    (set! emotions-string
         (if (not (null? emos))
             (if (eq? (length emos) 1)
                 (car emos)
                 (string-append
-                    (string-join (list-head emos (- (length emotions) 1)) ", ")
+                    (string-join (list-head emos (- (length emos) 1)) ", ")
                     ", or " (list-ref emos (- (length emos) 1))
                 )
             )
