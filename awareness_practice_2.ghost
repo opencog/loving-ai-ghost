@@ -13,10 +13,9 @@ ordered-goal: (awareness_practice_2=1.0) # All rules satisfy this goal 100%
 u: () Now I'd like to do one more practice where you explore
    experiencing your awareness with your eyes open! Would you like to do that?
 
-    # Todo: send to deep listening
     a: (~disagree) Alright, let's move on to something else.
        ^decrease_urge(awareness_practice_2, 1)
-       # ^increase_urge(consciousness)
+       ^increase_urge(listening_intro, 1)
 
     a: (~agree) Great, let's begin. ^reuse(START_MED_2)
     # default
@@ -76,7 +75,7 @@ u: (^after_min(.4,meditation))
 
 # Todo: make this better
 u: (^after_min(.5,meditation)) Alright . . you can open your eyes now. |pause,4|
-   |happy,$med,3| That's my favorite exercise! |pause,2| Were you able to stay
+   |happy,$med,3| That's my favorite exercise! |pause,2| Were u able to stay
    seated in your awareness when you opened your eyes?
    ^decrease_urge(awareness_check,1)
    ^start_timer(meditation)

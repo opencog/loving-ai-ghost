@@ -81,7 +81,7 @@ u: (^after_min(1.4,meditation))
    and erase your entire body.   # |pause,10|
    ^start_timer(meditation)
 
-u: (^after_min(.9,meditation))
+u: (^after_min(1.15,meditation))
    Now, . Take some time to notice . what is left |pause| after erasing, everything |pause,12|
    Notice . what it feels like |pause, 4|  with everything erased. |pause,10|
    What is left |pause| after all the sensations |pause| are erased   # |pause,5|
@@ -121,7 +121,7 @@ u: QUIET_TIME (-)
 u: HOWWASTHAT (-)
     # Todo: check to see if eyes are opened before "You can open your eyes" ?
     Ok |pause| You can open your eyes. |pause,3| Nice work. |pause|
-    Please tell me, how was that?
+    Please tell me, how was that? |pause,2|
     # $end_first_meditation=1
     ^decrease_urge(awareness_check, 1)
 
@@ -160,7 +160,6 @@ goal: (awareness_check=1)
         ^decrease_urge(awareness_practice_1,1)
         ^decrease_urge(awareness_practice_2,1)
         ^shutup()
-
 
             a: (~yes) Okay, let's move onto something else then.  ^keep()
                 ^decrease_urge(awareness_check,1)
