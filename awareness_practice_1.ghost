@@ -81,7 +81,7 @@ u: (^after_min(1.4,meditation))
    and erase your entire body.   # |pause,10|
    ^start_timer(meditation)
 
-u: (^after_min(1.15,meditation))
+u: (^after_min(1.3,meditation))
    Now, . Take some time to notice . what is left |pause| after erasing, everything |pause,12|
    Notice . what it feels like |pause, 4|  with everything erased. |pause,10|
    What is left |pause| after all the sensations |pause| are erased   # |pause,5|
