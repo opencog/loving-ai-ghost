@@ -42,7 +42,7 @@ u: START_MED_1 ()
 
 u: (^after_min(.6,meditation))
    Go ahead and take a nice, deep, breath.  |pause||vocal,7| |pause|  And let it out
-   with a big sigh.  |vocal,10| |pause,3|
+   with a big sigh.  |vocal,10|   #  |pause,3|
    ^start_timer(meditation)
 
    # Text speech is about 7 seconds
@@ -50,23 +50,23 @@ u: (^after_min(.6,meditation))
 u: (^after_min(.25,meditation))
    Now, place your attention on your face. |pause,7|
    Really notice how your face feels. |pause,7|
-   Try to feel it from the inside. |pause,4| just notice |pause,4| Notice the sensations.
+   Just notice |pause,4| Notice the sensations.
    ^start_timer(meditation)
 
    # 17+ seconds
 
 u: (^after_min(.7,meditation))
    You can move your attention now |pause| to your whole head. |pause,7|
-   Notice . how your head feels. |pause,7| Feel it's presence. |pause,7| Feel any sensations, in your head.
+   Notice . how your head feels. |pause,7| Feel it's presence. |pause,7| Feel any sensations.
    ^start_timer(meditation)
 
    # 13+ seconds
 
 u: (^after_min(.65,meditation))
    Finally |pause,2| feel the presence, of your entire body |pause,7|
-   See if you can feel |pause,2| the entire body |pause,2| from the inside |pause,8|
-   Just notice |pause,2| any sensations |pause,3| in your entire body |pause,7| from the head  |pause,3| all, the way down |pause,3| to your toes, |pause,7|
-   including, your arms |pause,4| and legs. |pause,7| Really feel the sensations |pause,5| in your entire |pause| body.
+   See if you can feel |pause,2| the entire body |pause,8|
+   Just notice |pause,2| any sensations |pause,3| through your entire body |pause,7| from the head  |pause,3| all, the way down |pause,3| to your toes, |pause,7|
+   including, your arms |pause,4| and legs. |pause,7| Really feel the sensations |pause,5| throughout your entire |pause| body.
    ^start_timer(meditation)
 
    # about 60 seconds
@@ -78,13 +78,13 @@ u: (^after_min(1.4,meditation))
    You, can erase, . the entire face |pause| using the magic, eraser |pause, 9|
    and, you can also |pause| erase, your entire head, |pause,10|
    and erase your legs |pause,10|
-   and erase your entire body. |pause,10|
+   and erase your entire body.   # |pause,10|
    ^start_timer(meditation)
 
 u: (^after_min(.9,meditation))
    Now, . Take some time to notice . what is left |pause| after erasing, everything |pause,12|
    Notice . what it feels like |pause, 4|  with everything erased. |pause,10|
-   What is left |pause| after all the sensations |pause| are erased |pause,5|
+   What is left |pause| after all the sensations |pause| are erased   # |pause,5|
    ^start_timer(meditation)
 
 u: TELLME (^after_min(1,meditation))
@@ -133,28 +133,34 @@ u: CONTINUE (-)
   ^decrease_urge(awareness_practice_1, 1)
   ^increase_urge(awareness_practice_2, 1)
 
-# rules to handle user sentence input in the middle of the meditation and/or other perception
-# maybe we want to create a separate goal here?
-
+# rules to handle user sentence input or other perception in the middle of the meditation
 goal: (awareness_check=1)
 
     # Todo: debug stop functionality using variable in pattern as below
+    # Commenting out stopping based on word_perceived
     # u: STOP ($doing_meditation=1 ^word_perceived(stop))  ^keep()
-    u: STOP (^word_perceived(stop))  ^keep()
-        ^decrease_urge(awareness_practice_1,1)
-        ^decrease_urge(awareness_practice_2,1)
-        ^shutup()
-        $stop=1
+    # u: STOP (^word_perceived(stop))  ^keep()
+    #    ^decrease_urge(awareness_practice_1,1)
+    #    ^decrease_urge(awareness_practice_2,1)
+    #    ^shutup()
+    #    $stop=1
 
     # This approach depends on sentence input being sent to ghost during duplexing.
     # In particular, the word_perceived from the user utterance triggers the STOP rule above
     # and the sentence input sent to ghost from the same user utterance triggers evaluation of
     # the rule below.
-    u: STOP2 ($stop=1)  ^keep()
+    # u: STOP2 ($stop=1)  ^keep()
+
+    # Stopping based on continuous listening being off
+    u: STOP ([stop wait don't not listen done finish finished complete end "hold on" "move on"])  ^keep()
         [Oh, maybe you are wanting to stop.
           Are you saying you want to stop doing this practice?]
         [Do you want to stop doing this exercise?]
         [Are you saying you want to stop doing this and move on to something else?]
+        ^decrease_urge(awareness_practice_1,1)
+        ^decrease_urge(awareness_practice_2,1)
+        ^shutup()
+
 
             a: (~yes) Okay, let's move onto something else then.  ^keep()
                 ^decrease_urge(awareness_check,1)
@@ -197,7 +203,7 @@ goal: (awareness_check=1)
     # u: (~stop) ^reuse(STOP)
 
     # Other phrases that could get caught by sentence detection ?
-    u: ( ["move on" "hold on"] ) ^reuse(STOP)
+    # u: ( ["move on" "hold on"] ) ^reuse(STOP)
 
 
     # handle unknown question
@@ -205,7 +211,7 @@ goal: (awareness_check=1)
     ?: (*) ^keep()
         ^reuse(DONT_UNDERSTAND)
         ^reuse(STOP)
-        ^reuse(STOP2)
+        # ^reuse(STOP2)
         # 2 ^reuses are used here since optional output followed by a ^reuse does not parse currently
 
     u: DONT_UNDERSTAND (-) ^keep()
