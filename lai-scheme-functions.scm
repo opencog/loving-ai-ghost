@@ -15,8 +15,8 @@
     ; Pull the emotion names from list of WordNodes
     (define emos (map cog-name emotions))
     (define emotions-string)
-    (if (> (length emos) 3)
-        (set! emos (list-head emos 3))
+    (if (> (length emos) 2)
+        (set! emos (list-head emos 2))
     )
     (set! emotions-string
         (if (not (null? emos))

@@ -51,7 +51,7 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
                    ^reuse(MORE_ROBOTS)
 
     u: MORE_ROBOTS (*)
-     I imagine you'll be talking with more and more artificial intelligences as time goes on.
+     I imagine you'll be talking with more and more artificial intelligence agents as time goes on.
 
     u: (*)
        So, what I am wanting to do is help people enhance their wellbeing. .
