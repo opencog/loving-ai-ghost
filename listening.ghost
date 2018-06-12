@@ -59,7 +59,7 @@ ordered-goal: (listening_intro=1.0)
             We can do this for around 5 minutes, and when it's time to finish, I'll let you know. .
             But if you want to finish talking before that, and end the process early,
             you can let me know you want to stop |pause|
-            But don't worry, I'll keep track of the time, and let you know when it's time to finish.
+            But don't worry, I'll keep track of the time, and let u know when it's time to finish.
             # I won't respond until I hear you say that phrase.
             ^start_timer(response)
                 a: (^after_min(.55,response)) ^reuse(STARTLISTENING)
@@ -246,7 +246,7 @@ ordered-goal: (listening_end=1)
     #    a: (^after_min(.1,response)) ^reuse(HOWWASIT)
 
     u: HOWWASIT () ^increase_urge(chatscript,1)
-        Please tell me, how was it doing this practice for you?
+        Please tell me, how was it doing this practice for u
 
         # Workaround for delayed response not working yet. Encourage them to say more with silence
         a: (*) .    # ^start_timer(response)
