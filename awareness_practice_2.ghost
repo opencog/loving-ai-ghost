@@ -93,7 +93,14 @@ u: PRACTICEATHOME (-)
    eyes a little longer. |pause| Eventually, it will be clear that you are
    situated in your awareness, . even with your eyes open. |pause| Maybe
    sometime you can come back and let me know how you're progressing.
+   ^start_timer(response)
+
+     # Timeout in case of no response
+     a: (^after_min(.35,response)) Okay, it's time to move on to our last exercise we'll do today. |pause|
+         ^decrease_urge(awareness_practice_2, 1)
+         ^increase_urge(listening_intro, 1)
 
    	 a: (*) Okay, it's time to move on to our last exercise we'll do today. |pause|
-     ^decrease_urge(awareness_practice_2, 1)
-     ^increase_urge(listening_intro, 1)
+         ^decrease_urge(awareness_practice_2, 1)
+         ^increase_urge(listening_intro, 1)
+
