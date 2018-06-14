@@ -76,17 +76,17 @@ u: (^after_min(.4,meditation))
 # Todo: make this better
 u: (^after_min(.5,meditation)) Alright . . you can open your eyes now. |pause,4|
    |happy,$med,3| That's my favorite exercise! |pause,2| Were u able to stay
-   seated in your awareness when you opened your eyes?
+   seated in your awareness when you opened your eyes?  {% set delay=3 %}
    ^decrease_urge(awareness_check,1)
    ^start_timer(meditation)
 
     a: ([~no ~disagree])
-       That's okay. This takes time. |pause| ^reuse(PRACTICEATHOME)
+       That's okay. This takes time. |pause| ^reuse(PRACTICEATHOME)  {% set delay=0 %}
     #! yes or anything
     a: (*)
        |happy,$med,3| Cool! I love that. |pause| And can you share more about
        what that was like?
-       b: (*) ^reuse(PRACTICEATHOME)
+       b: (*) ^reuse(PRACTICEATHOME)  {% set delay=0 %}
 
 u: PRACTICEATHOME (-)
    Whenever you can, use this exercise to practice. |pause| Each time, open your

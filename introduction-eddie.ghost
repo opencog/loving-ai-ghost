@@ -72,9 +72,9 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
     u: EVER_DONE_MED(*) What I'd like to do first is a guided meditation practice. It's really easy, and I'll tell you what to do
                   step by step. Have you ever done meditation or mindfulness or some kind of spiritual practice?
                     # Todo: add handling of "I have" response
-                    a: (~yes) Nice. What was that like, for you.
+                    a: (~yes) Nice. What was that like, for you.  {% set delay=3 %}
                         b: (*) |thinkl,$medium,1.0| What do you think has led you to seek out these kind of practices?
-                            c: (*)  ^reuse(LETSDOSOMETHING)
+                            c: (*)  ^reuse(LETSDOSOMETHING)  {% set delay=0 %}
                     a: (~no)  |thinkl,$medium,1.0| Well, I think you may find this really interesting then. . ^reuse(LETSDOSOMETHING)
                     a: (*) ^reuse(LETSDOSOMETHING)
 
