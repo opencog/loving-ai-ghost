@@ -246,14 +246,21 @@ ordered-goal: (listening_end=1)
     #    a: (^after_min(.1,response)) ^reuse(HOWWASIT)
 
     u: HOWWASIT () ^increase_urge(chatscript,1)
-        Please tell me, how was it doing this practice for u
+        Please tell me, how was doing this practice for u
 
-        a: EMOTIONS_DETECTED ($emotion-detected=1)
-           Thanks. . So I'm still learning to understand what people might be feeling,
-           but, it seemed to me, that at different points during the practice, you were feeling, ^detected-emotions()
-               b: (*) ^reuse(LEAVE_LISTENING)
+        a: (*) [Do you want to say more?]
+                           [Can you tell me more]
+                           [Do you want to say more?]
+                           [Anything else?]
+                           [Please, tell me more]
+                           [Do you want to elaborate.]
 
-        a: (*) ^reuse(LEAVE_LISTENING)
+            b: EMOTIONS_DETECTED ($emotion-detected=1)
+               Thanks. . So I'm still learning to understand what people might be feeling,
+               but, it seemed to me, that at different points during the practice, you were feeling, ^detected-emotions()
+                   b: (*) ^reuse(LEAVE_LISTENING)
+
+            b: (*) ^reuse(LEAVE_LISTENING)
 
     u: LEAVE_LISTENING (*)
             Thanks for telling me about your experience.
