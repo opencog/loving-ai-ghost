@@ -45,13 +45,13 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
                     I know how busy
                     people can be these days. So I really appreciate your time. |pause|
                     Have you ever talked with an artificial intelligence before?
-        a: ([~yes once ~quantity_adjectives "I have"]) Nice! What was that like?
+        a: ([~yes once ~quantity_adjectives "I have"]) Nice! What was that like?  {% set delay=3 %}
 
         a: (~no)   |happy,.3,3| Well, I'm honored to be the first AI you've talked with.
                    ^reuse(MORE_ROBOTS)
 
     u: MORE_ROBOTS (*)
-     I imagine you'll be talking with more and more artificial intelligence agents as time goes on.
+     I imagine you'll be talking with more and more artificial intelligence agents as time goes on.  {% set delay=0 %}
 
     u: (*)
        So, what I am wanting to do is help people enhance their wellbeing. .
