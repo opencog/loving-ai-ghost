@@ -121,7 +121,7 @@ u: QUIET_TIME (-)
 u: HOWWASTHAT (-)
     # Todo: check to see if eyes are opened before "You can open your eyes" ?
     Ok |pause| You can open your eyes. |pause,3| Nice work. |pause|
-    Please tell me, how was that? |pause,2|
+    Please tell me, how was that? |pause,2| {% set delay=3 %}
     # $end_first_meditation=1
     ^decrease_urge(awareness_check, 1)
 
@@ -132,7 +132,7 @@ u: HOWWASTHAT (-)
                            [Anything else?]
                            [Please, tell me more]
                            [Do you want to elaborate.]
-            b: (*) Thanks. ^reuse(CONTINUE)
+            b: (*) Thanks. ^reuse(CONTINUE) {% set delay=0 %}
 
 # TODO: improve/rework this
 u: CONTINUE (-)
