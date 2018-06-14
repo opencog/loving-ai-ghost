@@ -26,9 +26,9 @@ ordered-goal: (awareness_practice_1=1.0) # All rules satisfy this goal 100%
 # changes (e.g., to the method of checking all rules in order until one matches, as is currently done with rejoinders,
 # the method here for moving from instruction to instruction without user verbal input will need to be reworked.
 
-# u: TEST (tell me) ^reuse(TELLME)
+u: TEST (tell me) ^reuse(HOWWASTHAT)   ^keep()
 
-u: START_MED_1 ()
+u: START_MED_1 (-)
    |nod2,.5,1.0| |happy,.5,5| I'll guide you through a process
    that people find really interesting. I'll give a series of instructions step
    by step, and pause between each one, so you can follow them. |pause| Alright
@@ -126,7 +126,13 @@ u: HOWWASTHAT (-)
     ^decrease_urge(awareness_check, 1)
 
         # TODO: add something here to allow more space for longer user pauses (e.g., time since user stopped talking)
-        a: (*) Thanks. ^reuse(CONTINUE)
+        a: (*) [Do you want to say more?]
+                           [Can you tell me more]
+                           [Do you want to say more?]
+                           [Anything else?]
+                           [Please, tell me more]
+                           [Do you want to elaborate.]
+            b: (*) Thanks. ^reuse(CONTINUE)
 
 # TODO: improve/rework this
 u: CONTINUE (-)
