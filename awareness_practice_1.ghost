@@ -171,11 +171,11 @@ goal: (awareness_check=1)
             #    # $continue_med=1
 
             # no and default
-            a: ($med_practice=1)
+            a: ($med_practice==1)
                 ^increase_urge(awareness_practice_1,1)
                 ^reuse(LETSKEEPGOING)
                 #$continue_med=1
-            a: ($med_practice=2)
+            a: ($med_practice==2)
                 ^increase_urge(awareness_practice_2,1)
                 ^reuse(LETSKEEPGOING)
             # we shouldn't reach the one below
