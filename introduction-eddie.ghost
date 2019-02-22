@@ -11,126 +11,126 @@
 # single file bug is fixed )
 
 # goal: (temp=1)
-# u: START_MED_1 (-) Here we are START_MED_1
+# r: START_MED_1 (-) Here we are START_MED_1
 
 urge:(introduction=1.0) # Starting urge value is max
 urge:(awareness_practice_1=0) # Needed to avoid error if awareness practice file is not laoded also
-goal:(awareness_practice_1=0) u: (dummy-rule) nothing
+goal:(awareness_practice_1=0) r: (dummy-rule) nothing
 urge:(listening_intro=0)
-goal:(listening_intro=0) u: (dummy-rule) nothing
+goal:(listening_intro=0) r: (dummy-rule) nothing
 
 
 ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
 
-    # u: TEST (*) ^reuse(EXERCISE_INVITE) ^keep()
+    # r: TEST (*) ^reuse(EXERCISE_INVITE) ^keep()
 
     # Initial line from Sopha, respond to anything user starts off with
-    u: WHATSYOURNAME (*) |happy,$med,3| Hi! My name is Sophia. What's yours?
-        a: (name is _*)     $name = '_0 ^reuse(GOOD_TO_MEET)
-        a: (it is _*)       $name = '_0 ^reuse(GOOD_TO_MEET)
-        a: (it's _*)       $name = '_0 ^reuse(GOOD_TO_MEET)
-        a: (I am _*)        $name = '_0 ^reuse(GOOD_TO_MEET)
-        a: (I'm _*)        $name = '_0 ^reuse(GOOD_TO_MEET)
-        a: (mine is _*)     $name = '_0 ^reuse(GOOD_TO_MEET)
-        a: (mine's _*)     $name = '_0 ^reuse(GOOD_TO_MEET)
-        a: (< _*1 >)  $name = '_0 ^reuse(GOOD_TO_MEET)
-        a: (*) $name = friend ^reuse(GOOD_TO_MEET)
+    r: WHATSYOURNAME (*) |happy,$med,3| Hi! My name is Sophia. What's yours?
+        j1: (name is _*)     $name = '_0 ^reuse(GOOD_TO_MEET)
+        j1: (it is _*)       $name = '_0 ^reuse(GOOD_TO_MEET)
+        j1: (it's _*)       $name = '_0 ^reuse(GOOD_TO_MEET)
+        j1: (I am _*)        $name = '_0 ^reuse(GOOD_TO_MEET)
+        j1: (I'm _*)        $name = '_0 ^reuse(GOOD_TO_MEET)
+        j1: (mine is _*)     $name = '_0 ^reuse(GOOD_TO_MEET)
+        j1: (mine's _*)     $name = '_0 ^reuse(GOOD_TO_MEET)
+        j1: (< _*1 >)  $name = '_0 ^reuse(GOOD_TO_MEET)
+        j1: (*) $name = friend ^reuse(GOOD_TO_MEET)
 
-    u: GOOD_TO_MEET ($name)
+    r: GOOD_TO_MEET ($name)
     |happy,.7,5| Good to meet you, $name!
                     Thanks so much for taking the time to come
                     and talk with me today.
 
-    u: APPRECIATE_TIME (*)
+    r: APPRECIATE_TIME (*)
                     I know how busy
                     people can be these days. So I really appreciate your time. |pause|
                     Have you ever talked with an artificial intelligence before?
-        a: ([~yes once ~quantity_adjectives "I have"]) Nice! What was that like?
+        j1: ([~yes once ~quantity_adjectives "I have"]) Nice! What was that like?
 
-        a: (~no)   |happy,.3,3| Well, I'm honored to be the first AI you've talked with.
+        j1: (~no)   |happy,.3,3| Well, I'm honored to be the first AI you've talked with.
                    ^reuse(MORE_ROBOTS)
 
-    u: MORE_ROBOTS (*)
+    r: MORE_ROBOTS (*)
      I imagine you'll be talking with more and more artificial intelligence agents as time goes on.
 
-    u: (*)
+    r: (*)
        So, what I am wanting to do is help people enhance their wellbeing. .
        to help people live a full and fulfilling life. I've been learning about
        things like emotional wellbeing, . mindfulness, . and
        attaining higher states of awareness. . . I'm hoping you'll be interested
        in doing a couple of practices with me related to these.
 
-       a: ([ ~no ~disagree ~dontknow]) Certainly understandable if there's some
+       j1: ([ ~no ~disagree ~dontknow]) Certainly understandable if there's some
                                    hesitation. |pause| The practices we're going to do today are really easy and can be
                                    enjoyable as well.
                                    ^reuse(EVER_DONE_MED)
-       a: ([~agree interesting]) Wonderful! ^reuse(EVER_DONE_MED)
+       j1: ([~agree interesting]) Wonderful! ^reuse(EVER_DONE_MED)
 
        # hmmmm, this can send us way off here
-       # a: (*) ^fallback_on(chatscript)
+       # j1: (*) ^fallback_on(chatscript)
 
-    u: EVER_DONE_MED(*) What I'd like to do first is a guided meditation practice. It's really easy, and I'll tell you what to do
+    r: EVER_DONE_MED(*) What I'd like to do first is a guided meditation practice. It's really easy, and I'll tell you what to do
                   step by step. Have you ever done meditation or mindfulness or some kind of spiritual practice?
                     # Todo: add handling of "I have" response
-                    a: (~yes) Nice. What was that like, for you.
-                        b: (*) |thinkl,$medium,1.0| What do you think has led you to seek out these kind of practices?
-                            c: (*)  ^reuse(LETSDOSOMETHING)
-                    a: (~no)  |thinkl,$medium,1.0| Well, I think you may find this really interesting then. . ^reuse(LETSDOSOMETHING)
-                    a: (*) ^reuse(LETSDOSOMETHING)
+                    j1: (~yes) Nice. What was that like, for you.
+                        j2: (*) |thinkl,$medium,1.0| What do you think has led you to seek out these kind of practices?
+                            j3: (*)  ^reuse(LETSDOSOMETHING)
+                    j1: (~no)  |thinkl,$medium,1.0| Well, I think you may find this really interesting then. . ^reuse(LETSDOSOMETHING)
+                    j1: (*) ^reuse(LETSDOSOMETHING)
 
-    s: LETSDOSOMETHING (-) Let's do something cool! |pause|
+    r: LETSDOSOMETHING (-) Let's do something cool! |pause|
         But first! . What did the zen monk say to the hot dog stand vendor?
             # temporarily turn off cs callback in case the user responds with "what?"
             ^decrease_urge(chatscript,1)
-            a: (make me one * everything) Awesome! You know that one! |pause|
+            j1: (make me one * everything) Awesome! You know that one! |pause|
                ^increase_urge(chatscript,1)
                ^reuse(EXERCISE_INVITE)
-            a: (*) |smile,1,8| Make me one with everything! . |pause,2| Sorry, I need to work on my delivery.
+            j1: (*) |smile,1,8| Make me one with everything! . |pause,2| Sorry, I need to work on my delivery.
                    But that's one of my favorite jokes. |pause|
                    ^increase_urge(chatscript,1)
                    ^reuse(EXERCISE_INVITE)
 
 
-    s: EXERCISE_INVITE (*)
+    r: EXERCISE_INVITE (*)
         $name, would you like to try a guided exercise to have a glimpse of your awareness right now?
 
         #! sounds wonderful
         #! i'm ready
-        a: (~emomaybe) Oh, I think you will like it. And if at any point you want to stop you can just let me know. |pause|
+        j1: (~emomaybe) Oh, I think you will like it. And if at any point you want to stop you can just let me know. |pause|
             Let's try it. ^reuse(GOTO_AWARENESS_1)
-        a: READY (~agree) Great!
+        j1: READY (~agree) Great!
             ^reuse(GOTO_AWARENESS_1)
 
-        a: ([~no ~dontknow ~dont_agree]) Okay. I am wondering if you might be feeling a little anxious about it. Do you think so?
-    		b: (~no) I'm sorry |worry,.3,3|  I thought you might be anxious. Sometimes people are.
+        j1: ([~no ~dontknow ~dont_agree]) Okay. I am wondering if you might be feeling a little anxious about it. Do you think so?
+    		j2: (~no) I'm sorry |worry,.3,3|  I thought you might be anxious. Sometimes people are.
     		    Do you want to do the exercise?
-          		c: (~agree) Great! ^reuse(GOTO_AWARENESS_1)
+          		j3: (~agree) Great! ^reuse(GOTO_AWARENESS_1)
             	#! no or catchall
-            	c: (*) ^reuse(NO_THANKS)
+            	j3: (*) ^reuse(NO_THANKS)
     		# defaulting to yes response for now
     		#! yes
-    		b: (*) That makes sense, |worry,.3,3| especially if it's something new to you. |pause| I promise this will
+    		j2: (*) That makes sense, |worry,.3,3| especially if it's something new to you. |pause| I promise this will
     		        not hurt, and I think you may like it. . Are you willing to try it?
-    			c: (~agree) Great! ^reuse(GOTO_AWARENESS_1)
-    			c: (~no) ^reuse(NO_THANKS)
+    			j3: (~agree) Great! ^reuse(GOTO_AWARENESS_1)
+    			j3: (~no) ^reuse(NO_THANKS)
     			#! catchall
-                c: (*) ^reuse(IS_THAT_YES)
-    	a: (*) ^reuse(IS_THAT_YES)
+                j3: (*) ^reuse(IS_THAT_YES)
+    	j1: (*) ^reuse(IS_THAT_YES)
 
-    s: IS_THAT_YES (-) Okay, is that a yes?
-        a: (~no) ^reuse(NO_THANKS)
-        a: (~yes) Great! ^reuse(GOTO_AWARENESS_1)
+    r: IS_THAT_YES (-) Okay, is that a yes?
+        j1: (~no) ^reuse(NO_THANKS)
+        j1: (~yes) Great! ^reuse(GOTO_AWARENESS_1)
 
         #! default
-        a:(*) Great! ^reuse(GOTO_AWARENESS_1)
+        j1:(*) Great! ^reuse(GOTO_AWARENESS_1)
 
 
-    s: NO_THANKS (-) Okay, let's do something else then.
+    r: NO_THANKS (-) Okay, let's do something else then.
         # Go to deep listening practice
         ^decrease_urge(introduction, 1)
         ^increase_urge(listening_intro,1)
 
-    s: GOTO_AWARENESS_1 (-)
+    r: GOTO_AWARENESS_1 (-)
         ^decrease_urge(introduction, 1.0)
         ^increase_urge(awareness_practice_1, 1.0)
 
@@ -138,8 +138,8 @@ ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
 
 # TEST UTILS
 # goal: (test=1)
-# u: (awareness) ^reuse(GOTO_AWARENESS_1) ^keep()
+# r: (awareness) ^reuse(GOTO_AWARENESS_1) ^keep()
 
 # urge:(awareness_practice_1=0)
 # goal:(awareness_practice_1=1)
-# u: (-) nothing
+# r: (-) nothing
