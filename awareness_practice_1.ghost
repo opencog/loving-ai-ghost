@@ -40,14 +40,14 @@ r: START_MED_1 ()
 
 # Text speech is about 25 seconds
 
-r: (^after_min(.6,meditation))
+r: (^is_after_min(.6,meditation))
    Go ahead and take a nice, deep, breath.  |pause||vocal,7| |pause|  And let it out
    with a big sigh.  |vocal,10|   #  |pause,3|
    ^start_timer(meditation)
 
    # Text speech is about 7 seconds
 
-r: (^after_min(.25,meditation))
+r: (^is_after_min(.25,meditation))
    Now, place your attention on your face. |pause,7|
    Really notice how your face feels. |pause,7|
    Just notice |pause,4| Notice the sensations.
@@ -55,14 +55,14 @@ r: (^after_min(.25,meditation))
 
    # 17+ seconds
 
-r: (^after_min(.7,meditation))
+r: (^is_after_min(.7,meditation))
    You can move your attention now |pause| to your whole head. |pause,7|
    Notice . how your head feels. |pause,7| Feel it's presence. |pause,7| Feel any sensations.
    ^start_timer(meditation)
 
    # 13+ seconds
 
-r: (^after_min(.65,meditation))
+r: (^is_after_min(.65,meditation))
    Finally |pause,2| feel the presence, of your entire body |pause,7|
    See if you can feel |pause,2| the entire body |pause,8|
    Just notice |pause,2| any sensations |pause,3| through your entire body |pause,7| from the head  |pause,3| all, the way down |pause,3| to your toes, |pause,7|
@@ -71,7 +71,7 @@ r: (^after_min(.65,meditation))
 
    # about 60 seconds
 
-r: (^after_min(1.4,meditation))
+r: (^is_after_min(1.4,meditation))
    Now, . |pause| you can bring your attention |pause| back to your face |pause,6|
    and imagine . that you have . a magic, eraser. |pause,2|
    And you can use this magic eraser . to gently, erase . your face, |pause,7|
@@ -81,13 +81,13 @@ r: (^after_min(1.4,meditation))
    and erase your entire body.   # |pause,10|
    ^start_timer(meditation)
 
-r: (^after_min(1.3,meditation))
+r: (^is_after_min(1.3,meditation))
    Now, . Take some time to notice . what is left |pause| after erasing, everything |pause,12|
    Notice . what it feels like |pause, 4|  with everything erased. |pause,10|
    What is left |pause| after all the sensations |pause| are erased   # |pause,5|
    ^start_timer(meditation)
 
-r: TELLME (^after_min(1,meditation))
+r: TELLME (^is_after_min(1,meditation))
    |thinkl,$medium,1.0|
    Now, . Please, tell me, do you, notice how the nothingness feels?
    ^start_timer(meditation)
@@ -103,7 +103,7 @@ r: TELLME (^after_min(1,meditation))
      ^reuse(QUIET_TIME)
 
   # Timeout if there is no response
-  j1: (^after_min(.5,meditation))
+  j1: (^is_after_min(.5,meditation))
       It's pretty amazing to feel your awareness
       but sometimes it can take time. |pause|
       ^reuse(QUIET_TIME)
@@ -115,7 +115,7 @@ r: QUIET_TIME (-)
     ^start_timer(meditation)
         j1:(*) ^reuse(HOWWASTHAT)
 
-        j1:(^after_min(1, meditation))
+        j1:(^is_after_min(1, meditation))
           ^reuse(HOWWASTHAT)
 
 r: HOWWASTHAT (-)
@@ -137,16 +137,16 @@ r: CONTINUE (-)
 goal: (awareness_check=1)
 
     # Todo: debug stop functionality using variable in pattern as below
-    # Commenting out stopping based on word_perceived
-    # r: STOP ($doing_meditation=1 ^word_perceived(stop))  ^keep()
-    # r: STOP (^word_perceived(stop))  ^keep()
+    # Commenting out stopping based on is_word_perceived
+    # r: STOP ($doing_meditation=1 ^is_word_perceived(stop))  ^keep()
+    # r: STOP (^is_word_perceived(stop))  ^keep()
     #    ^decrease_urge(awareness_practice_1,1)
     #    ^decrease_urge(awareness_practice_2,1)
     #    ^shutup()
     #    $stop=1
 
     # This approach depends on sentence input being sent to ghost during duplexing.
-    # In particular, the word_perceived from the user utterance triggers the STOP rule above
+    # In particular, the is_word_perceived from the user utterance triggers the STOP rule above
     # and the sentence input sent to ghost from the same user utterance triggers evaluation of
     # the rule below.
     # r: STOP2 ($stop=1)  ^keep()
@@ -193,10 +193,10 @@ goal: (awareness_check=1)
     # does variable substitution work for arguments?
 
     # Listen for other interruption words
-    r: (^word_perceived(wait))  ^reuse(STOP) ^keep()
-    r: (^word_perceived(don't)) ^reuse(STOP) ^keep()
-    r: (^word_perceived(not))   ^reuse(STOP) ^keep()
-    r: (^word_perceived(listen))   ^reuse(STOP) ^keep()
+    r: (^is_word_perceived(wait))  ^reuse(STOP) ^keep()
+    r: (^is_word_perceived(don't)) ^reuse(STOP) ^keep()
+    r: (^is_word_perceived(not))   ^reuse(STOP) ^keep()
+    r: (^is_word_perceived(listen))   ^reuse(STOP) ^keep()
 
     # this is for sentence detection of stop, but don't think we need it. otherwise, it could cause duplicate resposes
     # r: (~stop) ^reuse(STOP)

@@ -33,14 +33,14 @@ r: START_MED_2 (-)
 
    # approx 30 seconds
 
-r: (^after_min(.7,meditation))
+r: (^is_after_min(.7,meditation))
    Now |pause| Use the Magic Eraser |pause| to erase |pause| the entire body |pause,7| also erase the mind |pause,7| and
    the thoughts |pause,7| and feel, the nothingness |pause,2| that remains.
    ^start_timer(meditation)
 
    # approx 35 seconds
 
-r: (^after_min(.8,meditation))
+r: (^is_after_min(.8,meditation))
    Now |pause| imagine yourself, relaxing |pause| in a comfy chair |pause|
    that is situated |pause| inside, the back, of your head. |pause,7|
    You, can let, go |pause| of any. tense. feelings. |pause,2|
@@ -50,7 +50,7 @@ r: (^after_min(.8,meditation))
 
    # 30 seconds
 
-r: (^after_min(.65,meditation))
+r: (^is_after_min(.65,meditation))
    In a moment |pause| when I ask you . to open your eyes, . . play with staying seated . in
    your awareness . . in the back of your head, . . even though . you may be tempted . .
    to be back into the world . . . when you open your eyes.
@@ -58,14 +58,14 @@ r: (^after_min(.65,meditation))
 
    # 19 seconds
 
-r: (^after_min(.35,meditation))
+r: (^is_after_min(.35,meditation))
    Now . open your eyes, for just . a split second. |pause,3| And close your eyes
    again. |pause,2| Notice . what it felt like . when your eyes . were open.
    ^start_timer(meditation)
 
    # 15 seconds
 
-r: (^after_min(.4,meditation))
+r: (^is_after_min(.4,meditation))
    Now . let's try opening your eyes . for a little longer, . . Again, try to
    stay situated . in the back of your head . even with . your eyes opened |pause,2| Okay . go
    ahead, and open your eyes now . for a little longer,
@@ -74,7 +74,7 @@ r: (^after_min(.4,meditation))
    # 19 seconds
 
 # Todo: make this better
-r: (^after_min(.5,meditation)) Alright . . you can open your eyes now. |pause,4|
+r: (^is_after_min(.5,meditation)) Alright . . you can open your eyes now. |pause,4|
    |happy,$med,3| That's my favorite exercise! |pause,2| Were u able to stay
    seated in your awareness when you opened your eyes?
    ^decrease_urge(awareness_check,1)
