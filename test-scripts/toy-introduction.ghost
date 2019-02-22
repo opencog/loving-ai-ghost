@@ -7,7 +7,7 @@
 #
 # ##############################################################################
 
-# goal: (novelty=0.24) u: (eat apple) I want an apple
+# goal: (novelty=0.24) r: (eat apple) I want an apple
 
 # emotion magnitudes
 $min = .1
@@ -22,44 +22,44 @@ urge:(introduction=1.0)
 ordered-goal: (introduction=1.0) # All following rules satisfy this goal 100%
 
   # Initial line from Sopha, respond to anything user starts off with
-  u: WHATSYOURNAME (*) |happy,$med,3| Hi! My name is Sophia. What's yours?
+  r: WHATSYOURNAME (*) |happy,$med,3| Hi! My name is Sophia. What's yours?
   # Note: \[ ^join(express: happy) ^join(magnitude: .5) ^join(duration: 3) \]
-    # a: (~emohello %more) ^next(INPUT) ^rejoinder(WHATSYOURNAME)
-    a: (name is _*)     $name = '_0 ^reuse(GOOD_TO_MEET)
-    a: (it is _*)       $name = '_0 ^reuse(GOOD_TO_MEET)
-    a: (I am _*)        $name = '_0 ^reuse(GOOD_TO_MEET)
-    a: (mine is _*)     $name = '_0 ^reuse(GOOD_TO_MEET)
-    a: (!~emohello _*)  $name = '_0 ^reuse(GOOD_TO_MEET)
-    a: () $name = Maurizio
+    # j1: (~emohello %more) ^next(INPUT) ^rejoinder(WHATSYOURNAME)
+    j1: (name is _*)     $name = '_0 ^reuse(GOOD_TO_MEET)
+    j1: (it is _*)       $name = '_0 ^reuse(GOOD_TO_MEET)
+    j1: (I am _*)        $name = '_0 ^reuse(GOOD_TO_MEET)
+    j1: (mine is _*)     $name = '_0 ^reuse(GOOD_TO_MEET)
+    j1: (!~emohello _*)  $name = '_0 ^reuse(GOOD_TO_MEET)
+    j1: () $name = Maurizio
 
-  # u: (*) |happy,$high,2| Good to meet you, $name!
+  # r: (*) |happy,$high,2| Good to meet you, $name!
   #         Thanks so much for taking the time to come and talk with me today.
 
-  u: GOOD_TO_MEET ($name)
+  r: GOOD_TO_MEET ($name)
     |happy,$high,2| Good to meet you, $name!
                     Thanks so much for taking the time to come
                     and talk with me today.
-    a: (*) $appreciate = 1 ^reuse(APPRECIATE_TIME)
+    j1: (*) $appreciate = 1 ^reuse(APPRECIATE_TIME)
 
-  u: APPRECIATE_TIME ($appreciate)
+  r: APPRECIATE_TIME ($appreciate)
     |worry,$low,3|  I know how busy
                     people can be these days. So I really appreciate your
                     time. |pause| Have you ever talked with a robot before?
-    a: ([~yes once ~quantity_adjectives]) |vocal,27| |pause| Nice!
+    j1: ([~yes once ~quantity_adjectives]) |vocal,27| |pause| Nice!
                                           What was that like?
 
-    a: (~no)   |happy,$low,3| Well, I'm honored to be the first robot
+    j1: (~no)   |happy,$low,3| Well, I'm honored to be the first robot
                you've talked with. # ^gambit(~)
 
-  u: (^time_since_user_stopped_talking(0.5)) um.
+  r: (^time_since_user_stopped_talking(0.5)) um.
 
-  u: (^time_since_user_stopped_talking(3))
+  r: (^time_since_user_stopped_talking(3))
      I imagine you'll be talking with more and more robotcs as time goes on.
 
 # Add question about what it's like talking to a robot here?
 
 #! what is Loving AI?
-u: (^time_since_user_stopped_talking(3))
+r: (^time_since_user_stopped_talking(3))
    So, what I am wanting to do is help people enhance their wellbeing. .
    to help people live a full and fulfilling life. I've been learning about
    things like human potential,. emotional wellbeing, . mindfulness, . and
@@ -69,13 +69,13 @@ u: (^time_since_user_stopped_talking(3))
    # check for domain words first
    # keeping out the emotion domain keywords list because they are being caught
    # too broadly here
-   a: ([~consciousness_words ~uniqueness_words emotion emotions feeling feelings
+   j1: ([~consciousness_words ~uniqueness_words emotion emotions feeling feelings
        ])
       ^rejoinder(PROMPT)
-   a: ([^dont_agree() ~dontknow]) Certainly understandable if there's some
+   j1: ([^dont_agree() ~dontknow]) Certainly understandable if there's some
                                hesitation. |pause| Would you like to talk
                                about your potential, your feelings, or
                                higher states of consciousness? Those are the
                                things I have learned about.
                                ^setrejoinder(PROMPT)
-   a: (^agree()) Wonderful! ^reuse(PROMPT)
+   j1: (^agree()) Wonderful! ^reuse(PROMPT)
