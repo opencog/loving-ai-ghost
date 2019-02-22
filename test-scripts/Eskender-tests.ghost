@@ -22,7 +22,7 @@ goal: (stay_awake=0.1)
 ### Demonstrate rule level goals
 
 #goal: (please_user=0.4)
-u: (~HI) [hi] [hello] [hey] ["how are you"] there!
+r: (~HI) [hi] [hello] [hey] ["how are you"] there!
 
 
 ### Multi-goaled rules
@@ -33,21 +33,21 @@ u: (~HI) [hi] [hello] [hey] ["how are you"] there!
 
 ### Use of variables and user variables
 #goal: (please_user=0.5)
-u: (me name be _*) $name='_0 Hi '_0
+r: (me name be _*) $name='_0 Hi '_0
 
 #goal: (please_user=0.8)
-u: (what be me name) your name is $name
+r: (what be me name) your name is $name
 
 ?: (do you eat _[meat fish chicken]) No, I hate _0
 ?: (do you use _*1 or _*1) I neither use _0 nor _1
 
 ### Rejoinders
 # Test to see if this rule or the following rejoinder run when "I love you" and then "yes" is the input
-s: (yes) okay
+r: (yes) okay
 
-s: (I love you) do you really?
-	a: (yes) In that case I love you too
-	b: (no) It is okay. I have got plenty who love me
+r: (I love you) do you really?
+	j1: (yes) In that case I love you too
+	j2: (no) It is okay. I have got plenty who love me
 
 
 
@@ -68,56 +68,56 @@ s: (I love you) do you really?
 
 
 ### Unordered matching
-s: ( << I birds love >> ) I love birds too
+r: ( << I birds love >> ) I love birds too
 
 
 ### Sentence boundaries
-u: (what is an elephant > ) An elephant is a pachyderm
-u: ( roses < I like ) I like roses too
+r: (what is an elephant > ) An elephant is a pachyderm
+r: ( roses < I like ) I like roses too
 
 
 ### Use of functions in contexts
 # The functions are defined in functions.scm and return either (stv 0 1) or (stv 1 1) ==> (falase or true)
-u: ( * ^func-true) This always runs
-u: ( * ^func-false) This never runs
+r: ( * ^func-true) This always runs
+r: ( * ^func-false) This never runs
 
 # Functions with arguments
-topic: ~STATE keep [] u: (are you happy ^is-happy(.7)) Yes I am happy
+topic: ~STATE keep [] r: (are you happy ^is-happy(.7)) Yes I am happy
 
-topic: ~STATE keep [] u: (are you happy ^neg-is-happy(.7)) No I am not happy
+topic: ~STATE keep [] r: (are you happy ^neg-is-happy(.7)) No I am not happy
 
 ### Use of functions in actions
 # The functions are defined in functions.scm and return list of word nodes if need be
-u: (who killed the _*) I think ^func-findkiller killed the '_0
+r: (who killed the _*) I think ^func-findkiller killed the '_0
 
 
 
 
 ### Negation
-u: (!hate I *1 meat) Is meat good for you?
+r: (!hate I *1 meat) Is meat good for you?
 
 ### Gambits
 # Issue: Gambits seem to be executed first always even if there are matching responders (why commented) 
 # Issue: No ordering of r and t gambits
 # Issue: Once gambit started, all of them are exhuasted no matter the input
 
-#r: Do you like the ocean?
+#p: Do you like the ocean?
 
-#t: I like swimming in the ocean.
+#p: I like swimming in the ocean.
 
-#t: I often go to the beach to swim.
+#p: I often go to the beach to swim.
 
 
 ### Rule Level topic
 ### Demonstrates also topic feature 'keep' which makes the action selector repeatedly use this rule
 
 topic: ~NONSPEECH keep [] #goal: (responsiveness=0.8)
-u: (inner msg face is detected) I see your face!
+r: (inner msg face is detected) I see your face!
 
 
 ### Sample rule for demonstrating returning C++ detector function
 topic: ~DETECTOR_TEST keep [] #goal: (testing_goal=0.2)
-u: (returning detector function) Random returning number is ^func-returning-result
+r: (returning detector function) Random returning number is ^func-returning-result
 
 topic: ~DETECTOR_TEST keep [] #goal: (testing_goal=0.2)
-u: (looping detector function) Random looping number is ^func-looping-result
+r: (looping detector function) Random looping number is ^func-looping-result

@@ -12,12 +12,12 @@
 urge: (closing=0.0)
 ordered-goal: (closing=1.0)
 
-    u: () |happy,0.6,7| Well! That finishes up our time together today.
+    r: () |happy,0.6,7| Well! That finishes up our time together today.
       Thank you again for coming and doing these practices with me.
       I hope they might be of value to you.
       ^increase_urge(cs-full,1)
 
-    u: (*) Hope you have a great rest of your day, $name. Take care.
+    r: (*) Hope you have a great rest of your day, $name. Take care.
 
 
 ##### Chatscript background #####
@@ -30,12 +30,12 @@ goal: (chatscript=1)
     ?: (*) ^fallback_on(chatscript) ^keep()
 
     # Statements (or questions) with particular words
-    u: ([you Sophia]) ^fallback_on(chatscript) ^keep()
+    r: ([you Sophia]) ^fallback_on(chatscript) ^keep()
 
 # Full chatscript interaction
 urge: (cs-full=0)
 goal: (cs-full=1)
 
-    u: (*) ^fallback_on(chatscript) ^keep()
+    r: (*) ^fallback_on(chatscript) ^keep()
 
 

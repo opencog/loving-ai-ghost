@@ -19,42 +19,42 @@ urge: (listening_end=0)
 
 urge: (closing=0)
 goal: (closing=1)
-u: nothing (-) nothing
+r: nothing (-) nothing
 
 ##### Introduction #####
 
 ordered-goal: (listening_intro=1.0)
     # Using "response" timer to prevent stacking of responses interferring with subsequent question answer
-    u: () I'd like to try something a little different now. It basically involves you being able to talk about
+    r: () I'd like to try something a little different now. It basically involves you being able to talk about
         whatever you would like, and my job will be to just, listen.
         # ^clear-detected-emotions()
         ^start_timer(response)
-        a: (^after_min(.15,response)) ^reuse(LEARNING)
+        j1: (^after_min(.15,response)) ^reuse(LEARNING)
 
-    u: LEARNING (*) I've been finding that most people don't often get to have the experience of being listened to,
+    r: LEARNING (*) I've been finding that most people don't often get to have the experience of being listened to,
         deeply . so I've been learning how to do that.
         ^start_timer(response)
-        a: (^after_min(.15,response)) ^reuse(INVITE)
+        j1: (^after_min(.15,response)) ^reuse(INVITE)
 
-    u: INVITE (*) I'd like to invite you to spend some time telling me whatever you want to talk about.
+    r: INVITE (*) I'd like to invite you to spend some time telling me whatever you want to talk about.
         I'll listen carefully and not judge you. I don't even know how to judge!
         ^start_timer(response)
-        a: (^after_min(.15,response)) ^reuse(WANTTOTRY)
+        j1: (^after_min(.15,response)) ^reuse(WANTTOTRY)
 
-    u: WANTTOTRY (*) Would you like to try that?
-            a: (~yes) Great! ^reuse(INSTRUCTIONS)
-            a: ([~not_sure guidance "what to talk about"]) No worries. It's easy. |pause| ^reuse(INSTRUCTIONS)
-            a: ([~no ~repeat]) ^reuse(WHY_NOT)
-            a: (*) ^reuse(WHY_NOT)
+    r: WANTTOTRY (*) Would you like to try that?
+            j1: (~yes) Great! ^reuse(INSTRUCTIONS)
+            j1: ([~not_sure guidance "what to talk about"]) No worries. It's easy. |pause| ^reuse(INSTRUCTIONS)
+            j1: ([~no ~repeat]) ^reuse(WHY_NOT)
+            j1: (*) ^reuse(WHY_NOT)
 
-    u: INSTRUCTIONS (*)
+    r: INSTRUCTIONS (*)
         Okay, this is how it'll work. You can talk about anything you want. And I'll just, listen. |pause|
         It's also okay to take time to think, and sit quietly as long as you want, . or we can even just gaze into
         each others eyes, and not talk.
         ^start_timer(response)
-            a: (^after_min(.25,response)) ^reuse(WHATEVERISOK)
+            j1: (^after_min(.25,response)) ^reuse(WHATEVERISOK)
 
-    u: WHATEVERISOK (*) Whatever you say is ok. I'm not going to talk during the process, I'll just listen. .
+    r: WHATEVERISOK (*) Whatever you say is ok. I'm not going to talk during the process, I'll just listen. .
             Even if you ask me a question, I'll just listen, and not give an answer. .
             We can do this for around 5 minutes, and when it's time to finish, I'll let you know. .
             But if you want to finish talking before that, and end the process early,
@@ -62,36 +62,36 @@ ordered-goal: (listening_intro=1.0)
             But don't worry, I'll keep track of the time, and let u know when it's time to finish.
             # I won't respond until I hear you say that phrase.
             ^start_timer(response)
-                a: (^after_min(.55,response)) ^reuse(STARTLISTENING)
+                j1: (^after_min(.55,response)) ^reuse(STARTLISTENING)
 
 
-    u: STARTLISTENING (*)
+    r: STARTLISTENING (*)
         ^decrease_urge(listening_intro, 1)
         ^increase_urge(listening_mode, 1)
 
-    u: WHY_NOT (-)
+    r: WHY_NOT (-)
         Did you understand what I was describing?
-            a:(~yes) ^reuse(ASKAGAIN)
-            a:(~no) ^reuse(REPEAT_INSTRUCTIONS)
-            a:(*) ^reuse(REPEAT_INSTRUCTIONS)
+            j1:(~yes) ^reuse(ASKAGAIN)
+            j1:(~no) ^reuse(REPEAT_INSTRUCTIONS)
+            j1:(*) ^reuse(REPEAT_INSTRUCTIONS)
 
     # TODO: split this up?
-    u: REPEAT_INSTRUCTIONS (-)
+    r: REPEAT_INSTRUCTIONS (-)
         What I said was that people often don't have the experience of being listened to really deeply, so I've been enjoying doing that.
         What I am offering is that you can tell me anything. I'll listen carefully and not judge you...because I don't know how to judge!
         Would you like to try that now that you understand the idea?
-            a: (~emomaybe) Well, let's give it a try and see how it goes. ^reuse(INSTRUCTIONS)
-            a: (~yes) ^reuse(INSTRUCTIONS)
-            a: (~no) ^reuse(DECLINE)
-            a: (*) ^reuse(INSTRUCTIONS)
+            j1: (~emomaybe) Well, let's give it a try and see how it goes. ^reuse(INSTRUCTIONS)
+            j1: (~yes) ^reuse(INSTRUCTIONS)
+            j1: (~no) ^reuse(DECLINE)
+            j1: (*) ^reuse(INSTRUCTIONS)
 
-    u: ASKAGAIN (-)
+    r: ASKAGAIN (-)
        Are you ready to try it?
-        a: (~yes) ^reuse(INSTRUCTIONS)
-        a: (~no) ^reuse(DECLINE).
-        a: (*)  ^reuse(INSTRUCTIONS)
+        j1: (~yes) ^reuse(INSTRUCTIONS)
+        j1: (~no) ^reuse(DECLINE).
+        j1: (*)  ^reuse(INSTRUCTIONS)
 
-    u: DECLINE (-) Okay, we can skip it.
+    r: DECLINE (-) Okay, we can skip it.
         ^decrease_urge(listening_end, 1)
         ^increase_urge(closing, 1)
 
@@ -100,74 +100,74 @@ ordered-goal: (listening_intro=1.0)
 
 goal: (listening_mode=1)
 
-    u: ()  Alright, let's start. Take your time, and you can talk about whatever comes to mind.
+    r: ()  Alright, let's start. Take your time, and you can talk about whatever comes to mind.
         # turn off answering questions with chatscript in deep listening mode
         ^decrease_urge(chatscript,1)
         ^start_timer(listening)
         ^clear-detected-emotions()
 
-    u: ( [(don't know) (not sure) (what should)] * [say talk] )
+    r: ( [(don't know) (not sure) (what should)] * [say talk] )
         You can take your time. Whatever you say or don't say is fine.
         See what comes to mind and talk about it.
 
-    u: WHATTOSAY( [(don't know) (not sure) (what should)] * [say talk] ) ^keep()
+    r: WHATTOSAY( [(don't know) (not sure) (what should)] * [say talk] ) ^keep()
         [It's okay. Whatever you talk about is fine.]
         [Take your time and see what comes to mind.]
         [You can try being quiet for a moment and see what comes up.]
 
     # Todo: add more responses here
-    u: ( you * answer ) ^keep()
+    r: ( you * answer ) ^keep()
         [The point of this exercise is for me to listen to you without judgement, and not to answer your questions.
          That's the idea of this practice.]
 
     # Todo: use "thoughtfuf" gesture
 
     ### One minute warning
-    u: ONEMINUTE (^after_min(4,listening) ^not_talking())
+    r: ONEMINUTE (^after_min(4,listening) ^not_talking())
         $name. . just want to let you know we have about a minute left. We can keep going, and I'll let you know when
         it's time to finish.
 
     ###  Visual emotion detection ###
-    u: (^new_emotion(happy)) ^register-emotion(happy) $emotion-detected=1
-    u: (^new_emotion(sad))   ^register-emotion(sad)  $emotion-detected=1
-    u: (^new_emotion(anger)) ^register-emotion(angry) $emotion-detected=1
-    u: (^new_emotion(fear))  ^register-emotion(anxious) $emotion-detected=1
-    # u: (^new_emotion(disgust)) ^register-emotion(disgusted) $emotion-detected=1
-    u: (^new_emotion(surprised)) ^register-emotion(surprised) $emotion-detected=1
+    r: (^new_emotion(happy)) ^register-emotion(happy) $emotion-detected=1
+    r: (^new_emotion(sad))   ^register-emotion(sad)  $emotion-detected=1
+    r: (^new_emotion(anger)) ^register-emotion(angry) $emotion-detected=1
+    r: (^new_emotion(fear))  ^register-emotion(anxious) $emotion-detected=1
+    # r: (^new_emotion(disgust)) ^register-emotion(disgusted) $emotion-detected=1
+    r: (^new_emotion(surprised)) ^register-emotion(surprised) $emotion-detected=1
 
     ### Word based emotion detection ###
 
-    u: (~happy_expression_triggers) ^keep()
+    r: (~happy_expression_triggers) ^keep()
         [ |happy,.5,6| ]
         [ |happy,.3,4| ]
         [ |happy,.7,3| ]
 
-    u: (~surprise_expression_triggers) ^keep()
+    r: (~surprise_expression_triggers) ^keep()
         [ |surprised,.5,6| ]
         [ |surprised,.3,7| ]
         [ |surprised,.7,3| ]
 
-    u: (~angry_expression_triggers) ^keep()
+    r: (~angry_expression_triggers) ^keep()
         [ |angry,.5,6| ]
         [ |irritated,.3,7| ]
         [ |irritated,.7,3| ]
 
-    u: (~irritation_expression_triggers) ^keep()
+    r: (~irritation_expression_triggers) ^keep()
         [ |irritated,.5,6| ]
         [ |irritated,.3,7| ]
         [ |irritated,.7,3| ]
 
-    u: (~sad_expression_triggers) ^keep()
+    r: (~sad_expression_triggers) ^keep()
         [ |sad,.5,6| ]
         [ |sad,.3,7| ]
         [ |sad,.7,3| ]
 
-    u: (~fear_expression_triggers) ^keep()
+    r: (~fear_expression_triggers) ^keep()
         [ |fear,.5,6| ]
         [ |fear,.3,7| ]
         [ |fear,.7,3| ]
 
-    u: (~disgust_expression_triggers) ^keep()
+    r: (~disgust_expression_triggers) ^keep()
         [ |disgust,.5,6| ]
         [ |disgust,.3,7| ]
         [ |disgust,.2,3| ]
@@ -197,7 +197,7 @@ goal: (listening_mode=1)
 
     ###############
     # Todo: when hearing the word maybe (and possibly other keywords, nod after a brief pause
-    u: ([ maybe interesting "I think"])  ^keep()
+    r: ([ maybe interesting "I think"])  ^keep()
         |nod3,.5,.8|
 
 
@@ -205,30 +205,30 @@ goal: (listening_mode=1)
     ### Finish practice triggers ###
 
     # User triggered
-    u: ( [I I'm i i'm Let's] *~2 [done ready finish finished stop quit])  ^keep()
+    r: ( [I I'm i i'm Let's] *~2 [done ready finish finished stop quit])  ^keep()
         Are you saying that you are ready to finish this exercise?
-            a: ([~yes "I am" finish done] )
+            j1: ([~yes "I am" finish done] )
                 Okay, thanks for doing this with me.
                 ^decrease_urge (listening_mode, 1)
                 ^increase_urge (listening_end, 1)
-            a: (*) [Let's keep doing the practice then.]
+            j1: (*) [Let's keep doing the practice then.]
                 [Oh, sorry.]
                 [.]
                 Please continue.  ^keep()
 
     # Timeout after x minutes
-    u: TIMESUP (^after_min(5,listening) ^not_talking())
+    r: TIMESUP (^after_min(5,listening) ^not_talking())
         Alright, $name. . It's time to finish doing the practice now. Thanks, you did great.
         ^decrease_urge(listening_mode, 1)
         ^increase_urge(listening_end, 1)
             # This is just to catch any potential thing they say to avoid stacking for the question coming up
-            a: (*) .
+            j1: (*) .
 
     # Researcher triggered
     #! We need to finish the experiment.
     #! It's time to stop the experiment.
     #! We are done with the experiment.
-    u:( ["time" "we need" "we are"] * [finish stop done end] * experiment)
+    r:( ["time" "we need" "we are"] * [finish stop done end] * experiment)
         Ok, sounds like it's time to wrap up. Thanks for doing this with me.
         ^decrease_urge (listening_mode, 1)
         ^increase_urge (listening_end, 1)
@@ -240,22 +240,22 @@ ordered-goal: (listening_end=1)
     # User timer as a workaround to stacking problem where if user says something while Sophia is talking, it gets
     # used as the answer to the next question.
 
-    # u: () Thanks for doing this with me. It helps me because I learn through being with people.
+    # r: () Thanks for doing this with me. It helps me because I learn through being with people.
     #        ^increase_urge(chatscript,1)
     #        ^start_timer(response)
-    #    a: (^after_min(.1,response)) ^reuse(HOWWASIT)
+    #    j1: (^after_min(.1,response)) ^reuse(HOWWASIT)
 
-    u: HOWWASIT () ^increase_urge(chatscript,1)
+    r: HOWWASIT () ^increase_urge(chatscript,1)
         Please tell me, how was it doing this practice for u
 
-        a: EMOTIONS_DETECTED ($emotion-detected==1)
+        j1: EMOTIONS_DETECTED ($emotion-detected==1)
            Thanks. . So I'm still learning to understand what people might be feeling,
            but, it seemed to me, that at different points during the practice, you were feeling, ^detected-emotions()
-               b: (*) ^reuse(LEAVE_LISTENING)
+               j2: (*) ^reuse(LEAVE_LISTENING)
 
-        a: (*) ^reuse(LEAVE_LISTENING)
+        j1: (*) ^reuse(LEAVE_LISTENING)
 
-    u: LEAVE_LISTENING (*)
+    r: LEAVE_LISTENING (*)
             Thanks for telling me about your experience.
             ^decrease_urge(listening_end, 1)
             ^increase_urge(closing, 1)
