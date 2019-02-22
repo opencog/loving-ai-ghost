@@ -123,7 +123,7 @@ goal: (listening_mode=1)
     # Todo: use "thoughtfuf" gesture
 
     ### One minute warning
-    r: ONEMINUTE (^after_min(4,listening) ^not_talking())
+    r: ONEMINUTE (^after_min(4,listening) ^is_not_talking())
         $name. . just want to let you know we have about a minute left. We can keep going, and I'll let you know when
         it's time to finish.
 
@@ -217,7 +217,7 @@ goal: (listening_mode=1)
                 Please continue.  ^keep()
 
     # Timeout after x minutes
-    r: TIMESUP (^after_min(5,listening) ^not_talking())
+    r: TIMESUP (^after_min(5,listening) ^is_not_talking())
         Alright, $name. . It's time to finish doing the practice now. Thanks, you did great.
         ^decrease_urge(listening_mode, 1)
         ^increase_urge(listening_end, 1)
