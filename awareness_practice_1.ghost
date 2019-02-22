@@ -137,16 +137,16 @@ r: CONTINUE (-)
 goal: (awareness_check=1)
 
     # Todo: debug stop functionality using variable in pattern as below
-    # Commenting out stopping based on word_perceived
-    # r: STOP ($doing_meditation=1 ^word_perceived(stop))  ^keep()
-    # r: STOP (^word_perceived(stop))  ^keep()
+    # Commenting out stopping based on is_word_perceived
+    # r: STOP ($doing_meditation=1 ^is_word_perceived(stop))  ^keep()
+    # r: STOP (^is_word_perceived(stop))  ^keep()
     #    ^decrease_urge(awareness_practice_1,1)
     #    ^decrease_urge(awareness_practice_2,1)
     #    ^shutup()
     #    $stop=1
 
     # This approach depends on sentence input being sent to ghost during duplexing.
-    # In particular, the word_perceived from the user utterance triggers the STOP rule above
+    # In particular, the is_word_perceived from the user utterance triggers the STOP rule above
     # and the sentence input sent to ghost from the same user utterance triggers evaluation of
     # the rule below.
     # r: STOP2 ($stop=1)  ^keep()
@@ -193,10 +193,10 @@ goal: (awareness_check=1)
     # does variable substitution work for arguments?
 
     # Listen for other interruption words
-    r: (^word_perceived(wait))  ^reuse(STOP) ^keep()
-    r: (^word_perceived(don't)) ^reuse(STOP) ^keep()
-    r: (^word_perceived(not))   ^reuse(STOP) ^keep()
-    r: (^word_perceived(listen))   ^reuse(STOP) ^keep()
+    r: (^is_word_perceived(wait))  ^reuse(STOP) ^keep()
+    r: (^is_word_perceived(don't)) ^reuse(STOP) ^keep()
+    r: (^is_word_perceived(not))   ^reuse(STOP) ^keep()
+    r: (^is_word_perceived(listen))   ^reuse(STOP) ^keep()
 
     # this is for sentence detection of stop, but don't think we need it. otherwise, it could cause duplicate resposes
     # r: (~stop) ^reuse(STOP)
