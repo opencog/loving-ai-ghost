@@ -128,12 +128,12 @@ goal: (listening_mode=1)
         it's time to finish.
 
     ###  Visual emotion detection ###
-    r: (^new_emotion(happy)) ^register-emotion(happy) $emotion-detected=1
-    r: (^new_emotion(sad))   ^register-emotion(sad)  $emotion-detected=1
-    r: (^new_emotion(anger)) ^register-emotion(angry) $emotion-detected=1
-    r: (^new_emotion(fear))  ^register-emotion(anxious) $emotion-detected=1
-    # r: (^new_emotion(disgust)) ^register-emotion(disgusted) $emotion-detected=1
-    r: (^new_emotion(surprised)) ^register-emotion(surprised) $emotion-detected=1
+    r: (^is_emotion(happy)) ^register-emotion(happy) $emotion-detected=1
+    r: (^is_emotion(sad))   ^register-emotion(sad)  $emotion-detected=1
+    r: (^is_emotion(anger)) ^register-emotion(angry) $emotion-detected=1
+    r: (^is_emotion(fear))  ^register-emotion(anxious) $emotion-detected=1
+    # r: (^is_emotion(disgust)) ^register-emotion(disgusted) $emotion-detected=1
+    r: (^is_emotion(surprised)) ^register-emotion(surprised) $emotion-detected=1
 
     ### Word based emotion detection ###
 
